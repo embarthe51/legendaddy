@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_161756) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_164054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,48 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_161756) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "availabilities", force: :cascade do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_availabilities_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "kid_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_bookings_on_activity_id"
+    t.index ["kid_id"], name: "index_bookings_on_kid_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "kids", force: :cascade do |t|
+    t.string "first_name"
+    t.datetime "birthday"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_kids_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_reviews_on_activity_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,4 +90,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_161756) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "availabilities", "users"
+  add_foreign_key "bookings", "activities"
+  add_foreign_key "bookings", "kids"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "kids", "users"
+  add_foreign_key "reviews", "activities"
+  add_foreign_key "reviews", "users"
 end
