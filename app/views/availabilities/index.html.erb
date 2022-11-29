@@ -1,0 +1,21 @@
+<div class="container">
+  <section>
+  <h1><%= @availabilities.count %> availabilities</h1>
+
+  <ul>
+    <% @availabilities.each do |availability| %>
+      <li>
+        from <strong><%= availability.start_at.strftime("%A %d %B at %H:%M") %></strong> to <strong><%= availability.end_at.strftime('%A %d %B at %H:%M')%></strong>
+      </li>
+    <% end %>
+  </ul>
+
+    <h2>Select your availabilities</h2>
+    <%= simple_form_for Availability.new do |f| %>
+      <%= f.input :start_at, :start_year => DateTime.now.year, default: 3.days.from_now  %>
+      <%= f.input :end_at %>
+      <%= f.submit %>
+    <% end %>
+
+  </section>
+</div>

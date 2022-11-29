@@ -1,10 +1,8 @@
-
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <div id="activities">
-        <% @activities.each do |activity| %>
+        <% @filtered_activities.each do |activity| %>
           <h4><%= activity.title %></h4>
           <p><%= activity.description %></p>
         <% end %>
