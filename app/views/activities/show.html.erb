@@ -1,0 +1,16 @@
+<div class="container">
+  <article class="box-description">
+  <% if @activity.photos.any? %>
+    <%= cl_image_tag(@activity.photos.first.key, width: 200, height: 200, position: center, crop: :thumb, gravity: :face) %>
+  <% else %>
+    <%= image_tag 'unicorn.jpg', width: 350, height: 350 %>
+  <% end %>
+      <h2><%=@activity.title %></h2>
+      <h6> <strong>Address:</strong> <%= @activity.address%> </h6>
+      <p> <strong>Url:</strong> <%= @activity.url %> </p>
+      <p> <strong>Description:</strong> <%= @activity.description %> </p>
+      <p> <strong>Open:</strong> <%= @activity.open_days %> </p>
+      <p> <strong>From:</strong> <%= @activity.open_hour %> </p>
+      <p> <strong>To:</strong> <%= @activity.closing_hour %> </p>
+  </article>
+</div>
