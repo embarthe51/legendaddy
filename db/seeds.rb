@@ -11,7 +11,7 @@ Activity.destroy_all
 
 puts "Creating activities..."
 User.create!(
-  email: "blablabli@gmail.com",
+  email: "blablablo@gmail.com",
   password: "123456789"
 )
 
@@ -33,6 +33,12 @@ Activity.create!(
   price_cents: 13,
   address: "125 boulevard Jean Jaurès, 92110 Clichy",
   workshop: true,
+  start_at: DateTime.new(2022, 12, 5, 12, 0, 0),
+  end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
+  user_id: 1
+)
+
+Availability.create!(
   start_at: DateTime.new(2022, 12, 5, 12, 0, 0),
   end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
   user_id: 1
