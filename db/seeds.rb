@@ -27,7 +27,7 @@ Activity.create!(
   workshop: false,
   open_days: [0, 1, 2, 3, 4, 5],
   open_hour: DateTime.new(2022, 1, 1, 12, 0, 0),
-  closing_hour: DateTime.new(2022, 1, 1, 1, 0, 0),
+  closing_hour: DateTime.new(2022, 1, 1, 23, 59, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
 Activity.create!(
@@ -50,7 +50,7 @@ Availability.create!(
 
 Availability.create!(
   start_at: DateTime.new(2022, 12, 4, 9, 0, 0),
-  end_at: DateTime.new(2022, 12, 4, 15, 0, 0),
+  end_at: DateTime.new(2022, 12, 4, 12, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
 
