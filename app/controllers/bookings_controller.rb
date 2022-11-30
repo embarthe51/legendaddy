@@ -11,12 +11,14 @@ class BookingsController < ApplicationController
 
   def new
     @kids_and_ids = current_user.kids.map { |item| [item.first_name.capitalize, item.id] }
+    @user_availabilities = current_user.availabilities.map { |item| [item.start_at.strftime('%H h %M on %d/%m/%Y'), item.start_at]}
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new
     @booking.kid = Kid.find(booking_params["kid"].to_i)
+    @booking.start_at = booking_params["start_at"]
     @booking.user = current_user
     @booking.activity = @activity
     if @booking.save
@@ -35,7 +37,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:kid)
+    params.require(:booking).permit(:kid, :start_at)
   end
 
   def find_activity
