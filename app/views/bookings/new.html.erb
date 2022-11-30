@@ -1,23 +1,7 @@
-<%= simple_form_for [@activity, @booking],
-                  html: {
-                    data: {
-                      controller: 'flatpickr'
-                    }
-                  } do |f| %>
-<%= f.input :start_date,
-            as: :string,
-            input_html: {
-              data: {
-                flatpickr_target: 'startDateInput',
-              }
-            } %>
-<%= f.input :end_date,
-            as: :string,
-            input_html: {
-              class: 'd-none',
-              data: {
-                flatpickr_target: 'endDateInput'
-              }
-            } %>
-            <%= f.submit 'Book now!', class: 'btn btn-primary' %>
-            <% end %>
+<h2>new booking</h2>
+<p>Choose the following event and add to your calendar: </p>
+<p><%= sanitize @activity.formated_open_times %></p>
+<%= simple_form_for [@activity, @booking] do |form| %>
+  <%= form.input :kid, collection: @kids_and_ids %>
+  <%= form.submit %>
+<% end %>
