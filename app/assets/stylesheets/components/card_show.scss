@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Lobster&display=swap');
 
 .contenu{
   margin: 20px;
+  // border: solid  rgba(32, 108, 127, 0.396);
+  border-radius: 5px;
 }
 
 .box-description{
@@ -9,26 +11,46 @@
   background-color: #E2EBF2;
   text-align: center;
   padding-top: 20px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px #040c3929;
 }
+
 
 .secondary_title{
   font-weight: bold;
-  font-family: 'DM Sans', sans-serif;
   padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  color: #040C39;
 }
 
 .font-style{
   font-family: 'DM Sans', sans-serif;
 }
+
 .bouton-bleu{
     color: white;
     padding: 7px 24px;
     border-radius: 5px;
-    background: #082366;
+    background: #040C39;
+    border: none;
+    box-shadow: 1px 1px 1px 1px rgba(82, 82, 84, 0.2);
+    margin-bottom: 25px;
     // transition: background 0.3s ease;
   }
 
   .bouton-bleu:hover {
-    background: #43aec9;
+    background: #82d2e677;
     color: white;
+    transition: all 0.5s ease;
   }
+
+  .fa-solid{
+    color:#040C39;
+  }
+
+
+  // .info-card{
+  //   padding-top: 10px;
+  // }

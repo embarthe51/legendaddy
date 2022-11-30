@@ -15,10 +15,10 @@ class Activity < ApplicationRecord
       at : #{start_at.strftime('%H h %M')}"
     else
       "
-        Opening times <br/>
-        from : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
+        <i class='fa-solid fa-calendar-days'></i> <br/>
+        From : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
         to : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
-        days : #{format_open_days(open_days)}
+        Days : #{format_open_days(open_days)}
       "
     end
   end
