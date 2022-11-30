@@ -1,21 +1,32 @@
-<div class="container">
-  <article class="box-description">
+<div class="contenu">
+<article class="box-description">
+  <div class="image-clou">
     <% if @activity.photos.any? %>
-      <%= cl_image_tag(@activity.photos.first.key, width: 200, height: 200, crop: :thumb, gravity: :face) %>
+      <%= cl_image_tag(@activity.photos.first.key, width: 420, height: 300, crop: :thumb, gravity: :face) %>
     <% else %>
-      <%= image_tag 'unicorn.jpg', width: 350, height: 350 %>
+      <%= image_tag 'papa.jpeg', width: 420, height: 300 %>
     <% end %>
-    <h2><%=@activity.title %></h2>
-    <h6><strong>Address:</strong> <%= @activity.address%></h6>
-    <p><strong>Url:</strong> <%= @activity.url %></p>
-    <p><strong>Description:</strong> <%= @activity.description %></p>
-    <p> <%= sanitize @activity.formated_open_times %></p>
-  </article>
-
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+    <h2 class="secondary_title"><%= @activity.title %></h2>
+  <div class="info-card">
+    <h6 class="font-style"><i class="fa-solid fa-location-dot"></i> : <%= @activity.address%></h6>
+    <br>
+    <p><i class="fa-solid fa-link"></i> : <%= @activity.url %></p>
+    <% if @activity.price_cents %>
+      <p><i class="fa-solid fa-money-check"></i> : <%= @activity.price_cents.to_i %>€</p>
+    <% end %>
 
+    <p><i class="fa-solid fa-circle-info"></i> : <%= @activity.description %></p>
+      <div>
+        <p><%= sanitize @activity.formated_open_times %></p>
+      </div>
+      <br>
+    <input class="bouton-bleu" type="button" value="Je reserve">
+  </div>
+    <div class="map" style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </article>
 </div>

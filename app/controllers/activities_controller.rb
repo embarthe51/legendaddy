@@ -22,9 +22,11 @@ class ActivitiesController < ApplicationController
     @filtered_activities = @filtered_activities.uniq
 
     @markers = @filtered_activities.map do |a|
+
       {
         lat: a.latitude,
-        lng: a.longitude
+        lng: a.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { activity: a })
       }
     end
   end
