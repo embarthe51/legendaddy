@@ -12,19 +12,11 @@ class ActivitiesController < ApplicationController
     @filtered_activities = @filtered_activities.uniq
   end
 
-# si l'activite est un workshop
-
-# comparer le start at et le end at du workshop avec les start_at et le end_at de availibility
-# si c'est inclus alors on affiche l'activite
-
-# si l'activite n'est pas un workshop
-# comparer les jours d'ouverture avec les availibilities
-# afficher les activities qui correspondent aux availabilities
-
-# si aucune activite n'est incluse dans les availibities
-# demander au cuser de selectionner d'autres dispo
-
   def show
     @activity = Activity.find(params[:id])
+    @markers = [{
+      lat: @activity.latitude,
+      lng: @activity.longitude
+    }]
   end
 end
