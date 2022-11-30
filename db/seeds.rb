@@ -1,3 +1,4 @@
+require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -19,7 +20,7 @@ User.create!(
 
 puts "Creating activities..."
 
-Activity.create!(
+activity = Activity.new(
   title: "Social bar",
   description: "drink a beer with your kid",
   url: "https://www.social-bar.org/paris/",
@@ -28,9 +29,13 @@ Activity.create!(
   open_days: [0, 1, 2, 3, 4, 5],
   open_hour: DateTime.new(2022, 1, 1, 12, 0, 0),
   closing_hour: DateTime.new(2022, 1, 1, 23, 59, 0),
-  user: User.where(email: "cooldude@gmail.com").first
+  user: User.where(email: "cooldude@gmail.com").first,
 )
-Activity.create!(
+file = URI.open("https://images.unsplash.com/photo-1533777419517-3e4017e2e15a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")
+activity.photos.attach(io: file, filename: "drinking_beer.png", content_type: "image/png")
+activity.save!
+
+activity = Activity.new(
   title: "Palomano",
   description: "Palomano, la ville où les enfants font leurs lois !",
   url: "https://palomano.com/",
@@ -41,6 +46,9 @@ Activity.create!(
   end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
+file = URI.open("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFieSUyMGJvc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")
+activity.photos.attach(io: file, filename: "drinking_beer.png", content_type: "image/png")
+activity.save!
 
 Availability.create!(
   start_at: DateTime.new(2022, 12, 5, 12, 0, 0),
