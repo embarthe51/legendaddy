@@ -18,13 +18,12 @@ class Activity < ApplicationRecord
         <i class='fa-solid fa-calendar-days'></i> <br/>
         From : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
         to : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
-        Days : #{format_open_days(open_days)}
+        days : #{format_open_days}
       "
     end
   end
 
-  def format_open_days(open_days_unformated)
-    arr_of_days = open_days_unformated
-    arr_of_days.map! { |item| Date::DAYNAMES[item.to_i] }.join(', ')
+  def format_open_days
+    open_days.map! { |item| Date::DAYNAMES[item.to_i] }.join(', ')
   end
 end
