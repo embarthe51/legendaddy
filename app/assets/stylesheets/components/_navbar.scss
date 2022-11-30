@@ -6,7 +6,7 @@
   position: sticky;
   bottom: 0;
   width: 100vw;
-  height: 8rem;
+  height: 4rem;
   background-color: $navy;
   box-shadow: 0px -2px 3px $yellow;
   border-radius: 0rem 0rem 1rem 1rem;
@@ -14,12 +14,12 @@
     color: black;
     text-decoration: none;
     i {
-      font-size: 3.5rem;
+      font-size: 2rem;
       color: $yellow;
     }
   }
   a:nth-child(2) {
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
     padding: 1rem;
     border-radius: 50%;
     box-shadow: 0px 0px 6px $yellow;
