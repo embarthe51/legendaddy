@@ -20,6 +20,13 @@ class ActivitiesController < ApplicationController
       end
     end
     @filtered_activities = @filtered_activities.uniq
+
+    @markers = @filtered_activities.map do |a|
+      {
+        lat: a.latitude,
+        lng: a.longitude
+      }
+    end
   end
 
   def show
