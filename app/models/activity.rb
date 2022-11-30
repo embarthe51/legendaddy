@@ -11,7 +11,7 @@ class Activity < ApplicationRecord
 
   def formated_open_times
     if workshop
-      "This event takes place on: <br/> #{start_at.strftime('%d/%m/%Y')} <br/>
+      "<i class='fa-solid fa-calendar-days'></i> <br/> #{start_at.strftime('%d/%m/%Y')} <br/>
       at : #{start_at.strftime('%H h %M')}"
     else
       "
