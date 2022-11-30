@@ -15,13 +15,13 @@ class Activity < ApplicationRecord
         Opening times <br/>
         from : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
         to : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
-        days : #{format_open_days(open_days).join(", ")}
+        days : #{format_open_days(open_days)}
       "
     end
   end
 
   def format_open_days(open_days_unformated)
-    arr_of_days = open_days_unformated.to_s.chars
-    arr_of_days.map! { |item| Date::DAYNAMES[item.to_i] }
+    arr_of_days = open_days_unformated
+    arr_of_days.map! { |item| Date::DAYNAMES[item.to_i] }.join(', ')
   end
 end
