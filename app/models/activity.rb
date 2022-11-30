@@ -6,6 +6,9 @@ class Activity < ApplicationRecord
 
   validates :title, :description, :address, presence: true
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   def formated_open_times
     if workshop
       "This event takes place on: <br/> #{start_at.strftime('%d/%m/%Y')} <br/>
