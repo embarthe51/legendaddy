@@ -7,24 +7,26 @@ class ActivitiesController < ApplicationController
         current_user.availabilities.each do |availability|
           @filtered_activities << activity if availability.start_at <= activity.start_at && availability.end_at >= activity.end_at
         end
+      else
+        activity.open_days.each do |day|
+          current_user.availabilities.each do |availability|
+            activity_open_covered = availability.start_at.hour <= activity.open_hour.hour && activity.open_hour.hour < availability.end_at.hour
+            activity_closing_covered = availability.start_at.hour < activity.closing_hour.hour && activity.closing_hour.hour <= availability.end_at.hour
+            if (day == availability.start_at.wday) && (activity_open_covered || activity_closing_covered)
+              @filtered_activities << activity
+            end
+          end
+        end
       end
     end
     @filtered_activities = @filtered_activities.uniq
   end
 
-# si l'activite est un workshop
-
-# comparer le start at et le end at du workshop avec les start_at et le end_at de availibility
-# si c'est inclus alors on affiche l'activite
-
-# si l'activite n'est pas un workshop
-# comparer les jours d'ouverture avec les availibilities
-# afficher les activities qui correspondent aux availabilities
-
-# si aucune activite n'est incluse dans les availibities
-# demander au cuser de selectionner d'autres dispo
-
   def show
     @activity = Activity.find(params[:id])
+    @markers = [{
+      lat: @activity.latitude,
+      lng: @activity.longitude
+    }]
   end
 end
