@@ -10,12 +10,48 @@
     <% end %>
   </ul>
 
-    <h2>Select your availabilities</h2>
+    <%# <h2>Montre nous tes prochaines dispos </h2>
     <%= simple_form_for Availability.new do |f| %>
-      <%= f.input :start_at, :start_year => DateTime.now.year, default: 3.days.from_now  %>
-      <%= f.input :end_at %>
-      <%= f.submit %>
-    <% end %>
-
+      <%# <%= f.input :start_at %>
+      <%#= f.input :end_at, :start_year => DateTime.now.year, default: 3.days.from_now  %>
+      <%#= f.submit %>
+    <%# end %>
   </section>
+</div>
+
+<div data-controller="submit-hours">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="today-tab" data-bs-toggle="tab" data-bs-target="#today" type="button" role="tab" aria-controls="today" aria-selected="true"><%= Date.today.strftime('%d/%m/%Y') %></button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tomorrow-tab" data-bs-toggle="tab" data-bs-target="#tomorrow" type="button" role="tab" aria-controls="tomorrow" aria-selected="false"><%= (Date.today+1.day).strftime('%d/%m/%Y') %></button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="day-three-tab" data-bs-toggle="tab" data-bs-target="#day-three" type="button" role="tab" aria-controls="day-three" aria-selected="false"><%= (Date.today+2.day).strftime('%d/%m/%Y') %></button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today-tab" tabindex="0">
+      <%= simple_form_for Availability.new do |f| %>
+        <%= f.input :start_at, as: :string, default: DateTime.now, input_html: { data: { submit_hours_target: "input" } }%>
+        <%= f.input :end_at, as: :string, default: DateTime.now, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="tomorrow" role="tabpanel" aria-labelledby="tomorrow-tab" tabindex="0">
+      <%= simple_form_for Availability.new do |f| %>
+        <%= f.input :start_at, as: :string, default: DateTime.now + 1.day, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.input :end_at, as: :string, default: DateTime.now + 1.day, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="day-three" role="tabpanel" aria-labelledby="day-three-tab" tabindex="0">
+      <%= simple_form_for Availability.new do |f| %>
+        <%= f.input :start_at, as: :string, default: DateTime.now + 2.day, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.input :end_at, as: :string, default: DateTime.now + 2.day, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
 </div>
