@@ -14,9 +14,11 @@ main {
   background-color: #040C39;
   background-position: center;
   color: white;
+  position: relative;
   .call-to-act-container{
-    width: fit-content;
-    margin: 43rem auto 0 auto;
+    position: absolute;
+    width: 100%;
+    bottom: 2rem;
     a {
       border-radius: 0.3rem;
       @include legend-btn;
