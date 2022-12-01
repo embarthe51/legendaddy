@@ -1,17 +1,17 @@
-<nav class="legend-navbar">
+<nav data-controller="navbar" class="legend-navbar" >
   <%= link_to activities_path do %>
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass <%= "active" if current_page?(activities_path) %>"></i>
   <% end %>
   <%= link_to root_path do %>
-    <i class="fa-solid fa-heart"></i>
+    <i class="fa-solid fa-heart <%= "active" if current_page?('#') %>"></i>
   <% end %>
-  <%= link_to root_path do %>
+  <%= link_to activities_path do %>
     <i class="fa-solid fa-plus"></i>
   <% end %>
   <%= link_to bookings_path do %>
-    <i class="fa-regular fa-calendar active"></i>
+    <i class="fa-regular fa-calendar <%= "active" if current_page?(bookings_path) %>"></i>
   <% end %>
   <%= link_to edit_user_registration_path do %>
-    <i class="fa-solid fa-gear"></i>
+    <i class="fa-solid fa-gear <%= "active" if current_page?(edit_user_registration_path) %>"></i>
   <% end %>
 </nav>
