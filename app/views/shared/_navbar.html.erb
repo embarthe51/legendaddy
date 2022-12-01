@@ -1,11 +1,17 @@
 <nav class="legend-navbar">
-  <%= link_to root_path do %>
-    <i class="fa-regular fa-calendar"></i>
-  <% end %>
-  <%= link_to root_path do %>
+  <%= link_to activities_path do %>
     <i class="fa-solid fa-magnifying-glass"></i>
   <% end %>
+  <%= link_to root_path do %>
+    <i class="fa-solid fa-heart"></i>
+  <% end %>
+  <%= link_to root_path do %>
+    <i class="fa-solid fa-plus"></i>
+  <% end %>
+  <%= link_to bookings_path do %>
+    <i class="fa-regular fa-calendar active"></i>
+  <% end %>
   <%= link_to edit_user_registration_path do %>
-    <i class="fa-regular fa-user"></i>
+    <i class="fa-solid fa-gear"></i>
   <% end %>
 </nav>

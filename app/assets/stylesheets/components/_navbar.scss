@@ -7,22 +7,26 @@
   bottom: 0;
   width: 100vw;
   height: 4rem;
-  background-color: $navy;
-  box-shadow: 0px -2px 3px $yellow;
-  border-radius: 0rem 0rem 1rem 1rem;
+  background-color: white;
+  .active {
+    color: $mint
+  }
   a {
-    color: black;
     text-decoration: none;
     i {
-      font-size: 2rem;
-      color: $yellow;
+      font-size: 1.8rem;
+      color: $navy;
     }
   }
-  a:nth-child(2) {
+  a:nth-child(3) {
     margin-bottom: 4rem;
     padding: 1rem;
     border-radius: 50%;
-    box-shadow: 0px 0px 6px $yellow;
-    background-color: $navy;
+    box-shadow: 0px 0px 3px $navy;
+    background-color: white;
+    i {
+      font-size: 2rem;
+      color: $red;
+    }
   }
 }
