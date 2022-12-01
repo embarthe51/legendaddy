@@ -1,7 +1,9 @@
 class AvailabilitiesController < ApplicationController
 
   def index
+    @tomorrow = Date.tomorrow
     @availabilities = Availability.all
+    @grouped_availabilities = @availabilities.group_by { |a| a.start_at.strftime('%a %d %b %Y') }
   end
 
   def new
@@ -11,7 +13,10 @@ class AvailabilitiesController < ApplicationController
   def create
     @availability = Availability.new(availability_params)
     @availability.user = current_user
+    @availability.start_at = "#{params[:availability][:date]} #{params[:availability][:start_at]}"
+    @availability.end_at = "#{params[:availability][:date]} #{params[:availability][:end_at]}"
     @availability.save
+
     redirect_to availabilities_path
   end
 
