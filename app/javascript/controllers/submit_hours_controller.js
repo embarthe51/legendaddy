@@ -3,12 +3,16 @@ import flatpickr from "flatpickr";
 
 // Connects to data-controller="submit-hours"
 export default class extends Controller {
-  static targets = ["input"]
+  static targets = ["input", "form"]
+  static values = {
+    date: String
+  }
 
   connect() {
-    console.log(this.inputTargets);
+    console.log("ok")
+    console.log(this.element)
     this.inputTargets.forEach((input) => {
-
+      console.log(input)
      new flatpickr(input, {
         enableTime: true,
         noCalendar: true,
@@ -19,5 +23,10 @@ export default class extends Controller {
       // je target mes 6 input pour avoir un array
     // iteration sur mes input
     // sur chaque input j instancie un flatpickr
+  }
+
+  displayForm() {
+    console.log(this.formTargets);
+    this.formTargets.classList.toggle("d-none");
   }
 }
