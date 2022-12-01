@@ -12,14 +12,14 @@ class Activity < ApplicationRecord
 
   def formated_open_times
     if workshop
-      "<i class='fa-solid fa-calendar-days'></i> <br/> #{start_at.strftime('%d/%m/%Y')} <br/>
-      at : #{start_at.strftime('%H h %M')}"
+      "<i class='fa-solid fa-calendar-days'></i> <br/> Le #{start_at.strftime('%d/%m/%Y')} <br/>
+      à : #{start_at.strftime('%H h %M')}"
     else
       "
         <i class='fa-solid fa-calendar-days'></i> <br/>
-        From : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
-        to : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
-        days : #{format_open_days}
+        De : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
+        à : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
+        Jours : #{format_open_days}
       "
     end
   end
