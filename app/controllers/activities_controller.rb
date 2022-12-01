@@ -1,6 +1,46 @@
 class ActivitiesController < ApplicationController
   def index
-    @activities = Activity.all
+    filter
+  end
+
+  def search
+    filter
+    respond_to do |format|
+      format.json do
+        render json: {
+          html: render_to_string(
+            partial: "activities/list",
+            locals: { filtered_activities: @filtered_activities },
+            formats: [:html]
+          ),
+          map_html: render_to_string(
+            partial: "activities/map",
+            locals: { markers: @markers },
+            formats: [:html]
+          )
+        }
+      end
+      format.html
+    end
+  end
+
+  def show
+    @activity = Activity.find(params[:id])
+    @markers = [{
+      lat: @activity.latitude,
+      lng: @activity.longitude,
+      info_window: render_to_string(partial: "activities/info_window", locals: { activity: @activity },
+      formats: [:html])
+    }]
+  end
+
+  def filter
+    if params.dig(:query, :tag_list)&.any? { |string| !string.empty? }
+      @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true)
+    else
+      @activities = Activity.all
+    end
+
     @filtered_activities = []
     @activities.each do |activity|
       if activity.workshop?
@@ -20,23 +60,13 @@ class ActivitiesController < ApplicationController
       end
     end
     @filtered_activities = @filtered_activities.uniq
-
     @markers = @filtered_activities.map do |a|
-
       {
         lat: a.latitude,
         lng: a.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { activity: a })
+        info_window: render_to_string(partial: "activities/info_window", locals: { activity: a },
+          formats: [:html])
       }
     end
-  end
-
-  def show
-    @activity = Activity.find(params[:id])
-    @markers = [{
-      lat: @activity.latitude,
-      lng: @activity.longitude,
-      info_window: render_to_string(partial: "info_window", locals: { activity: @activity })
-    }]
   end
 end

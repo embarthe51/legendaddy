@@ -79,3 +79,4 @@ group :test do
 end
 
 gem "geocoder"
+gem 'acts-as-taggable-on', '~> 9.0'

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ActivitySearchController from "./activity_search_controller"
+application.register("activity-search", ActivitySearchController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
