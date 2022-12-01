@@ -32,6 +32,7 @@ class ActivitiesController < ApplicationController
       info_window: render_to_string(partial: "activities/info_window", locals: { activity: @activity },
       formats: [:html])
     }]
+    @booking = Booking.new
   end
 
   def filter
