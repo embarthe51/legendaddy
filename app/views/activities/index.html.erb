@@ -26,7 +26,7 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   
 <div class="container" data-controller="activity-search">
-<%= simple_form_for :query,
+  <%= simple_form_for :query,
                     url: search_activities_path,
                     method: :get,
                     html: {
@@ -41,8 +41,10 @@
               value_method: :name,
               checked: params.dig(:query, :tag_list),
               input_html: {
+                class: "tag-selector",
                 data: { action: "click->activity-search#search" }
-              } %>
+              },
+              item_wrapper_class: 'tag-item'%>
   <% end %>
 
 
