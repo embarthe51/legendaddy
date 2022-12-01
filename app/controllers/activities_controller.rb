@@ -22,7 +22,6 @@ class ActivitiesController < ApplicationController
     @filtered_activities = @filtered_activities.uniq
 
     @markers = @filtered_activities.map do |a|
-
       {
         lat: a.latitude,
         lng: a.longitude,

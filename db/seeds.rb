@@ -31,6 +31,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 1, 1, 23, 59, 0),
   user: User.where(email: "cooldude@gmail.com").first,
 )
+activity.tag_list.add("bar", "biere", "social", "enfant")
 file = URI.open("https://images.unsplash.com/photo-1533777419517-3e4017e2e15a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")
 activity.photos.attach(io: file, filename: "drinking_beer.png", content_type: "image/png")
 activity.save!
@@ -46,6 +47,7 @@ activity = Activity.new(
   end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
+activity.tag_list.add("maison de famille", "parent", "enfant", "lieux de vie", "activité")
 file = URI.open("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFieSUyMGJvc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_painting.png", content_type: "image/png")
 activity.save!
@@ -62,6 +64,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 12, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
+activity.tag_list.add("cinéma", "cinékid", "enfant")
 file = URI.open("https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80")
 activity.photos.attach(io: file, filename: "baby_cinema.png", content_type: "image/png")
 activity.save!
@@ -78,6 +81,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
+activity.tag_list.add("cité", "cité des sciences", "enfant", "activité")
 file = URI.open("https://images.unsplash.com/photo-1575364289437-fb1479d52732?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGxheXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_playing.png", content_type: "image/png")
 activity.save!
@@ -94,6 +98,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 17, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
+activity.tag_list.add("bébé nageur", "piscine")
 file = URI.open("https://plus.unsplash.com/premium_photo-1661290345523-feb44424e6a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFieSUyMHN3aW1taW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_swiming.png", content_type: "image/png")
 activity.save!
