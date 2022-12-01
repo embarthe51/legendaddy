@@ -1,8 +1,8 @@
 <div class="activity-content">
-  <article class="box-description">
+  <div class="box-description">
     <div class="activity-image">
       <% if @activity.photos.any? %>
-        <%= cl_image_tag(@activity.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
+        <%= cl_image_tag(@activity.photos.first.key, width: 350, height: 300, crop: :fill, gravity: :center) %>
       <% else %>
         <%= image_tag 'papa.jpeg', width: 350, height: 300 %>
       <% end %>
@@ -58,5 +58,5 @@
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  </article>
+  </div>
 </div>

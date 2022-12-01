@@ -8,12 +8,18 @@
 .box-description{
   position: center;
   background-color: #e2ebf2d8;
-  text-align: center;
-  padding-top: 20px;
+  // padding-top: 20px;
   border-radius: 5px;
   box-shadow: 3px 3px 3px 3px #040c3929;
+  text-align: center;
 }
 
+.box-description img{
+  width: 100%;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 .secondary_title{
   font-weight: bold;
@@ -22,6 +28,7 @@
   font-family: 'Lobster', cursive;
   font-size: 40px;
   color: #040C39;
+  text-align: center;
 }
 
 .font-style{
@@ -61,6 +68,7 @@
   .info-card{
     padding: 10px;
     box-sizing: border-box;
+    padding-left: 20px;
   }
 
   .info-card a{
