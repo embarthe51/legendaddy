@@ -1,0 +1,9 @@
+<h2>new booking</h2>
+<p>Choose the following event and add to your calendar: </p>
+<p><%= sanitize @activity.formated_open_times %></p>
+<%= simple_form_for [@activity, @booking] do |form| %>
+  <p>Choose from your saved availabilities</p>
+  <%= form.input :start_at, collection: @user_availabilities %>
+  <%= form.input :kid, collection: @kids_and_ids %>
+  <%= form.submit %>
+<% end %>

@@ -1,6 +1,11 @@
 <section class="home-section-background">
   <div class="call-to-act-container">
-    <%= link_to "Let's go", user_session_path, class: 'legend-btn' %>
-    <p>organise moments with your kids</p>
+    <% unless user_signed_in? %>
+      <%= link_to "Let's go", user_session_path, class: 'legend-btn' %>
+      <p>organise moments with your kids</p>
+    <% else %>
+      <%= link_to "Let's go", activities_path, class: 'legend-btn' %>
+      <p>organise moments with your kids</p>
+    <% end %>
   </div>
 </section>

@@ -1,19 +1,25 @@
 // Specific CSS for your home-page
-section {
+<%# section {
   min-height: 120vh;
+  max-height: fit-content;
+} %>
+
+main {
+  min-height: 100vh;
   max-height: fit-content;
 }
 
 .home-section-background {
+  height: 100vh;
   text-align: center;
   border-top: 5px solid $yellow;
   background: url(<%= asset_path 'legendaddy.png' %>);
   background-size: cover;
-  background-position: bottom;
+  background-position: top;
   color: white;
   .call-to-act-container{
     width: fit-content;
-    margin: 19rem auto 0 auto;
+    margin: 23rem auto 0 auto;
     a {
       border-radius: 0.3rem;
       @include legend-btn;

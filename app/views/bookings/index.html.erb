@@ -1,3 +1,11 @@
 <section>
   <h2>booking index</h2>
+  <% @bookings.each do |item| %>
+    <%= link_to booking_path(item) do %>
+      <article class="booking-index-article">
+        <p>Booking for <%= item.kid.first_name.capitalize %></p>
+        <p><%= sanitize item.activity.formated_open_times %></p>
+      </article>
+    <% end %>
+  <% end %>
 </section>
