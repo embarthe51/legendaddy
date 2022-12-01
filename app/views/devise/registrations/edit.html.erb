@@ -1,5 +1,5 @@
-<h2>Hi <%= current_user.email %></h2>
-<h2>Edit email and password</h2>
+<h2>Salut <%= current_user.email %></h2>
+<h2>Modifier adresse mail et m.d.p</h2>
 <section class="legend-form-container">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -12,14 +12,14 @@
       <% end %>
 
       <%= f.input :password,
-                  hint: "change password or leave it blank if you don't want to change it",
+                  hint: "modifiez votre m.d.p ou ne renseignez pas cette case si vous souhaitez garder le même",
                   required: false,
                   input_html: { autocomplete: "new-password" }, placeholder: "********" %>
       <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" }, placeholder: "********" %>
       <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
+                  hint: "pour modifier les nouveaulles infos, nous avons besoin de votre m.d.p",
                   required: true,
                   input_html: { autocomplete: "current-password" }, placeholder: "********" %>
     </div>
@@ -28,15 +28,12 @@
       <%= f.button :submit, "Update" %>
     </div>
   <% end %>
-
-
-
 </section>
 
 
-<h3>Cancel my account</h3>
+<h3>Supprimer mon compte</h3>
 
 <div class="d-flex align-items-center unhappy-div">
-  <div>Unhappy?</div>
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+  <div>Dissatisfait?</div>
+  <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "For real??" }, method: :delete, class: "btn btn-link" %>
 </div>
