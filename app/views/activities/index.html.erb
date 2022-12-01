@@ -24,6 +24,7 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  
 <div class="container" data-controller="activity-search">
 <%= simple_form_for :query,
                     url: search_activities_path,
