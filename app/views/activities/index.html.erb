@@ -19,17 +19,16 @@
               },
               item_wrapper_class: 'tag-item'%>
   <% end %>
-
-
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div id="activities" data-activity-search-target="activities">
-        <%= render 'list', filtered_activities: @filtered_activities %>
+  <div class="activities_content">
+    <div class="row justify-content-center">
+      <div class="col-sm-8 justify-content-center">
+        <div class="title_description" id="activities" data-activity-search-target="activities">
+          <%= render 'list', filtered_activities: @filtered_activities %>
+        </div>
       </div>
     </div>
   </div>
   <div data-activity-search-target="map">
     <%= render 'map', markers: @markers %>
   </div>
-
 </div>
