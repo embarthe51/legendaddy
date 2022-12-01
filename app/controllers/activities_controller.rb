@@ -38,5 +38,6 @@ class ActivitiesController < ApplicationController
       lng: @activity.longitude,
       info_window: render_to_string(partial: "info_window", locals: { activity: @activity })
     }]
+    @booking = Booking.new
   end
 end

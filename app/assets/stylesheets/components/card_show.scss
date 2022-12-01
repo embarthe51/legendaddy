@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Lobster&display=swap');
 
-.contenu{
+.activity-content{
   margin: 20px;
-  // border: solid  rgba(32, 108, 127, 0.396);
   border-radius: 5px;
 }
 
 .box-description{
   position: center;
-  background-color: #E2EBF2;
+  background-color: #e2ebf2d8;
   text-align: center;
   padding-top: 20px;
   border-radius: 5px;
@@ -29,19 +28,18 @@
   font-family: 'DM Sans', sans-serif;
 }
 
-.bouton-bleu{
-    color: white;
-    padding: 7px 24px;
-    border-radius: 5px;
-    background: #040C39;
-    border: none;
-    box-shadow: 1px 1px 1px 1px rgba(82, 82, 84, 0.2);
-    margin-bottom: 25px;
-    // transition: background 0.3s ease;
-  }
+.blue-button{
+  color: white;
+  padding: 7px 24px;
+  border-radius: 5px;
+  background: #040C39;
+  border: none;
+  box-shadow: 1px 1px 1px 1px rgba(82, 82, 84, 0.2);
+  margin-bottom: 25px;
+}
 
-  .bouton-bleu:hover {
-    background: #82d2e677;
+  .blue-button:hover {
+    background: #4d869477;
     color: white;
     transition: all 0.5s ease;
   }
@@ -49,8 +47,33 @@
   .fa-solid{
     color:#040C39;
   }
- //
 
-  // .info-card{
-  //   padding-top: 10px;
+  .site{
+    color: black;
+    transition: all 0.5s ease;
+    text-decoration: none;
+
+  }
+  .site:hover{
+    color: #5f658a;
+  }
+
+  .info-card{
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .info-card a{
+    text-decoration: none;
+    color: #2a388a;
+    transition: all 0.5s ease;
+  }
+
+  .info-card a:hover{
+    color: #5f658a;
+  }
+
+  // .map{
+  //   margin: 30px;
+  //   right: 30px;
   // }
