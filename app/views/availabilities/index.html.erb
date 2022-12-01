@@ -25,30 +25,107 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
+
     <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today-tab" tabindex="0">
       <%= simple_form_for Availability.new do |f| %>
         <%= f.input :start_at, as: :string, default: DateTime.now, input_html: { data: { submit_hours_target: "input" } }%>
         <%= f.input :end_at, as: :string, default: DateTime.now, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.hidden_field :date, value: Date.today %>
+
         <%= f.submit %>
       <% end %>
-    </div>
+
+      <div class="container">
+          <div class="calendar mt-3">
+            <div class="timeline">
+            <% i = 9 %>
+              <% 12.times do %>
+              <p><%= (Date.today+i.hours).strftime("%H:%M") %></p>
+                <% i += 1 %>
+              <% end %>
+            </div>
+            <div class="days">
+              <% @grouped_availabilities[Date.today.strftime('%a %d %b %Y')].each do |availability|%>
+                <% beg = (availability.start_at.hour - 9) * 60 %>
+                <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
+                <div class="event start-at-<%=beg%> duration-<%=duration%> text-center" >
+                  <p class="title">Creneau horaire disponible</p>
+                  <p>de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div class="tab-pane fade" id="tomorrow" role="tabpanel" aria-labelledby="tomorrow-tab" tabindex="0">
       <%= simple_form_for Availability.new do |f| %>
-        <%= f.input :start_at, as: :string, default: DateTime.now + 1.day, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.input :start_at, as: :string, default: DateTime.now + 1.day, input_html: { data: { submit_hours_target: "input"} } %>
         <%= f.input :end_at, as: :string, default: DateTime.now + 1.day, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.hidden_field :date, value: Date.tomorrow %>
         <%= f.submit %>
       <% end %>
+
+      <div class="container">
+          <div class="calendar mt-3">
+            <div class="timeline">
+            <% i = 9 %>
+              <% 12.times do %>
+              <p><%= (Date.today+i.hours).strftime("%H:%M") %></p>
+                <% i += 1 %>
+              <% end %>
+            </div>
+            <div class="days">
+              <% if @grouped_availabilities[Date.tomorrow.strftime('%a %d %b %Y')] %>
+              <% @grouped_availabilities[Date.tomorrow.strftime('%a %d %b %Y')].each do |availability|%>
+                <% beg = (availability.start_at.hour - 9) * 60 %>
+                <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
+                <div class="event start-at-<%=beg%> duration-<%=duration%> text-center" >
+                  <p class="title">Creneau horaire disponible</p>
+                  <p class="time">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
+                </div>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div class="tab-pane fade" id="day-three" role="tabpanel" aria-labelledby="day-three-tab" tabindex="0">
       <%= simple_form_for Availability.new do |f| %>
         <%= f.input :start_at, as: :string, default: DateTime.now + 2.day, input_html: { data: { submit_hours_target: "input" } } %>
         <%= f.input :end_at, as: :string, default: DateTime.now + 2.day, input_html: { data: { submit_hours_target: "input" } } %>
+        <%= f.hidden_field :date, value: Date.today + 2 %>
+
         <%= f.submit %>
       <% end %>
+
+      <div class="container">
+            <div class="calendar mt-3">
+              <div class="timeline">
+              <% i = 9 %>
+                <% 12.times do %>
+                <p><%= (Date.today+i.hours).strftime("%H:%M") %></p>
+                  <% i += 1 %>
+                <% end %>
+              </div>
+              <div class="days">
+              <% if @grouped_availabilities[(Date.today + 2).strftime('%a %d %b %Y') ] %>
+                <% @grouped_availabilities[(Date.today + 2).strftime('%a %d %b %Y') ].each do |availability|%>
+                  <% beg = (availability.start_at.hour - 9) * 60 %>
+                  <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
+                  <div class="event start-at-<%=beg%> duration-<%=duration%> text-center" >
+                    <p class="title">Creneau horaire disponible</p>
+                    <p class="time">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
+                  </div>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="calendar">
-coucou
 </div>
