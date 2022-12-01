@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:index, :show, :destroy]
   resources :availabilities, only: [:index, :new, :create]
+  post '/search_activities', to: 'activities#search', as: :search_activities
 end
