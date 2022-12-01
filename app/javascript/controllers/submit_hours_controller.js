@@ -6,12 +6,14 @@ export default class extends Controller {
   static targets = ["input"]
 
   connect() {
+    console.log(this.inputTargets);
     this.inputTargets.forEach((input) => {
 
-      flatpickr(input, {
+     new flatpickr(input, {
         enableTime: true,
         noCalendar: true,
         dateFormat: "H:i",
+        time_24hr: true,
       });
     });
       // je target mes 6 input pour avoir un array
