@@ -1,5 +1,16 @@
-<section>
-  <h2>booking show</h2>
-  <%= sanitize @booking.activity.formated_open_times %>
+
+<article class="booking-show-container">
+  <div class="img-div-banner"
+        style="background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),
+        url(<%= @booking.activity.photos.any? ?
+          cl_image_path(@booking.activity.photos.first.key) :
+          image_url('https://cdn.pixabay.com/photo/2016/09/08/22/43/books-1655783_1280.jpg') %>)">
+
+    <h2><%= @booking.activity.title %></h2>
+
+  </div>
+  <h5><strong>Activité pour </strong> <%= @booking.kid.first_name.capitalize %></h5>
   <p><%= @booking.formated_booking_start %></p>
-</section>
+  <h5><strong>Horraire d'ouverture:</strong></h5>
+  <%= sanitize @booking.activity.formated_open_times %>
+</article>

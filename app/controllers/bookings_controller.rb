@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :find_activity, only: %i[new create]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.includes(:kid, :activity).all
   end
 
   def show
@@ -46,6 +46,5 @@ class BookingsController < ApplicationController
 
   def find_booking
     @booking = Booking.find(params[:id])
-
   end
 end
