@@ -38,14 +38,19 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Choisissez votre activité: </p>
-            <p><%= sanitize @activity.formated_open_times %></p>
-            <%= simple_form_for [@activity, @booking] do |form| %>
-              <p>Selectionnez selon vos disponibilités:</p>
-              <%= form.input :start_at, collection: @user_availabilities %>
-              <%= form.input :kid, collection: @kids_and_ids %>
-              <%= form.submit %>
-            <% end %>
+          <p>Confirmez votre activité: </p>
+            <section class="legend-form-container">
+              <p><%= sanitize @activity.formated_open_times %></p>
+            </section>
+            <section class="legend-form-container">
+              <%= simple_form_for [@activity, @booking] do |form| %>
+                <p>Choisissez un de vos créneaux sauvegardé</p>
+                <%= form.input :start_at, collection: @user_availabilities %>
+                <p>Pour qui ?</p>
+                <%= form.input :kid, collection: @kids_and_ids %>
+                <%= form.submit %>
+              <% end %>
+          </section>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
