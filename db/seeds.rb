@@ -39,7 +39,7 @@ puts "Creating activities..."
 
 activity = Activity.new(
   title: "Social bar",
-  description: "drink a beer with your kid",
+  description: "bois une bière avec ton enfant!",
   url: "https://www.social-bar.org/paris/",
   address: "25, rue Villiot, 75012 Paris",
   workshop: false,
@@ -153,6 +153,29 @@ activity.tag_list.add("bibliotheque", "jeux")
 file = URI.open("https://cdn.paris.fr/qfapv4/2021/12/01/huge-e0c0dc7170a6f85ddebd45987b37292c.jpg")
 activity.photos.attach(io: file, filename: "bibliothèque.png", content_type: "image/png")
 activity.save!
+
+activity = Activity.new(
+  title: "Cours de pédagogie Montessori avec Julien",
+  description: "Si votre enfant à du mal à écouter les règles, Julien lui enseignera avec bienveillance",
+  url: "https://github.com/Naruki95",
+  price_cents: 0,
+  address: "Gennevilliers 92230",
+  workshop: false,
+  open_days: [1, 2, 3, 4, 5, 6, 0],
+  open_hour: DateTime.new(2022, 12, 4, 9, 0, 0),
+  closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
+  user: User.where(email: "cooldude@gmail.com").first
+)
+activity.tag_list.add("pédagogie Montessori")
+file = URI.open("https://avatars.githubusercontent.com/u/104355406?v=4")
+activity.photos.attach(io: file, filename: "Julien.png", content_type: "image/png")
+activity.save!
+
+Availability.create!(
+  start_at: DateTime.new(2022, 12, 3, 12, 0, 0),
+  end_at: DateTime.new(2022, 12, 3, 13, 0, 0),
+  user: User.where(email: "cooldude@gmail.com").first
+)
 
 Availability.create!(
   start_at: DateTime.new(2022, 12, 5, 12, 0, 0),
