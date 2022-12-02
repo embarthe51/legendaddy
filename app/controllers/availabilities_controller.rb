@@ -17,7 +17,7 @@ class AvailabilitiesController < ApplicationController
     @availability.end_at = "#{params[:availability][:date]} #{params[:availability][:end_at]}"
     @availability.save
 
-    redirect_to availabilities_path
+    redirect_to availabilities_path(@availabilities)
   end
 
   private

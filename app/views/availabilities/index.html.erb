@@ -1,7 +1,7 @@
 <div class="container">
   <section>
-  <h1><%= @availabilities.count %> availabilities</h1>
-
+  <h1>Mon agenda</h1>
+  <h3>Rentre vite tes prochaines dispo</h3>
   <ul>
     <% @availabilities.each do |availability| %>
       <li>
@@ -13,6 +13,7 @@
 </div>
 
 <div data-controller="submit-hours">
+<div class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="today-tab" data-bs-toggle="tab" data-bs-target="#today" type="button" role="tab" aria-controls="today" aria-selected="true"><%= Date.today.strftime('%d/%m/%Y') %></button>
@@ -32,7 +33,7 @@
         <%= f.input :end_at, as: :string, default: DateTime.now, input_html: { data: { submit_hours_target: "input" } } %>
         <%= f.hidden_field :date, value: Date.today %>
 
-        <%= f.submit %>
+        <%= f.submit value: "Ajouter ma dispo", class:"blue-button"%>
       <% end %>
 
       <div class="container">
@@ -45,14 +46,17 @@
               <% end %>
             </div>
             <div class="days">
+            <% if @grouped_availabilities[Date.today.strftime('%a %d %b %Y') ] %>
               <% @grouped_availabilities[Date.today.strftime('%a %d %b %Y')].each do |availability|%>
                 <% beg = (availability.start_at.hour - 9) * 60 %>
                 <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
                 <div class="event start-at-<%=beg%> duration-<%=duration%> text-center" >
-                  <p class="title">Creneau horaire disponible</p>
-                  <p>de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
+                  <p class="title">Creneau horaire disponible:</p>
+                  <p class="schedule">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
+                  <p class="activity-result"><%= link_to "X activites dispo", activities_path %> </p>
                 </div>
               <% end %>
+            <% end %>
             </div>
           </div>
         </div>
@@ -63,7 +67,7 @@
         <%= f.input :start_at, as: :string, default: DateTime.now + 1.day, input_html: { data: { submit_hours_target: "input"} } %>
         <%= f.input :end_at, as: :string, default: DateTime.now + 1.day, input_html: { data: { submit_hours_target: "input" } } %>
         <%= f.hidden_field :date, value: Date.tomorrow %>
-        <%= f.submit %>
+        <%= f.submit value: "Ajouter ma dispo", class:"blue-button"%>
       <% end %>
 
       <div class="container">
@@ -98,7 +102,7 @@
         <%= f.input :end_at, as: :string, default: DateTime.now + 2.day, input_html: { data: { submit_hours_target: "input" } } %>
         <%= f.hidden_field :date, value: Date.today + 2 %>
 
-        <%= f.submit %>
+        <%= f.submit value: "Ajouter ma dispo", class:"blue-button"%>
       <% end %>
 
       <div class="container">
@@ -128,4 +132,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
