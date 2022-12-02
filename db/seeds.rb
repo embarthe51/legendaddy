@@ -25,6 +25,16 @@ Kid.create!(
   user: User.where(email: "cooldude@gmail.com").first
 )
 
+Kid.create!(
+  first_name: "Greta",
+  user: User.where(email: "cooldude@gmail.com").first
+)
+
+Kid.create!(
+  first_name: "Thunberg",
+  user: User.where(email: "cooldude@gmail.com").first
+)
+
 puts "Creating activities..."
 
 activity = Activity.new(
@@ -38,7 +48,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 1, 1, 23, 59, 0),
   user: User.where(email: "cooldude@gmail.com").first,
 )
-activity.tag_list.add("bar", "biere", "social", "enfant")
+activity.tag_list.add("bar", "biere", "social")
 file = URI.open("https://images.unsplash.com/photo-1533777419517-3e4017e2e15a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")
 activity.photos.attach(io: file, filename: "drinking_beer.png", content_type: "image/png")
 activity.save!
@@ -54,7 +64,7 @@ activity = Activity.new(
   end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("maison de famille", "parent", "enfant", "lieux de vie", "activité")
+activity.tag_list.add("maison de famille", "lieux de vie", "activité")
 file = URI.open("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFieSUyMGJvc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_painting.png", content_type: "image/png")
 activity.save!
@@ -71,7 +81,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 12, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("cinéma", "cinékid", "enfant")
+activity.tag_list.add("cinéma", "cinékid")
 file = URI.open("https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80")
 activity.photos.attach(io: file, filename: "baby_cinema.png", content_type: "image/png")
 activity.save!
@@ -88,7 +98,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("cité", "cité des sciences", "enfant", "activité")
+activity.tag_list.add("cité", "cité des sciences")
 file = URI.open("https://images.unsplash.com/photo-1575364289437-fb1479d52732?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGxheXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_playing.png", content_type: "image/png")
 activity.save!
@@ -108,6 +118,40 @@ activity = Activity.new(
 activity.tag_list.add("bébé nageur", "piscine")
 file = URI.open("https://plus.unsplash.com/premium_photo-1661290345523-feb44424e6a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFieSUyMHN3aW1taW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_swiming.png", content_type: "image/png")
+activity.save!
+
+activity = Activity.new(
+  title: "Sensations fortes au parc de Belleville",
+  description: "À l'abordage ! Direction le parc de Belleville dans le 20e arrondissement pour partir à la découverte de la nouvelle aire de jeux inaugurée en novembre 2019. ",
+  url: "https://www.paris.fr/pages/top-des-aires-de-jeux-les-plus-ludiques-de-la-capitale-18795",
+  price_cents: 0,
+  address: "47 rue des Couronnes 75020 PARIS",
+  workshop: false,
+  open_days: [1, 2, 3, 4, 5, 6, 0],
+  open_hour: DateTime.new(2022, 12, 4, 9, 0, 0),
+  closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
+  user: User.where(email: "cooldude@gmail.com").first
+)
+activity.tag_list.add("parc")
+file = URI.open("https://cdn.paris.fr/paris/2021/10/04/original-0964ef6c14fc01d0f61e884d85b9769f.jpg")
+activity.photos.attach(io: file, filename: "baby_parc.png", content_type: "image/png")
+activity.save!
+
+activity = Activity.new(
+  title: "SOIRÉE JEUX DE SOCIÉTÉ AVEC MAMYGEEK",
+  description: "Jeux de société pour tou.te.s, seul.e, en famille ou entre amis ! Jeux de rapidité, jeux d'ambiance, jeux de stratégie…",
+  url: "https://www.paris.fr/equipements/bibliotheque-sorbier-1753",
+  price_cents: 0,
+  address: "17 rue Sorbier 75020 Paris",
+  workshop: false,
+  open_days: [1, 2, 3, 4, 5, 6, 0],
+  open_hour: DateTime.new(2022, 12, 4, 9, 0, 0),
+  closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
+  user: User.where(email: "cooldude@gmail.com").first
+)
+activity.tag_list.add("bibliotheque")
+file = URI.open("https://cdn.paris.fr/qfapv4/2021/12/01/huge-e0c0dc7170a6f85ddebd45987b37292c.jpg")
+activity.photos.attach(io: file, filename: "bibliothèque.png", content_type: "image/png")
 activity.save!
 
 Availability.create!(
