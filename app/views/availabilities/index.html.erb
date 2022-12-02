@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <h1>Mon agenda</h1>
   <h3>Rentre vite tes prochaines dispo</h3>
   <%# <ul>
@@ -47,10 +47,18 @@
                   <% @grouped_availabilities[Date.today.strftime('%a %d %b %Y')].each do |availability|%>
                     <% beg = (availability.start_at.hour - 9) * 60 %>
                     <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
-                    <div class="event start-at-<%=beg%> duration-<%=duration%> text-center" >
+                    <div class="event start-at-<%=beg%> duration-<%=duration%> text-center text-center d-flex flex-column justify-content-center">
                       <p class="title">Creneau horaire disponible:</p>
                       <p class="schedule">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
-                      <p class="activity-result"><%= link_to "#{Activity.on_availability(availability).count} activites dispo", availability_activities_path(availability) %> </p>
+                      <p class="activity-result">
+                        <% if Activity.on_availability(availability).count == 1 %>
+                          <%= link_to "#{Activity.on_availability(availability).count} activité dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                        <% elsif Activity.on_availability(availability).count > 1  %>
+                          <%= link_to "#{Activity.on_availability(availability).count} activités dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                          <% elsif Activity.on_availability(availability).count == 0  %>
+                          <%= "Pas d'activité dispo sur ce creneau" %>
+                        <% end %>
+                      </p>
                     </div>
                   <% end %>
                 <% end %>`
@@ -82,10 +90,19 @@
                 <% @grouped_availabilities[Date.tomorrow.strftime('%a %d %b %Y')].each do |availability|%>
                   <% beg = (availability.start_at.hour - 9) * 60 %>
                   <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
-                  <div class="event start-at-<%=beg%> duration-<%=duration%> text-center" >
+                  <div class="event start-at-<%=beg%> duration-<%=duration%> text-center text-center d-flex flex-column justify-content-center" >
                     <p class="title">Creneau horaire disponible</p>
-                    <p class="time">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
-                    <p class="activity-result"><%= link_to "#{Activity.on_availability(availability).count} activites dispo", availability_activities_path(availability) %> </p>
+                    <p class="schedule">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
+                    <p class="activity-result">
+                    <% if Activity.on_availability(availability).count == 1 %>
+                        <%= link_to "#{Activity.on_availability(availability).count} activité dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                      <% elsif Activity.on_availability(availability).count > 1  %>
+                        <%= link_to "#{Activity.on_availability(availability).count} activités dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                      <% elsif Activity.on_availability(availability).count == 0  %>
+                        <%= "Pas d'activité dispo sur ce creneau" %>
+                      <% end %>
+                    </p>
+                    </p>
                   </div>
                 <% end %>
                 <% end %>
@@ -119,10 +136,18 @@
                   <% @grouped_availabilities[(Date.today + 2).strftime('%a %d %b %Y') ].each do |availability|%>
                     <% beg = (availability.start_at.hour - 9) * 60 %>
                     <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
-                    <div class="event start-at-<%=beg%> duration-<%=duration%> text-center" >
+                    <div class="event start-at-<%=beg%> duration-<%=duration%> text-center text-center d-flex flex-column justify-content-center" >
                       <p class="title">Creneau horaire disponible</p>
-                      <p class="time">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
-                      <p class="activity-result"><%= link_to "#{Activity.on_availability(availability).count} activites dispo", availability_activities_path(availability) %> </p>
+                      <p class="schedule">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
+                      <p class="activity-result">
+                        <% if Activity.on_availability(availability).count == 1 %>
+                          <%= link_to "#{Activity.on_availability(availability).count} activité dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                        <% elsif Activity.on_availability(availability).count > 1  %>
+                          <%= link_to "#{Activity.on_availability(availability).count} activités dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                        <% elsif Activity.on_availability(availability).count == 0  %>
+                          <%= "Pas d'activité dispo sur ce creneau" %>
+                        <% end %>
+                      </p>
                     </div>
                   <% end %>
                   <% end %>
