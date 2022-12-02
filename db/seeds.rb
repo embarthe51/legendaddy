@@ -83,7 +83,7 @@ activity = Activity.new(
   price_cents: 12,
   address: "30 Avenue Corentin Cariou 75019 Paris France",
   workshop: false,
-  open_days: [2, 3, 4, 5, 6, 0],
+  open_days: [0,2, 3, 4, 5, 6],
   open_hour: DateTime.new(2022, 12, 4, 9, 0, 0),
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
