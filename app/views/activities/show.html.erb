@@ -30,29 +30,30 @@
     </button>
 
     <!-- Modal -->
-    <div data-controller="submit-hours">
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Réservation</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Choisissez votre activité: </p>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Réservation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <p>Confirmez votre activité: </p>
+            <section class="legend-form-container">
               <p><%= sanitize @activity.formated_open_times %></p>
+            </section>
+            <section class="legend-form-container">
               <%= simple_form_for [@activity, @booking] do |form| %>
-                <p>Selectionnez selon vos disponibilités:</p>
-                <%= form.input :start_at, as: :string, default: @user_availabilities, input_html: { data: { submit_hours_target: "input" } }%>
-                <%= form.input :end_at, as: :string, default: @user_availabilities, input_html: { data: { submit_hours_target: "input" } }%>
-                <%# <%= form.input :start_at, collection: @user_availabilities %>
+                <p>Choisissez un de vos créneaux sauvegardé</p>
+                <%= form.input :start_at, collection: @user_availabilities %>
+                <p>Pour qui ?</p>
                 <%= form.input :kid, collection: @kids_and_ids %>
                 <%= form.submit %>
               <% end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            </div>
+          </section>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>

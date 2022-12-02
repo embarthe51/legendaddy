@@ -32,6 +32,8 @@ class ActivitiesController < ApplicationController
       info_window: render_to_string(partial: "activities/info_window", locals: { activity: @activity },
       formats: [:html])
     }]
+    @kids_and_ids = current_user.kids.map { |item| [item.first_name.capitalize, item.id] }
+    @user_availabilities = current_user.availabilities.map { |item| [item.start_at.strftime('%H h %M on %d/%m/%Y'), item.start_at]}
     @booking = Booking.new
   end
 
