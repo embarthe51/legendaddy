@@ -25,6 +25,6 @@ class Activity < ApplicationRecord
   end
 
   def format_open_days
-    open_days.map! { |item| Date::DAYNAMES[item.to_i] }.join(', ')
+    open_days.map { |item| Date::DAYNAMES[item.to_i] }.join(', ')
   end
 end
