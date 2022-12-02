@@ -1,11 +1,11 @@
 <section class="home-section-background" style="background-image: url(<%= asset_path 'legendaddy.png' %>);">
   <div class="call-to-act-container">
     <% unless user_signed_in? %>
-      <%= link_to "Let's go", user_session_path, class: 'legend-btn' %>
-      <p>organise moments with your kids</p>
+      <p>Trouve une activité pour une expérience légendaire avec ton enfant !</p>
+      <%= link_to "Renseigne ta dispo", user_session_path, class: 'legend-btn' %>
     <% else %>
-      <%= link_to "Let's go", activities_path, class: 'legend-btn' %>
-      <p>organise moments with your kids</p>
+      <p>Trouve une activité pour une expérience légendaire avec ton enfant !</p>
+      <%= link_to "Renseigne ta dispo", activities_path, class: 'legend-btn' %>
     <% end %>
   </div>
 </section>
