@@ -32,35 +32,32 @@ class ActivitiesController < ApplicationController
       info_window: render_to_string(partial: "activities/info_window", locals: { activity: @activity },
       formats: [:html])
     }]
+    @kids_and_ids = current_user.kids.map { |item| [item.first_name.capitalize, item.id] }
+    @user_availabilities = current_user.availabilities.map { |item| [item.start_at.strftime('%H h %M on %d/%m/%Y'), item.start_at]}
     @booking = Booking.new
   end
 
   def filter
-    if params.dig(:query, :tag_list)&.any? { |string| !string.empty? }
-      @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true)
+    if params[:availability_id].present?
+      @availability = Availability.find(params[:availability_id])
+      if params.dig(:query, :tag_list)&.any? { |string| !string.empty? }
+        @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true).on_availability(@availability)
+      else
+        @activities = Activity.on_availability(@availability)
+      end
     else
-      @activities = Activity.all
+      if params.dig(:query, :tag_list)&.any? { |string| !string.empty? }
+        @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true)
+      else
+        @activities = Activity.all
+      end
     end
 
     @filtered_activities = []
-    @activities.each do |activity|
-      if activity.workshop?
-        current_user.availabilities.each do |availability|
-          @filtered_activities << activity if availability.start_at <= activity.start_at && availability.end_at >= activity.end_at
-        end
-      else
-        activity.open_days.each do |day|
-          current_user.availabilities.each do |availability|
-            activity_open_covered = availability.start_at.hour <= activity.open_hour.hour && activity.open_hour.hour < availability.end_at.hour
-            activity_closing_covered = availability.start_at.hour < activity.closing_hour.hour && activity.closing_hour.hour <= availability.end_at.hour
-            if (day == availability.start_at.wday) && (activity_open_covered || activity_closing_covered)
-              @filtered_activities << activity
-            end
-          end
-        end
-      end
+    current_user.availabilities.each do |a|
+      @filtered_activities << Activity.on_availability(a)
     end
-    @filtered_activities = @filtered_activities.uniq
+    @filtered_activities = @filtered_activities.flatten.uniq & @activities
     @markers = @filtered_activities.map do |a|
       {
         lat: a.latitude,
