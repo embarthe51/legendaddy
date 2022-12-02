@@ -1,6 +1,8 @@
 @mixin legend-btn {
-  background-color: $yellow;
-  padding: 0.4rem 1rem;
   text-decoration: none;
-  color: black;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #ff9b05;
+  transition: 0.3s ease;
 }

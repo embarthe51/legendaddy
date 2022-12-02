@@ -8,23 +8,35 @@ main {
 .home-section-background {
   height: 100vh;
   text-align: center;
-  border-top: 5px solid $yellow;
   background-repeat: no-repeat;
   background-size: inherit;
-  background-color: #040C39;
+  background-color: #6657D3;
   background-position: center;
   color: white;
   position: relative;
+  svg {
+    width: 63%;
+    color: #FF9B05;
+  }
   .call-to-act-container{
     position: absolute;
     width: 100%;
-    bottom: 2rem;
     a {
       border-radius: 0.3rem;
       @include legend-btn;
     }
+    h1 {
+      margin: 0;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      font-size: 32px;
+      font-weight: bold;
+    }
     p {
-      margin-top: 0.3rem;
+      font-size: 20px;
+      color: white;
+      opacity: .7;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
   }
 }
