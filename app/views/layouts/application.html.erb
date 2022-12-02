@@ -17,6 +17,7 @@
     <main>
       <%= yield %>
     </main>
-    <%= render "shared/navbar" %>
+
+    <%= render "shared/navbar" if params[:action] != "home" %>
   </body>
 </html>
