@@ -1,6 +1,6 @@
 <div class="container" data-controller="activity-search">
   <%= simple_form_for :query,
-                    url: search_activities_path,
+                    url: params[:availability_id].present? ? search_availability_activities_path(params[:availability_id]) : search_activities_path,
                     method: :get,
                     html: {
                       data: {
