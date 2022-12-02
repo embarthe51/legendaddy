@@ -10,12 +10,19 @@ require "open-uri"
 puts "Cleaning database..."
 Activity.destroy_all
 Availability.destroy_all
+Kid.destroy_all
 User.destroy_all
 
 puts "creating the user..."
 User.create!(
   email: "cooldude@gmail.com",
   password: "123456789"
+)
+
+puts "creating a kid........."
+Kid.create!(
+  first_name: "Etta",
+  user: User.where(email: "cooldude@gmail.com").first
 )
 
 puts "Creating activities..."
