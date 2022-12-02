@@ -10,6 +10,22 @@ class Activity < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_taggable_on :tags
 
+  scope :on_availability, -> (availability) {
+    where(workshop: true)
+    .where("start_at >= :availability_start AND end_at <= :availability_end", availability_start: availability.start_at, availability_end: availability.end_at)
+    .or(
+      where(workshop: false)
+      .where("open_days @> ARRAY[:availability_day]", availability_day: availability.start_at.wday)
+      .and(
+        where("CAST(extract(hour from open_hour) as INTEGER) >= :availability_start_at AND CAST(extract(hour from open_hour) as INTEGER) < :availability_end_at", availability_start_at: availability.start_at.hour, availability_end_at: availability.end_at.hour)
+        .or(
+          where("CAST(extract(hour from closing_hour) as INTEGER) > :availability_start_at AND CAST(extract(hour from closing_hour) as INTEGER) <= :availability_end_at", availability_start_at: availability.start_at.hour, availability_end_at: availability.end_at.hour)
+        )
+      )
+    )
+  }
+
+
   def formated_open_times
     if workshop
       "<i class='fa-solid fa-calendar-days'></i> <br/> Le #{start_at.strftime('%d/%m/%Y')} <br/>
@@ -27,4 +43,9 @@ class Activity < ApplicationRecord
   def format_open_days
     open_days.map { |item| Date::DAYNAMES[item.to_i] }.join(', ')
   end
+
+  def self.filtered_activities(user)
+
+  end
+
 end

@@ -9,8 +9,13 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("ok")
-    console.log(this.element)
+    const currentTabId = window.location.search.split('=')[1]
+
+    if (currentTabId) {
+      document.getElementById(currentTabId).click()
+    }
+
+
     this.inputTargets.forEach((input) => {
       console.log(input)
      new flatpickr(input, {
