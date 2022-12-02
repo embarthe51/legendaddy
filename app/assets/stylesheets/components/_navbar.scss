@@ -6,27 +6,36 @@
   position: sticky;
   bottom: 0;
   width: 100vw;
-  height: 4rem;
+  height: 3.5rem;
   background-color: white;
+  border-radius: 1.5rem 1.5rem 0rem 0rem;
+  padding: 1rem;
+  z-index: 1;
   .active {
-    color: $mint
+    color: rgb(82, 82, 82);
   }
   a {
     text-decoration: none;
     i {
       font-size: 1.8rem;
-      color: $navy;
+      color: rgb(188, 188, 188);
     }
   }
   a:nth-child(3) {
-    margin-bottom: 4rem;
+    position: relative;
+    margin-bottom: 3.5rem;
     padding: 1rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
     box-shadow: 0px 0px 3px $navy;
-    background-color: white;
+    background: linear-gradient(43deg, #6759D4, #d8d5ec);
     i {
-      font-size: 2rem;
-      color: $red;
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      font-size: 1rem;
+      color: white;
     }
   }
 }
