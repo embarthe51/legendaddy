@@ -24,10 +24,19 @@ $hour-height: 60px;
 }
 
 .event {
-  background: #040C39;
+  background: white;
   border-radius: 5px;
-  color: white;
+  color: black;
+  align-items: center;
+  border: 1px dashed white;
+
+  p {
+    padding-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
 }
+
 
 .start-at-0 {
   grid-row-start: 1;
@@ -41,4 +50,34 @@ $hour-height: 60px;
   .duration-#{$i} {
     grid-row-end: span $i;
   }
+}
+
+.title {
+  font-size: 13px;
+}
+
+.schedule {
+  font-size: 10px;
+}
+
+.activity-result {
+  font-size: 13px;
+  a {
+    text-decoration: none !important;
+    color: black;
+}
+}
+
+.link {
+  text-decoration: none !important;
+}
+
+.yellow-button-a{
+  color: white;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: #FF9B05;
+  border: none;
+  box-shadow: 1px 1px 1px 1px rgba(82, 82, 84, 0.2);
+  margin-bottom: 25px;
 }
