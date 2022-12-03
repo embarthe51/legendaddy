@@ -25,7 +25,6 @@ class Activity < ApplicationRecord
     )
   }
 
-
   def formated_open_times
     if workshop
       "<i class='fa-solid fa-calendar-days'></i> <br/> Le #{start_at.strftime('%d/%m/%Y')} <br/>
@@ -34,9 +33,28 @@ class Activity < ApplicationRecord
       "
         <i class='fa-solid fa-calendar-days'></i> <br/>
         De : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
-        à : #{open_hour.hour} h #{0 if open_hour.min < 10}#{open_hour.min} <br/>
+        à : #{closing_hour.hour} h #{0 if closing_hour.min < 10}#{closing_hour.min} <br/>
         Jours : #{format_open_days}
       "
+    end
+  end
+
+  def format_avg_rating
+    avg = reviews.map(&:rating).sum.fdiv(reviews.length).round(2)
+    return_str = ""
+    while avg != 0 && avg > 0
+      return_str << "<i class='fa-regular fa-star'></i>" if avg > 1
+      return_str << "<i class='fa-regular fa-star-half'></i>" if avg < 1
+      avg -= 1
+    end
+    return_str
+  end
+
+  def format_reviews
+    if reviews.any?
+      "reviews: #{format_avg_rating} (#{reviews.count})"
+    else
+      "reviews: cette activité n'a pas de review"
     end
   end
 

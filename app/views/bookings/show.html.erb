@@ -13,4 +13,11 @@
   <p><%= @booking.formated_booking_start %></p>
   <h5><strong>Horraire d'ouverture:</strong></h5>
   <%= sanitize @booking.activity.formated_open_times %>
+  <br>
+  <%= sanitize @booking.activity.format_reviews %>
+  <%= link_to "see reviews", activity_reviews_path(@booking.activity) if @booking.activity.reviews.any? %>
+
+  <%= link_to booking_path(@booking) , data: { "turbo-method": :delete } do %>
+    <i class="fa-solid fa-trash"></i>
+  <% end %>
 </article>

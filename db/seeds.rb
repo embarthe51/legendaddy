@@ -8,6 +8,7 @@ require "open-uri"
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning database..."
+Review.destroy_all
 Activity.destroy_all
 Availability.destroy_all
 Kid.destroy_all
@@ -187,6 +188,35 @@ Availability.create!(
   start_at: DateTime.new(2022, 12, 4, 9, 0, 0),
   end_at: DateTime.new(2022, 12, 4, 12, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
+)
+
+puts "creating some reviews.........................................................................."
+Review.create!(
+  content: "Incroyable",
+  rating: 4,
+  user: User.where(email: "cooldude@gmail.com").first,
+  activity: Activity.where(title: "Social bar").first
+)
+
+Review.create!(
+  content: "cool",
+  rating: 4,
+  user: User.where(email: "cooldude@gmail.com").first,
+  activity: Activity.where(title: "Palomano").first
+)
+
+Review.create!(
+  content: "great!",
+  rating: 5,
+  user: User.where(email: "cooldude@gmail.com").first,
+  activity: Activity.where(title: "Social bar").first
+)
+
+Review.create!(
+  content: "Franchement bof.",
+  rating: 2,
+  user: User.where(email: "cooldude@gmail.com").first,
+  activity: Activity.where(title: "Social bar").first
 )
 
 puts "Finished!"

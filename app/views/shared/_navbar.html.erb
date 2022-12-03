@@ -11,7 +11,7 @@
   <%= link_to root_path do %>
     <i class="fa-solid fa-house"> <%= "active" if current_page?('#') %></i>
   <% end %>
-  <%= link_to reviews_path do %>
-    <i class="fa-regular fa-message <%= "active" if current_page?(reviews_path) %>"></i>
+  <%= link_to "#" do %>
+    <i class="fa-regular fa-message <%= "active" if current_page?(root_path) %>"></i>
   <% end %>
 </nav>
