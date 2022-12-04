@@ -20,10 +20,13 @@
       color: white;
     }
   }
-  a {
+  .delete-btn {
     margin: 47%;
   }
   i {
-    color: $blue;
+    color: $blue
+  }
+  .review-star {
+    color: $yellow;
   }
 }

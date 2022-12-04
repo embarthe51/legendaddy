@@ -1,7 +1,12 @@
 <section>
-  <h2>Hey</h2>
-  <h3>People left us these reviews</h3>
-
-  <h4>Daddy cool</h4>
-  <p>I love the legendaddy app!</p>
+  <h2>Reviews for <%= @activity.title %></h2>
+  <%= sanitize @activity.format_reviews %>
+  <br>
+  <br>
+  <% @reviews.each do |item| %>
+    <h3><%= "#{item.user.email} à écrit: " %></h3>
+    <h4><%= item.content %></h4>
+    <p><%= sanitize Review.avg_rating(item.rating) %></p>
+    <br>
+  <% end %>
 </section>

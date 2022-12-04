@@ -41,18 +41,12 @@ class Activity < ApplicationRecord
 
   def format_avg_rating
     avg = reviews.map(&:rating).sum.fdiv(reviews.length).round(2)
-    return_str = ""
-    while avg != 0 && avg > 0
-      return_str << "<i class='fa-regular fa-star'></i>" if avg > 1
-      return_str << "<i class='fa-regular fa-star-half'></i>" if avg < 1
-      avg -= 1
-    end
-    return_str
+    Review.avg_rating(avg)
   end
 
   def format_reviews
     if reviews.any?
-      "reviews: #{format_avg_rating} (#{reviews.count})"
+      "rating: #{format_avg_rating} #{reviews.count} vote#{'s' if reviews.count > 1}"
     else
       "reviews: cette activité n'a pas de review"
     end
