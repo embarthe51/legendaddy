@@ -25,7 +25,6 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    # raise
     @activity = Activity.find(params[:id])
     @markers = [{
       lat: @activity.latitude,

@@ -1,5 +1,5 @@
 <% @filtered_activities.each do |activity| %>
-  <%= link_to availability_activity_path(@availability, activity) do %>
+  <%= link_to activity_path(activity, availability_id: params["availability_id"].present? ? params["availability_id"] : Availability.last.id.to_s) do %>
     <div class="card-product">
       <% if activity.photos.any? %>
       <%= cl_image_tag(activity.photos.first.key, width: 350, height: 300, crop: :fill, gravity: :center) %>
