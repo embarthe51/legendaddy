@@ -4,7 +4,12 @@ class ConvosController < ApplicationController
   end
 
   def create
-    # @convo = Convo.new(sender: current_user, receiver: convo_params)
+    @convo = Convo.new(sender: current_user)
+    receiver = User.find(params[:receiver])
+    @convo.receiver = receiver
+    if @convo.save
+      redirect_to convo_messages_path(@convo)
+    end
   end
 
   private

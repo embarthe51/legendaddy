@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :convos, only: [:index] do
+  resources :convos, only: [:index, :create] do
     resources :messages, only: [:index, :new, :create]
   end
 
