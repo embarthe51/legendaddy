@@ -14,8 +14,13 @@
   <h5><strong>Horraire d'ouverture:</strong></h5>
   <%= sanitize @booking.activity.formated_open_times %>
   <br>
-  <%= sanitize @booking.activity.format_reviews %>
-  <%= link_to "see reviews", activity_reviews_path(@booking.activity) if @booking.activity.reviews.any? %>
+  <%= render 'activities/reviews', activity: @booking.activity %>
+  <br>
+  <h5>Les papas qui ont booké cet activité </h5>
+  <% @other_legendads_attending.each do |dad| %>
+    <p><%= dad.email %></p>
+    <%= button_to 'envoyer un message', convos_path, params: { receiver: dad } %>
+  <% end %>
 
   <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
     <i class="fa-solid fa-trash"></i>

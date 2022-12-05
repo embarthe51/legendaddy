@@ -8,14 +8,14 @@
 
 .activity_title{
   font-family: 'Lobster', cursive;
-  color: #fff3e0;
+  color: #270335;
   padding-top: 10px;
 }
 
 .activity_description{
   font-family: 'DM Sans', sans-serif;
-  color: #FF9B05;
-  font-weight: 500;
+  color: #000000df;
+  font-weight: 700;
 }
 
 .title_description{
@@ -31,7 +31,7 @@
 .card-product {
   overflow: hidden;
   height: 120px;
-  background: #6658D3;
+  background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 0 8px #040c3929;
   display: flex;
@@ -47,13 +47,13 @@
 }
 
 .card-product h4 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;

@@ -46,9 +46,9 @@ class Activity < ApplicationRecord
 
   def format_reviews
     if reviews.any?
-      "rating: #{format_avg_rating} #{reviews.count} vote#{'s' if reviews.count > 1}"
+      "#{format_avg_rating}"
     else
-      "reviews: cette activité n'a pas de review"
+      ""
     end
   end
 

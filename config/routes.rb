@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  resources :convos, only: [:index, :create] do
+    resources :messages, only: [:index, :new, :create]
+  end
+
   devise_for :users
   root to: "pages#home"
 
   resources :activities, only: [:index, :show] do
     resources :bookings, only: [:new, :create]
-    resources :reviews, only: [:index]
+    resources :reviews, only: [:index, :new, :create]
   end
 
   resources :bookings, only: [:index, :show, :destroy]

@@ -7,6 +7,9 @@ import { application } from "./application"
 import ActivitySearchController from "./activity_search_controller"
 application.register("activity-search", ActivitySearchController)
 
+import ConvoSubscriptionController from "./convo_subscription_controller"
+application.register("convo-subscription", ConvoSubscriptionController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
@@ -21,3 +24,6 @@ application.register("navbar", NavbarController)
 
 import SubmitHoursController from "./submit_hours_controller"
 application.register("submit-hours", SubmitHoursController)
+
+import TogglemodalController from "./togglemodal_controller"
+application.register("togglemodal", TogglemodalController)
