@@ -173,8 +173,8 @@ activity.photos.attach(io: file, filename: "Julien.png", content_type: "image/pn
 activity.save!
 
 Availability.create!(
-  start_at: DateTime.new(2022, 12, 3, 12, 0, 0),
-  end_at: DateTime.new(2022, 12, 3, 13, 0, 0),
+  start_at: DateTime.new(2022, 12, 2, 9, 0, 0),
+  end_at: DateTime.new(2022, 12, 2, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
 
