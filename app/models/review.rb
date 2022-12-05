@@ -11,4 +11,6 @@ class Review < ApplicationRecord
     end
     return_str
   end
+
+  validates :content, presence: true
 end

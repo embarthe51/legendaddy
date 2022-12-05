@@ -1,0 +1,3 @@
+
+<%= sanitize @activity.format_reviews %>
+<%= link_to "voir commentaires", activity_reviews_path(@activity) if @activity.reviews.any? %>
