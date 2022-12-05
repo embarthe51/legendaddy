@@ -4,19 +4,37 @@ $hour-height: 60px;
 .calendar {
   display: grid;
   gap: 10px;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 60px 1fr;
+  overflow: hidden;
+  padding-top: 2px;
+}
+
+.calendar-head {
+  color:white;
 }
 
 .timeline {
 
   p {
-    height: $hour-height;
+    height: 60px;
     margin: 0;
     position: relative;
-    top: -15px;
-    color: #e2ebf2d8;;
+    top: -5px;
+    color: #e2ebf2d8;
+  }
+
+  p:after {
+    content: "";
+    border-top: 2px dashed #e2ebf2d8;
+    width: 100vw;
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 100%;
+    z-index: -1;
   }
 }
+
 
 .days {
   display: grid;
@@ -28,7 +46,9 @@ $hour-height: 60px;
   border-radius: 5px;
   color: #2f2e2e;;
   align-items: center;
-  border: 1px dashed #6657D3;;
+  border: 1px dashed #6657D3;
+  position: relative;
+  z-index: 1;
 
   p {
     padding-top: 0;
@@ -82,6 +102,16 @@ $hour-height: 60px;
   margin-bottom: 25px;
 }
 
+.yellow-button {
+  color: white;
+  padding: 9px 35px;
+  border-radius: 5px;
+  background: #FF9B05;
+  border: none;
+  box-shadow: 1px 1px 1px 1px rgba(82, 82, 84, 0.2);
+  margin-bottom: 25px;
+}
+
 .nav-item {
   color: white;
 }
@@ -89,9 +119,11 @@ $hour-height: 60px;
 .booking {
   background: #e2ebf2d8;
   border-radius: 5px;
-  color: #2f2e2e;;
+  color: #2f2e2e;
   align-items: center;
   border-left: 10px solid #FF9B05;
+  position: relative;
+  z-index: 1;
 
   p {
     padding-top: 0;

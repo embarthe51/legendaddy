@@ -26,9 +26,9 @@ class AvailabilitiesController < ApplicationController
     @availability.user = current_user
     @availability.start_at = "#{params[:availability][:date]} #{params[:availability][:start_at]}"
     @availability.end_at = "#{params[:availability][:date]} #{params[:availability][:end_at]}"
-    @availability.save
-
-    redirect_to availabilities_path(:tab_id)
+    if @availability.save
+      redirect_to availabilities_path(tab_id: params.dig(:availability, :tab_id))
+    end
   end
 
   private
