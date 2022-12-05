@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :convos, only: [:index] do
+    resources :messages, only: [:index, :new, :create]
+  end
+
   devise_for :users
   root to: "pages#home"
 

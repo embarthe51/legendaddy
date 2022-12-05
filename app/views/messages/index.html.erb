@@ -1,0 +1,11 @@
+<h1>Messages#index</h1>
+<p>Find me in app/views/messages/index.html.erb</p>
+
+<% @messages.each do |item| %>
+  <p><%= item.content %></p>
+<% end %>
+
+<%= simple_form_for [@convo, @message] do |form| %>
+  <%= form.input :content %>
+  <%= form.submit %>
+<% end %>
