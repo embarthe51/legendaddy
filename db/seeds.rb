@@ -10,6 +10,8 @@ require "json"
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning database..."
+Message.destroy_all
+Convo.destroy_all
 Review.destroy_all
 Activity.destroy_all
 Availability.destroy_all
@@ -46,6 +48,11 @@ Kid.create!(
 Kid.create!(
   first_name: "Thunberg",
   user: User.where(email: "cooldude@gmail.com").first
+)
+
+Kid.create!(
+  first_name: "Denis",
+  user: User.where(email: "daddycool@gmail.com").first
 )
 
 puts "Creating activities..."
