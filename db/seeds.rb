@@ -1,4 +1,6 @@
 require "open-uri"
+require "json"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -8,6 +10,8 @@ require "open-uri"
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning database..."
+Message.destroy_all
+Convo.destroy_all
 Review.destroy_all
 Activity.destroy_all
 Availability.destroy_all
@@ -46,7 +50,42 @@ Kid.create!(
   user: User.where(email: "cooldude@gmail.com").first
 )
 
+Kid.create!(
+  first_name: "Denis",
+  user: User.where(email: "daddycool@gmail.com").first
+)
+
 puts "Creating activities..."
+
+# Ouvrir mon fichier pour transfo en JSON
+# Creer activities.record.first
+
+url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=&rows=100&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants"
+activities_serialized = URI.open(url).read
+activities = JSON.parse(activities_serialized)
+
+activities["records"].each do |activity|
+  next if activity["fields"]["address_street"].nil?
+  next if activity["fields"]["description"].nil?
+  next if activity["fields"]["date_start"].nil?
+  next if activity["fields"]["date_end"].nil?
+
+  current_activity = Activity.new(
+    title: activity["fields"]["title"],
+    description: activity["fields"]["description"],
+    url: activity["fields"]["url"],
+    price_cents: activity["fields"]["price_detail"],
+    address: activity["fields"]["address_street"],
+    open_days: [0, 1, 2, 3, 4, 5, 6],
+    open_hour: DateTime.parse(activity["fields"]["date_start"]),
+    closing_hour: DateTime.parse(activity["fields"]["date_end"]),
+    user: User.where(email: "cooldude@gmail.com").first
+  )
+  current_activity.tag_list.add(activity["fields"]["tags"])
+  file = URI.open(activity["fields"]["cover_url"].nil? ? "https://images.unsplash.com/photo-1491013516836-7db643ee125a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" : activity["fields"]["cover_url"])
+  current_activity.photos.attach(io: file, filename: activity["fields"]["image_couverture"].nil? ? "filename" : activity["fields"]["image_couverture"]["filename"], content_type: activity["fields"]["image_couverture"].nil? ?  "image/jpeg" : activity["fields"]["image_couverture"]["mimetype"])
+  current_activity.save!
+end
 
 activity = Activity.new(
   title: "Social bar",
