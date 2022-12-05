@@ -1,4 +1,6 @@
 <h1>Convos#index</h1>
 <% @convos.each do |item| %>
-  <%= item.receiver.email %>
+  <%= link_to convo_messages_path(item) do %>
+    <p>Between: <%= item.receiver.email.truncate(12) %> and <%= item.sender.email.truncate(12) %></p>
+  <% end %>
 <% end %>
