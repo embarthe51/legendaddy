@@ -4,17 +4,18 @@ class BookingsController < ApplicationController
   before_action :find_availability, only: %i[new create]
 
   def index
-    @bookings = Booking.includes(:kid, :activity).all
+    @bookings = Booking.includes(:kid, :activity).where(user: current_user)
   end
 
   def show
+    # @other_legendads_attending = User.includes(:bookings).where(activity: activity)
+    @other_legendads_attending = User.all.select { |item| item.bookings.include?(@booking) }
   end
 
   def new
     @kids_and_ids = current_user.kids.map { |item| [item.first_name.capitalize, item.id] }
     @user_availabilities = current_user.availabilities.map { |item| [item.start_at.strftime('%H h %M on %d/%m/%Y'), item.start_at]}
     @booking = Booking.new
-
   end
 
   def create
