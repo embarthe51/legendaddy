@@ -14,7 +14,7 @@
   <h5><strong>Horraire d'ouverture:</strong></h5>
   <%= sanitize @booking.activity.formated_open_times %>
   <br>
-  <%= render 'reviews' %>
+  <%= render 'activities/reviews', activity: @booking.activity %>
   <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
     <i class="fa-solid fa-trash"></i>
   <% end %>
