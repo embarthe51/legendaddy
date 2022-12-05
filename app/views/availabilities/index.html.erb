@@ -47,7 +47,7 @@
                   <% @grouped_availabilities[Date.today.strftime('%a %d %b %Y')].each do |availability|%>
                     <% beg = (availability.start_at.hour - 9) * 60 %>
                     <% duration = ((availability.end_at.hour - 9) - (availability.start_at.hour - 9)) * 60 %>
-                    <div class="event start-at-<%=beg%> duration-<%=duration%> text-center text-center d-flex flex-column justify-content-center">
+                    <div class="event start-at-<%=beg%> duration-<%=duration%> text-center d-flex flex-column justify-content-center">
                       <p class="title">Creneau horaire disponible:</p>
                       <p class="schedule">de <%=availability.start_at.hour%>h a <%=availability.end_at.hour%>h</p>
                       <p class="activity-result">

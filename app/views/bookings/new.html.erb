@@ -1,9 +1,10 @@
-<h2>Ajoutez cet activité :</h2>
+<h2>Ajouter cette activité :</h2>
 <section class="legend-form-container">
   <p><%= sanitize @activity.formated_open_times %></p>
 </section>
 
 <section class="legend-form-container">
+<%= @user_availability %>
   <%= simple_form_for [@activity, @booking] do |form| %>
     <p>Choisissez un de vos créneaux sauvegardé</p>
     <%= form.input :start_at, collection: @user_availabilities %>

@@ -42,14 +42,18 @@
             <section class="legend-form-container">
               <p><%= sanitize @activity.formated_open_times %></p>
             </section>
+
             <section class="legend-form-container">
-              <%= simple_form_for [@activity, @booking] do |form| %>
-                <p>Choisissez un de vos créneaux sauvegardé</p>
-                <%= form.input :start_at, collection: @user_availabilities %>
-                <p>Pour qui ?</p>
-                <%= form.input :kid, collection: @kids_and_ids %>
-                <%= form.submit %>
-              <% end %>
+              <div class="d-flex flex-column justify-content-center">
+                <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
+                <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
+
+                <%= simple_form_for [@activity, @booking] do |form| %>
+                  <p>Pour qui ?</p>
+                  <%= form.input :kid, collection: @kids_and_ids %>
+                  <%= form.submit %>
+                <% end %>
+              </div>
           </section>
           </div>
           <div class="modal-footer">
