@@ -67,8 +67,10 @@
   }
   .custom-modal {
     position: fixed;
+    overflow: scroll;
     width: 100vw;
     height: 100vh;
+    padding-bottom: 70px;
     z-index: 1;
     background: #000000c2;
     left: -100vw;
@@ -79,8 +81,13 @@
     }
   }
 
+  .btn-close{
+    position: absolute;
+    right: 40px;
+  }
+
   .return_button{
-    padding: 7px 20px;
+    padding: 7px 8px;
     border: none;
     border-radius: 5px;
     background-color: #ffffff;
@@ -88,9 +95,6 @@
     transition: all 250ms ease;
   }
 
-  .return_button a{
-    color: #6658d3;
-  }
   .return_button:hover{
     background: #FFC65A;
     color: #ffffff;
