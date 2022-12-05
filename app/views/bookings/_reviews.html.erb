@@ -1,0 +1,2 @@
+<%= sanitize @booking.activity.format_reviews %>
+<%= link_to "voir commentaires", activity_reviews_path(@booking.activity) if @booking.activity.reviews.any? %>

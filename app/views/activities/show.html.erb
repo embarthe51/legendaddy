@@ -9,6 +9,7 @@
     </div>
     <h2 class="secondary_title"><%= @activity.title %></h2>
     <div class="info-card">
+       <%= render 'reviews' %>
       <h6 class="font-style"><i class="fa-solid fa-location-dot"></i> : <%= @activity.address%></h6>
       <br>
       <i class="fa-solid fa-link"></i> : <%= link_to 'Site web', @activity.url %>
