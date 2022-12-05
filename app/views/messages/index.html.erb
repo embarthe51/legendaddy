@@ -1,11 +1,18 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<div data-controller="convo-subscription" data-convo-subscription-convo-id-value="<%= @convo.id %>">
+  <h2>Convo entre: </h2>
+  <h2><%= @convo.sender.email %> </h2>
+  <h2>et</h2>
+  <h2><%= @convo.receiver.email %></h2>
+  <section data-convo-subscription-target="messages">
+    <% @messages.each do |message| %>
+      <%= render message %>
+    <% end %>
+  </section>
 
-<% @messages.each do |item| %>
-  <p><%= item.content %></p>
-<% end %>
+  <%= simple_form_for [@convo, @message],
+  html: { data: { action: "turbo:submit-end->convo-subscription#resetForm" } } do |form| %>
+    <%= form.input :content %>
+    <%= form.submit %>
+  <% end %>
 
-<%= simple_form_for [@convo, @message] do |form| %>
-  <%= form.input :content %>
-  <%= form.submit %>
-<% end %>
+</div>

@@ -10,7 +10,17 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
     @message.convo_id = params[:convo_id]
-    @message.save
+    if @message.save
+      ConvoChannel.broadcast_to(
+        @convo,
+        render_to_string(partial: "message", locals: { message: @message})
+      )
+      head :ok
+      # redirect_to convo_messages_path(@convo)
+    else
+      @messages = @convo.messages
+      render :index
+    end
   end
 
   private
