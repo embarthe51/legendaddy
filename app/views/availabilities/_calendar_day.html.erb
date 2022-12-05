@@ -3,7 +3,7 @@
   <%= f.input :end_at, as: :string, default: target_day, input_html: { data: { submit_hours_target: "input" } } %>
   <%= f.hidden_field :date, value: day %>
   <%= f.hidden_field :tab_id, value: tab_day %>
-  <%= f.submit value: "Ajouter ma dispo", class:"blue-button"%>
+  <%= f.submit value: "Ajouter ma dispo", class:"yellow-button"%>
 <% end %>
 
 <div class="container">
@@ -11,7 +11,7 @@
     <div class="timeline">
       <% i = 9 %>
       <% 12.times do %>
-        <p><%= (Date.today+i.hours).strftime("%H:%M") %></p>
+        <p class="border-end border-light border-3 pe-3"><%= (Date.today+i.hours).strftime("%H:%M") %></p>
         <% i += 1 %>
       <% end %>
     </div>
