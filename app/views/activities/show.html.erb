@@ -19,7 +19,7 @@
         <p><i class="fa-solid fa-money-check"></i> : <%= @activity.price_cents.to_i %>€</p>
       <% end %>
 
-          <p><i class="fa-solid fa-circle-info"></i> : <%= @activity.description %></p>
+          <p><i class="fa-solid fa-circle-info"></i> : <%= @activity.description.html_safe %></p>
       <div>
         <p><%= sanitize @activity.formated_open_times %></p>
       </div>
@@ -27,6 +27,7 @@
     </div>
 
 <!-- Button trigger modal -->
+
   <div data-controller="togglemodal">
     <div class="d-flex blue-button align-items-center">
       <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
@@ -48,6 +49,7 @@
               <section class="legend-form-container">
                 <p><%= sanitize @activity.formated_open_times %></p>
               </section>
+              
               <section class="legend-form-container">
                 <%= simple_form_for [@activity, @booking] do |form| %>
                   <p>Choisissez un de vos créneaux sauvegardés</p>
@@ -67,10 +69,10 @@
                 <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
                 <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
 
-                <%= simple_form_for [@activity, @booking] do |form| %>
+                <%= simple_form_for [@user_availability, @activity, @booking] do |form| %>
                   <p>Pour qui ?</p>
                   <%= form.input :kid, collection: @kids_and_ids %>
-                  <%= form.submit %>
+                  <%= form.submit value: "Je réserve" %>
                 <% end %>
               </div>
           </section>
