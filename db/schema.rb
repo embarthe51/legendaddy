@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_100935) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_101812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,6 +85,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_100935) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "convos", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "kids", force: :cascade do |t|
     t.string "first_name"
     t.datetime "birthday"
@@ -92,6 +99,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_100935) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_kids_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "convo_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "content"
+    t.index ["convo_id"], name: "index_messages_on_convo_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -156,6 +173,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_100935) do
   add_foreign_key "bookings", "kids"
   add_foreign_key "bookings", "users"
   add_foreign_key "kids", "users"
+  add_foreign_key "messages", "convos"
+  add_foreign_key "messages", "users"
   add_foreign_key "reviews", "activities"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "tags"
