@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: %i[show]
   before_action :find_activity, only: %i[new create]
+  before_action :find_availability, only: %i[new create]
 
   def index
     @bookings = Booking.includes(:kid, :activity).all
@@ -13,6 +14,7 @@ class BookingsController < ApplicationController
     @kids_and_ids = current_user.kids.map { |item| [item.first_name.capitalize, item.id] }
     @user_availabilities = current_user.availabilities.map { |item| [item.start_at.strftime('%H h %M on %d/%m/%Y'), item.start_at]}
     @booking = Booking.new
+
   end
 
   def create
@@ -46,5 +48,9 @@ class BookingsController < ApplicationController
 
   def find_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def find_availability
+    @availability = Availability.find(params[:availability_id])
   end
 end

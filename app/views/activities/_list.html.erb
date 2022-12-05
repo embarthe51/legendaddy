@@ -1,5 +1,5 @@
 <% @filtered_activities.each do |activity| %>
-  <%= link_to activity_path(activity) do %>
+  <%= link_to availability_activity_path(@availability, activity) do %>
     <div class="card-product">
       <% if activity.photos.any? %>
       <%= cl_image_tag(activity.photos.first.key, width: 350, height: 300, crop: :fill, gravity: :center) %>
@@ -8,6 +8,7 @@
       <% end %>
       <div class="card-product-infos">
         <h4 class="activity_title"><%= activity.title %></h4>
+        <%= render 'reviews', activity: activity %>
         <p class="activity_description"><%= activity.description.truncate(50) %></p>
       </div>
     </div>

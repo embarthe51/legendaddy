@@ -25,6 +25,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    # raise
     @activity = Activity.find(params[:id])
     @markers = [{
       lat: @activity.latitude,
@@ -33,7 +34,8 @@ class ActivitiesController < ApplicationController
       formats: [:html])
     }]
     @kids_and_ids = current_user.kids.map { |item| [item.first_name.capitalize, item.id] }
-    @user_availabilities = current_user.availabilities.map { |item| [item.start_at.strftime('%H h %M on %d/%m/%Y'), item.start_at]}
+    @user_availability = Availability.find(params[:availability_id])
+    # @user_availabilities = current_user.availabilities.map { |item| [item.start_at.strftime('%H h %M on %d/%m/%Y'), item.start_at]}
     @booking = Booking.new
   end
 
@@ -57,7 +59,7 @@ class ActivitiesController < ApplicationController
     current_user.availabilities.each do |a|
       @filtered_activities << Activity.on_availability(a)
     end
-    @filtered_activities = @filtered_activities.flatten.uniq & @activities
+    @filtered_activities = @filtered_activities.flatten.uniq && @activities
     @markers = @filtered_activities.map do |a|
       {
         lat: a.latitude,

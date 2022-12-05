@@ -14,13 +14,23 @@ Availability.destroy_all
 Kid.destroy_all
 User.destroy_all
 
-puts "creating the user..."
+puts "creating users..."
 User.create!(
   email: "cooldude@gmail.com",
   password: "123456789"
 )
 
-puts "creating a kid........."
+User.create!(
+  email: "cooldad@gmail.com",
+  password: "123456789"
+)
+
+User.create!(
+  email: "daddycool@gmail.com",
+  password: "123456789"
+)
+
+puts "creating kids........."
 Kid.create!(
   first_name: "Etta",
   user: User.where(email: "cooldude@gmail.com").first
@@ -68,6 +78,22 @@ activity = Activity.new(
 activity.tag_list.add("maison de famille", "lieux de vie", "activité")
 file = URI.open("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFieSUyMGJvc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_painting.png", content_type: "image/png")
+activity.save!
+
+activity = Activity.new(
+  title: "Pomme",
+  description: "Lieu de vie & studio Yoga+Pilates Adulte, famille, enfant & bébé Ensemble ou pas !",
+  url: "https://www.pomme-maisondefamille.com/",
+  price_cents: 20,
+  address: "4 rue Euryale Dehaynin 75019 Paris",
+  workshop: true,
+  start_at: DateTime.new(2022, 12, 9, 12, 0, 0),
+  end_at: DateTime.new(2022, 12, 9, 13, 0, 0),
+  user: User.where(email: "cooldad@gmail.com").first
+)
+activity.tag_list.add("maison de famille", "lieux de vie", "yoga")
+file = URI.open("https://images.unsplash.com/photo-1617268604962-a2878c372cc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGJhYnklMjB5b2dhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
+activity.photos.attach(io: file, filename: "baby_yoga.png", content_type: "image/png")
 activity.save!
 
 activity = Activity.new(
@@ -172,9 +198,11 @@ file = URI.open("https://avatars.githubusercontent.com/u/104355406?v=4")
 activity.photos.attach(io: file, filename: "Julien.png", content_type: "image/png")
 activity.save!
 
+puts "creating availabilities.........................................................................."
+
 Availability.create!(
-  start_at: DateTime.new(2022, 12, 3, 12, 0, 0),
-  end_at: DateTime.new(2022, 12, 3, 13, 0, 0),
+  start_at: DateTime.new(2022, 12, 2, 9, 0, 0),
+  end_at: DateTime.new(2022, 12, 2, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
 

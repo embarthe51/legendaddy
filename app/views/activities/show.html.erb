@@ -9,6 +9,7 @@
     </div>
     <h2 class="secondary_title"><%= @activity.title %></h2>
     <div class="info-card">
+       <%= render 'reviews', activity: @activity %>
       <h6 class="font-style"><i class="fa-solid fa-location-dot"></i> : <%= @activity.address%></h6>
       <br>
       <i class="fa-solid fa-link"></i> : <%= link_to 'Site web', @activity.url %>
@@ -59,6 +60,22 @@
             <div class="modal-footer">
               <button type="button" data-action="click->togglemodal#slideopen" class="btn btn-secondary rounded" data-bs-dismiss="modal">Fermer</button>
             </div>
+            
+            <section class="legend-form-container">
+              <div class="d-flex flex-column justify-content-center">
+                <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
+                <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
+
+                <%= simple_form_for [@activity, @booking] do |form| %>
+                  <p>Pour qui ?</p>
+                  <%= form.input :kid, collection: @kids_and_ids %>
+                  <%= form.submit %>
+                <% end %>
+              </div>
+          </section>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>
