@@ -57,7 +57,7 @@ class ActivitiesController < ApplicationController
     current_user.availabilities.each do |a|
       @filtered_activities << Activity.on_availability(a)
     end
-    @filtered_activities = @filtered_activities.flatten.uniq & @activities
+    @filtered_activities = @filtered_activities.flatten.uniq && @activities
     @markers = @filtered_activities.map do |a|
       {
         lat: a.latitude,

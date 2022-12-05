@@ -8,6 +8,7 @@
       <% end %>
       <div class="card-product-infos">
         <h4 class="activity_title"><%= activity.title %></h4>
+        <%= render 'reviews', activity: activity %>
         <p class="activity_description"><%= activity.description.truncate(50) %></p>
       </div>
     </div>
