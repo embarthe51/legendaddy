@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: %i[show]
   before_action :find_activity, only: %i[new create]
-  before_action :find_availability, only: %i[new create]
+  # before_action :find_availability, only: %i[new create]
 
   def index
     @bookings = Booking.includes(:kid, :activity).where(user: current_user)
@@ -21,13 +21,13 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new
     @booking.kid = Kid.find(booking_params["kid"].to_i)
-    @booking.start_at = booking_params["start_at"]
     @booking.user = current_user
     @booking.activity = @activity
+    @availability = Availability.find(params[:availability_id])
+    @booking.start_at = @availability.start_at
+    @booking.end_at = @availability.end_at
     if @booking.save
-      redirect_to booking_path(@booking)
-    else
-      render :new
+      redirect_to availabilities_path(tab_id: params.dig(:availability, :tab_id))
     end
   end
 
@@ -51,7 +51,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-  def find_availability
-    @availability = Availability.find(params[:availability_id])
-  end
+  # def find_availability
+  #   @availability = Availability.find(params[:availability_id])
+  # end
 end
