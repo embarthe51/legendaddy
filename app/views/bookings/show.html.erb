@@ -17,7 +17,7 @@
   <%= sanitize @booking.activity.format_reviews %>
   <%= link_to "see reviews", activity_reviews_path(@booking.activity) if @booking.activity.reviews.any? %>
 
-  <%= link_to booking_path(@booking) , data: { "turbo-method": :delete } do %>
+  <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
     <i class="fa-solid fa-trash"></i>
   <% end %>
 </article>
