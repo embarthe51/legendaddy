@@ -13,6 +13,7 @@
   color: #f2f2f7;
 }
 
+
 .box-description img{
   width: 100%;
   height: 400px;
@@ -66,8 +67,10 @@
   }
   .custom-modal {
     position: fixed;
+    overflow: scroll;
     width: 100vw;
     height: 100vh;
+    padding-bottom: 70px;
     z-index: 1;
     background: #000000c2;
     left: -100vw;
@@ -77,6 +80,30 @@
       left: 0;
     }
   }
+
+  .btn-close{
+    position: absolute;
+    right: 40px;
+  }
+
+  .return_button{
+    padding: 7px 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #6658d3;
+    transition: all 250ms ease;
+  }
+
+  .return_button:hover{
+    background: #FFC65A;
+    color: #ffffff;
+  }
+
+  .return_button a:hover{
+    color: #ffffff;
+  }
+
   .fa-solid{
     color: #270335;
   }
@@ -96,6 +123,8 @@
     padding: 10px;
     box-sizing: border-box;
     padding-left: 20px;
+    text-align: left;
+    margin-left: 10px;
   }
 
   .info-card a{
