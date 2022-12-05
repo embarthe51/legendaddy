@@ -13,6 +13,7 @@
   color: #f2f2f7;
 }
 
+
 .box-description img{
   width: 100%;
   height: 400px;
@@ -77,6 +78,28 @@
       left: 0;
     }
   }
+
+  .return_button{
+    padding: 7px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #6658d3;
+    transition: all 250ms ease;
+  }
+
+  .return_button a{
+    color: #6658d3;
+  }
+  .return_button:hover{
+    background: #FFC65A;
+    color: #ffffff;
+  }
+
+  .return_button a:hover{
+    color: #ffffff;
+  }
+
   .fa-solid{
     color: #270335;
   }
@@ -96,6 +119,8 @@
     padding: 10px;
     box-sizing: border-box;
     padding-left: 20px;
+    text-align: left;
+    margin-left: 10px;
   }
 
   .info-card a{

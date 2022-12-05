@@ -23,11 +23,12 @@
       <div>
         <p><%= sanitize @activity.formated_open_times %></p>
       </div>
-          </div>
+        <%= link_to 'Retour', activities_path, class: 'return_button' %>
+    </div>
 
 <!-- Button trigger modal -->
   <div data-controller="togglemodal">
-    <div class="d-flex blue-button align-items-center"  >
+    <div class="d-flex blue-button align-items-center">
       <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
       <%# stimulus target : data-nom de ton controller-target="nom de ta target" %>
       <button type="button" class="" data-action="click->togglemodal#slideopen">
@@ -49,7 +50,7 @@
               </section>
               <section class="legend-form-container">
                 <%= simple_form_for [@activity, @booking] do |form| %>
-                  <p>Choisissez un de vos créneaux sauvegardé</p>
+                  <p>Choisissez un de vos créneaux sauvegardés</p>
                   <%= form.input :start_at, collection: @user_availabilities %>
                   <p>Pour qui ?</p>
                   <%= form.input :kid, collection: @kids_and_ids %>
@@ -60,7 +61,7 @@
             <div class="modal-footer">
               <button type="button" data-action="click->togglemodal#slideopen" class="btn btn-secondary rounded" data-bs-dismiss="modal">Fermer</button>
             </div>
-            
+
             <section class="legend-form-container">
               <div class="d-flex flex-column justify-content-center">
                 <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
