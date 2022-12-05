@@ -14,7 +14,7 @@ $hour-height: 60px;
     margin: 0;
     position: relative;
     top: -15px;
-
+    color: #e2ebf2d8;;
   }
 }
 
@@ -53,15 +53,15 @@ $hour-height: 60px;
 }
 
 .title {
-  font-size: 13px;
+  font-size: 17px;
 }
 
 .schedule {
-  font-size: 10px;
+  font-size: 17px;
 }
 
 .activity-result {
-  font-size: 13px;
+  font-size: 15px;
   a {
     text-decoration: none !important;
     color: white;
@@ -84,4 +84,22 @@ $hour-height: 60px;
 
 .nav-item {
   color: white;
+}
+
+.booking {
+  background: #e2ebf2d8;
+  border-radius: 5px;
+  color: #2f2e2e;;
+  align-items: center;
+  border-left: 10px solid #FF9B05;
+
+  p {
+    padding-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+
+    title {
+      font-size: 20px;
+    }
+  }
 }

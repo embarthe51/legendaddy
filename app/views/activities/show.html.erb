@@ -34,7 +34,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header legend-form-container">
-            <h5 class="modal-title" id="exampleModalLabel">Réservation</h5>
+            <h5 class="modal-title text-center" id="exampleModalLabel">Réservation</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -48,10 +48,10 @@
                 <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
                 <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
 
-                <%= simple_form_for [@activity, @booking] do |form| %>
+                <%= simple_form_for [@user_availability, @activity, @booking] do |form| %>
                   <p>Pour qui ?</p>
                   <%= form.input :kid, collection: @kids_and_ids %>
-                  <%= form.submit %>
+                  <%= form.submit value: "Je réserve" %>
                 <% end %>
               </div>
           </section>
