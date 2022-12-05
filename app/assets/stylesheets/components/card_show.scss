@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Lobster&display=swap');
 
 .activity-content{
-  margin: 20px;
   border-radius: 5px;
 }
 
 .box-description{
   position: center;
   background-color: #6658D3;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 3px 3px 3px 3px #040c3929;
   text-align: center;
-  color: rgba(255, 255, 255, 0.633);
+  color: #f2f2f7;
 }
 
 .box-description img{
   width: 100%;
+  height: 400px;
   overflow: hidden;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  // border-top-left-radius: 20px;
+  // border-top-right-radius: 20px;
 }
 .secondary_title{
   font-weight: bold;
@@ -26,7 +26,7 @@
   padding-bottom: 20px;
   font-family: 'Lobster', cursive;
   font-size: 40px;
-  color: #fff3e0;
+  color: #fefeff;
   text-align: center;
 }
 
@@ -35,17 +35,50 @@
 }
 
   .blue-button{
-    color: #ffffff;
-    padding: 7px 24px;
+    color: #6658D3;
+    padding: 12px 24px;
     border-radius: 5px;
-    background: #FF9B05;
+    background: #ffffff;
     border: none;
     box-shadow: 1px 1px 1px 1px rgba(82, 82, 84, 0.2);
-    margin-bottom: 25px;
+    margin: 25px auto;
+    width: 300px;
+    position: relative;
+    i {
+      position: absolute;
+      background: #6658d3;
+      padding: 8px;
+      border-radius: 5px;
+      color: white;
+      left: 12px;
+      transition: all 250ms ease;
+    }
+    button {
+      position: relative;
+      color: #6658D3;
+      border: navajowhite;
+      background: transparent;
+      flex-grow: 1;
+    }
+    i.activated {
+      left: 80%;
+    }
   }
-
+  .custom-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background: #000000c2;
+    left: -100vw;
+    top: 0;
+    transition: all 250ms ease;
+    &.activated {
+      left: 0;
+    }
+  }
   .fa-solid{
-    color: rgb(242, 225, 244);
+    color: #270335;
   }
 
 
@@ -67,10 +100,10 @@
 
   .info-card a{
     text-decoration: none;
-    color: #FF9B05;
+    color: #1d166b;
     transition: all 0.5s ease;
   }
 
   .info-card a:hover{
-    color: #06033a;
+    color: #b9b8d3;
   }

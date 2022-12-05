@@ -21,3 +21,6 @@ application.register("navbar", NavbarController)
 
 import SubmitHoursController from "./submit_hours_controller"
 application.register("submit-hours", SubmitHoursController)
+
+import TogglemodalController from "./togglemodal_controller"
+application.register("togglemodal", TogglemodalController)
