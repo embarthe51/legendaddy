@@ -35,7 +35,8 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to bookings_path
+    tab_id = %w[today-tab tomorrow-tab day-three-tab][@booking.start_at.to_date.ajd.to_i - Date.today.ajd.to_i]
+    redirect_to availabilities_path(tab_id: tab_id)
   end
 
   private

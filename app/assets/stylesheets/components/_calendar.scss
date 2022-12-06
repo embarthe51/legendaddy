@@ -49,6 +49,8 @@ $hour-height: 60px;
   border-left: 10px solid white;
   z-index: 1;
   padding-left: 16px;
+  padding-right: 10px;
+  position: relative;
 
   p {
     padding-top: 0;
@@ -59,6 +61,12 @@ $hour-height: 60px;
     }
   }
 
+  .delete-availabilty-button {
+    position: absolute;
+    color: black;
+    top: 2px;
+    right: 7px;
+  }
 }
 
 
@@ -117,6 +125,7 @@ $hour-height: 60px;
   position: relative;
   z-index: 1;
   padding-left: 16px;
+  padding-right: 10px;
 
   p {
     padding-top: 0;
