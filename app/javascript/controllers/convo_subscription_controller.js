@@ -3,7 +3,10 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="convo-subscription"
 export default class extends Controller {
-  static values = { convoId: Number }
+  static values = {
+    convoId: Number,
+    userEmail: String,
+  }
   static targets = ["messages"]
 
   connect() {
@@ -13,7 +16,12 @@ export default class extends Controller {
     )
   }
   #insertAndScroll(data) {
-    this.messagesTarget.insertAdjacentHTML('beforeend', data)
+    const isMyMsg = data.match(this.userEmailValue) !== null
+    if(!isMyMsg) {
+      this.messagesTarget.insertAdjacentHTML('beforeend', data.replace('my-msg', ''))
+    } else {
+      this.messagesTarget.insertAdjacentHTML('beforeend', data)
+    }
     window.scrollTo(0, this.messagesTarget.scrollHeight)
   }
   resetForm(e) {
