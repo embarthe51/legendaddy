@@ -26,8 +26,9 @@ class BookingsController < ApplicationController
     @availability = Availability.find(params[:availability_id])
     @booking.start_at = @availability.start_at
     @booking.end_at = @availability.end_at
+    tab_id = %w[today-tab tomorrow-tab day-three-tab][@availability.start_at.to_date.ajd.to_i - Date.today.ajd.to_i]
     if @booking.save
-      redirect_to availabilities_path(tab_id: params.dig(:availability, :tab_id))
+      redirect_to availabilities_path(tab_id: tab_id)
     end
   end
 
