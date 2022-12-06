@@ -2,7 +2,6 @@
   margin-top: 20px;
 }
 
-
 .tag-item {
   display: inline-block;
 }
@@ -32,4 +31,11 @@
 
 .col-form-label{
   color: #6759D4;
+}
+
+#tag-form {
+  legend {
+    display: none;
+  }
+
 }

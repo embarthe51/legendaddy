@@ -26,11 +26,3 @@ activities = JSON.parse(activities_serialized)
 
 # end
 
-Activity.all.each do |item|
-  Review.create!(
-    content: "Incroyable",
-    rating: 5,
-    user: User.where(email: "cooldude@gmail.com").first,
-    activity: Activity.where(id: item.id)
-  )
-end

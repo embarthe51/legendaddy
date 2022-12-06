@@ -57,15 +57,12 @@ Kid.create!(
 
 puts "Creating activities..."
 
-# Ouvrir mon fichier pour transfo en JSON
-# Creer activities.record.first
-
-url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=&rows=100&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants"
+url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=&rows=40&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants"
 activities_serialized = URI.open(url).read
 activities = JSON.parse(activities_serialized)
 
 activities["records"].each do |activity|
-  next if activity["fields"]["address_street"].nil?
+  next if activity["fields"]["lat_lon"].nil?
   next if activity["fields"]["description"].nil?
   next if activity["fields"]["date_start"].nil?
   next if activity["fields"]["date_end"].nil?
@@ -74,14 +71,29 @@ activities["records"].each do |activity|
     title: activity["fields"]["title"],
     description: activity["fields"]["description"],
     url: activity["fields"]["url"],
-    price_cents: activity["fields"]["price_detail"],
+    price_cents: Geocoder.search(activity["fields"]["lat_lon"]).first.address,
     address: activity["fields"]["address_street"],
-    open_days: [0, 1, 2, 3, 4, 5, 6],
-    open_hour: DateTime.parse(activity["fields"]["date_start"]),
-    closing_hour: DateTime.parse(activity["fields"]["date_end"]),
+
     user: User.where(email: "cooldude@gmail.com").first
   )
-  current_activity.tag_list.add(activity["fields"]["tags"])
+
+  if (activity["fields"]["tags"].split(";").any? {
+    |tag| /atelier/.match?(tag.downcase)
+  })
+    current_activity.workshop = true
+    current_activity.start_at = DateTime.parse(activity["fields"]["date_start"])
+    current_activity.end_at = DateTime.parse(activity["fields"]["date_end"])
+  else
+    current_activity.open_days = [0, 1, 2, 3, 4, 5, 6]
+    current_activity.open_hour = DateTime.parse(activity["fields"]["date_start"])
+    current_activity.closing_hour = DateTime.parse(activity["fields"]["date_end"])
+  end
+
+  activity["fields"]["tags"].split(";").each do |tag|
+    current_activity.tag_list.add(tag) unless /Enfants/.match?(tag)
+  end
+
+  # current_activity.tag_list.add(activity["fields"]["tags"])
   file = URI.open(activity["fields"]["cover_url"].nil? ? "https://images.unsplash.com/photo-1491013516836-7db643ee125a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" : activity["fields"]["cover_url"])
   current_activity.photos.attach(io: file, filename: activity["fields"]["image_couverture"].nil? ? "filename" : activity["fields"]["image_couverture"]["filename"], content_type: activity["fields"]["image_couverture"].nil? ?  "image/jpeg" : activity["fields"]["image_couverture"]["mimetype"])
   current_activity.save!
@@ -98,7 +110,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 1, 1, 23, 59, 0),
   user: User.where(email: "cooldude@gmail.com").first,
 )
-activity.tag_list.add("bar", "biere", "social")
+activity.tag_list.add("Bar")
 file = URI.open("https://images.unsplash.com/photo-1533777419517-3e4017e2e15a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")
 activity.photos.attach(io: file, filename: "drinking_beer.png", content_type: "image/png")
 activity.save!
@@ -114,7 +126,7 @@ activity = Activity.new(
   end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("maison de famille", "lieux de vie", "activité")
+activity.tag_list.add("Maison de famille")
 file = URI.open("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFieSUyMGJvc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_painting.png", content_type: "image/png")
 activity.save!
@@ -130,7 +142,7 @@ activity = Activity.new(
   end_at: DateTime.new(2022, 12, 9, 13, 0, 0),
   user: User.where(email: "cooldad@gmail.com").first
 )
-activity.tag_list.add("maison de famille", "lieux de vie", "yoga")
+activity.tag_list.add("Maison de famille", "Yoga")
 file = URI.open("https://images.unsplash.com/photo-1617268604962-a2878c372cc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGJhYnklMjB5b2dhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_yoga.png", content_type: "image/png")
 activity.save!
@@ -147,7 +159,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 12, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("cinéma", "cinékid")
+activity.tag_list.add("Cinékid")
 file = URI.open("https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80")
 activity.photos.attach(io: file, filename: "baby_cinema.png", content_type: "image/png")
 activity.save!
@@ -164,7 +176,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("cité", "cité des sciences")
+activity.tag_list.add("Cité des sciences")
 file = URI.open("https://images.unsplash.com/photo-1575364289437-fb1479d52732?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGxheXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_playing.png", content_type: "image/png")
 activity.save!
@@ -181,7 +193,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 17, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("bébé nageur", "piscine")
+activity.tag_list.add("Bébé nageur")
 file = URI.open("https://plus.unsplash.com/premium_photo-1661290345523-feb44424e6a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFieSUyMHN3aW1taW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_swiming.png", content_type: "image/png")
 activity.save!
@@ -198,7 +210,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("parc")
+activity.tag_list.add("Parc")
 file = URI.open("https://cdn.paris.fr/paris/2021/10/04/original-0964ef6c14fc01d0f61e884d85b9769f.jpg")
 activity.photos.attach(io: file, filename: "baby_parc.png", content_type: "image/png")
 activity.save!
@@ -215,7 +227,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("bibliotheque", "jeux")
+activity.tag_list.add("Jeux")
 file = URI.open("https://cdn.paris.fr/qfapv4/2021/12/01/huge-e0c0dc7170a6f85ddebd45987b37292c.jpg")
 activity.photos.attach(io: file, filename: "bibliothèque.png", content_type: "image/png")
 activity.save!
@@ -232,7 +244,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("pédagogie Montessori")
+activity.tag_list.add("Pédagogie Montessori")
 file = URI.open("https://avatars.githubusercontent.com/u/104355406?v=4")
 activity.photos.attach(io: file, filename: "Julien.png", content_type: "image/png")
 activity.save!
@@ -258,12 +270,20 @@ Availability.create!(
 )
 
 puts "creating some reviews.........................................................................."
+<<<<<<< HEAD
+=======
+
+>>>>>>> c5ba81755e8c9972fb86f0c0ba42403dae4ffb5e
 Activity.all.each do |item|
   Review.create!(
     content: "Incroyable",
     rating: 5,
     user: User.where(email: "cooldude@gmail.com").first,
+<<<<<<< HEAD
     activity: Activity.where(id: item.id)
+=======
+    activity: Activity.find(item.id)
+>>>>>>> c5ba81755e8c9972fb86f0c0ba42403dae4ffb5e
   )
 end
 

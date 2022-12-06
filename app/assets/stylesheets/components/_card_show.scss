@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Dancing+Script:wght@400;700&family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,600&family=Oswald:wght@300;400;500;600;700&family=Righteous&display=swap');
 
 .activity-content{
   border-radius: 5px;
@@ -25,7 +25,7 @@
   font-weight: bold;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-family: 'Lobster', cursive;
+  font-family: 'Epilogue', sans-serif;
   font-size: 40px;
   color: #fefeff;
   text-align: center;
@@ -87,25 +87,31 @@
   }
 
   .return_button{
-    padding: 7px 8px;
+    padding: 8px;
     border: none;
+    text-decoration: none;
     border-radius: 5px;
-    background-color: #ffffff;
-    color: #6658d3;
+    background-color: #ffffff52;
     transition: all 250ms ease;
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
   }
 
   .return_button:hover{
-    background: #FFC65A;
+    background: #ffffff89;
     color: #ffffff;
   }
 
   .return_button a:hover{
-    color: #ffffff;
+    color: #6658D3;
   }
 
   .fa-solid{
-    color: #270335;
+    color: #ffffff;
   }
 
 
@@ -124,6 +130,7 @@
     box-sizing: border-box;
     padding-left: 20px;
     text-align: left;
+    font-size: 20px;
     margin-left: 10px;
   }
 
@@ -135,4 +142,8 @@
 
   .info-card a:hover{
     color: #b9b8d3;
+  }
+
+  .info-card h6{
+    font-size: 20px;
   }

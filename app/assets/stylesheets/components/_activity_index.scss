@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Lobster&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Dancing+Script:wght@400;700&family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,600&family=Oswald:wght@300;400;500;600;700&family=Righteous&display=swap');
 
 .activities_content{
   // margin: 10px;
@@ -7,7 +6,8 @@
 }
 
 .activity_title{
-  font-family: 'Lobster', cursive;
+  font-family: 'Epilogue', sans-serif;
+  font-weight: bolder;
   color: #270335;
   padding-top: 10px;
 }
@@ -19,8 +19,12 @@
 }
 
 .title_description{
-  border-radius: 5px;
-  padding: 20px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 20px 30px;
+  margin-right: 0px;
+  margin-left: 0px;
+  background-color: #fffffff8;
 }
 
 
