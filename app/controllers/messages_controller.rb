@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
   before_action :find_convo, only: [:index, :create]
 
   def index
+    unless @convo.sender == current_user || @convo.receiver == current_user
+      redirect_to convos_path, notice: "Vous n'avez pas authorisation"
+    end
     @messages = @convo.messages
     @message = Message.new
   end
@@ -16,7 +19,6 @@ class MessagesController < ApplicationController
         render_to_string(partial: "message", locals: { message: @message})
       )
       head :ok
-      # redirect_to convo_messages_path(@convo)
     else
       @messages = @convo.messages
       render :index
