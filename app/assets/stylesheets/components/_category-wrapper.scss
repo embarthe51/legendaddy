@@ -1,0 +1,15 @@
+.category-wrapper{
+
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  overflow: hidden;
+  overflow-x: auto;
+  grid-gap: 0.5em;
+
+  .tag-item {
+    align-self: center;
+    justify-self: center;
+  }
+
+}
