@@ -23,8 +23,7 @@
 }
 .secondary_title{
   font-weight: bold;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   font-family: 'Epilogue', sans-serif;
   font-size: 40px;
   color: #fefeff;
@@ -136,19 +135,24 @@
     padding-left: 20px;
     text-align: left;
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 8px;
   }
 
   .info-card a{
     text-decoration: none;
-    color: #1d166b;
+    color: #ffffffb9;
     transition: all 0.5s ease;
   }
 
   .info-card a:hover{
-    color: #b9b8d3;
+    color: #ffffff;
   }
 
   .info-card h6{
     font-size: 20px;
+  }
+
+  .description-card{
+    height: 200px;
+    overflow: scroll;
   }

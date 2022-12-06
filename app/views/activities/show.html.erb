@@ -10,26 +10,26 @@
         <i class="fa-solid fa-arrow-left"></i>
       <% end %>
     </div>
-    <h2 class="secondary_title"><%= @activity.title %></h2>
-    <div class="info-card">
-       <%= render 'reviews', activity: @activity %>
-       <br>
-       <br>
-      <h6 class="font-style"><i class="fa-solid fa-location-dot"></i>  <%= @activity.address%></h6>
-      <br>
-      <i class="fa-solid fa-link"></i> <%= link_to 'Site web', @activity.url %>
-      <br>
-      <br>
-      <% if @activity.price_cents %>
-        <p><i class="fa-solid fa-money-check"></i> <%= @activity.price_cents.to_i %>€</p>
-      <% end %>
-
-          <p><%= @activity.description.html_safe %></p>
-      <div>
-        <p><%= sanitize @activity.formated_open_times %></p>
-      </div>
-
+      <h2 class="secondary_title"><%= @activity.title %></h2>
+        <div class="info-card">
+          <%= render 'reviews', activity: @activity %>
+          <br>
+          <br>
+          <h6 class="font-style"><i class="fa-solid fa-location-dot"></i>  <%= @activity.address%></h6>
+          <br>
+          <i class="fa-solid fa-link"></i> <%= link_to 'Site web', @activity.url %>
+          <br>
+          <br>
+          <% if @activity.price_cents %>
+            <p><i class="fa-solid fa-money-check"></i> <%= @activity.price_cents.to_i %>€</p>
+          <% end %>
+            <div class="description-card">
+              <p><%= @activity.description.html_safe %></p>
+            </div>
+        <div>
+          <p><%= sanitize @activity.formated_open_times %></p>
     </div>
+</div>
 
 <!-- Button trigger modal -->
 
