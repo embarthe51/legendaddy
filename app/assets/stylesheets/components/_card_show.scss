@@ -87,25 +87,31 @@
   }
 
   .return_button{
-    padding: 7px 8px;
+    padding: 8px;
     border: none;
+    text-decoration: none;
     border-radius: 5px;
-    background-color: #ffffff;
-    color: #6658d3;
+    background-color: #ffffff30;
     transition: all 250ms ease;
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
   }
 
   .return_button:hover{
-    background: #FFC65A;
+    background: #ffffff89;
     color: #ffffff;
   }
 
   .return_button a:hover{
-    color: #ffffff;
+    color: #6658D3;
   }
 
   .fa-solid{
-    color: #270335;
+    color: #ffffff;
   }
 
 
@@ -124,6 +130,7 @@
     box-sizing: border-box;
     padding-left: 20px;
     text-align: left;
+    font-size: 20px;
     margin-left: 10px;
   }
 
@@ -135,4 +142,8 @@
 
   .info-card a:hover{
     color: #b9b8d3;
+  }
+
+  .info-card h6{
+    font-size: 20px;
   }
