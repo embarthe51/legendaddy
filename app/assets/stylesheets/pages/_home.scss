@@ -16,10 +16,9 @@ section {
 
 .home-section-background {
   height: 100vh;
-  text-align: center;
+  text-align: left;
   background-repeat: no-repeat;
   background-size: inherit;
-  background-color: #6657D3;
   background-position: center;
   color: white;
   position: relative;
@@ -28,7 +27,6 @@ section {
     color: #FF9B05;
   }
   .call-to-act-container{
-    position: absolute;
     width: 100%;
     a {
       border-radius: 0.3rem;
