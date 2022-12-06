@@ -21,10 +21,10 @@
 .title_description{
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  padding: 20px 30px;
+  padding: 30px 30px;
   margin-right: 0px;
   margin-left: 0px;
-  background-color: #fffffff8;
+  background-color: #ffffff;
 }
 
 
@@ -37,11 +37,10 @@
   height: 120px;
   background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 0 8px #040c3929;
+  box-shadow: 0 0 8px #02082b3a;
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-
 }
 
 .card-product img {
@@ -66,4 +65,13 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+#activities-index{
+  padding: 0;
+}
+
+.col-sm-8{
+  padding-left: 11px;
+  padding-right: 0px;
 }

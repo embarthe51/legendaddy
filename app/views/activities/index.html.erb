@@ -1,27 +1,30 @@
-<div class="container" data-controller="activity-search">
-  <%= simple_form_for :query,
-                    url: params[:availability_id].present? ? search_availability_activities_path(params[:availability_id]) : search_activities_path,
-                    method: :get,
-                    html: {
-                      data: {
-                        action: "submit->activity-search#search",
-                        'activity-search-target'=>'form'
-                      },
-                      id:'tag-form'
-                    } do |f| %>
-  <%= f.input :tag_list,
-              as: :check_boxes,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'category-wrapper',
-              collection: ActsAsTaggableOn::Tag.all,
-              value_method: :name,
-              checked: params.dig(:query, :tag_list),
-              input_html: {
-                class: "tag-selector",
-                data: { action: "click->activity-search#search" }
-              },
-              item_wrapper_class: 'tag-item'%>
-  <% end %>
+<div class="container" id="activities-index" data-controller="activity-search">
+  <div class="tags">
+    <%= simple_form_for :query,
+                      url: params[:availability_id].present? ? search_availability_activities_path(params[:availability_id]) : search_activities_path,
+                      method: :get,
+                      html: {
+                        data: {
+                          action: "submit->activity-search#search",
+                          'activity-search-target'=>'form'
+                        },
+                        id:'tag-form'
+                      } do |f| %>
+    <%= f.input :tag_list,
+                as: :check_boxes,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                collection: ActsAsTaggableOn::Tag.all,
+                value_method: :name,
+                checked: params.dig(:query, :tag_list),
+                input_html: {
+                  class: "tag-selector",
+                  data: { action: "click->activity-search#search" }
+                },
+                item_wrapper_class: 'tag-item'%>
+    <% end %>
+  </div>
+
   <div class="activities_content">
     <div class="row justify-content-center">
       <div class="col-sm-8 justify-content-center">
