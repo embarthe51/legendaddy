@@ -254,13 +254,20 @@ Availability.create!(
 )
 
 puts "creating some reviews.........................................................................."
+<<<<<<< HEAD
+=======
 
+>>>>>>> c5ba81755e8c9972fb86f0c0ba42403dae4ffb5e
 Activity.all.each do |item|
   Review.create!(
     content: "Incroyable",
     rating: 5,
     user: User.where(email: "cooldude@gmail.com").first,
+<<<<<<< HEAD
+    activity: Activity.where(id: item.id)
+=======
     activity: Activity.find(item.id)
+>>>>>>> c5ba81755e8c9972fb86f0c0ba42403dae4ffb5e
   )
 end
 

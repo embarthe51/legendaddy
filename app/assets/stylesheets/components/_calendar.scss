@@ -11,6 +11,9 @@ $hour-height: 60px;
 
 .calendar-head {
   color:white;
+  padding-left: 1em;
+  padding-top: 0.5em;
+  margin-bottom: 1.5em;
 }
 
 .timeline {
@@ -33,7 +36,6 @@ $hour-height: 60px;
   }
 }
 
-
 .days {
   display: grid;
   grid-template-rows: repeat($hours * 60, $hour-height * $hours / ($hours * 60));
@@ -43,16 +45,20 @@ $hour-height: 60px;
   background: rgb(211, 217, 239);
   border-radius: 10px;
   color: #2f2e2e;
-  align-items: center;
-  // border: 1px dashed #6657D3;
   position: relative;
+  border-left: 10px solid white;
   z-index: 1;
+  padding-left: 16px;
 
   p {
     padding-top: 0;
     margin-bottom: 0;
-    text-align: center;
+    &.title {
+      font-size: 20px;
+      font-weight: bold;
+    }
   }
+
 }
 
 
@@ -68,14 +74,6 @@ $hour-height: 60px;
   .duration-#{$i} {
     grid-row-end: span $i;
   }
-}
-
-.title {
-  font-size: 17px;
-}
-
-.schedule {
-  font-size: 17px;
 }
 
 .activity-result {
@@ -111,25 +109,19 @@ $hour-height: 60px;
   width: 100%;
 }
 
-.nav-item {
-  color: white;
-}
-
 .booking {
   background: rgb(211, 217, 239);
   border-radius: 10px;
   color: #2f2e2e;
-  align-items: center;
-  border-left: 10px solid #FF9B05;
+  border-left: 10px solid $orange;
   position: relative;
   z-index: 1;
+  padding-left: 16px;
 
   p {
     padding-top: 0;
     margin-bottom: 0;
-    text-align: center;
-
-    title {
+    &.title {
       font-size: 20px;
     }
   }

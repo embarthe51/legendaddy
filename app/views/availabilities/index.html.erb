@@ -1,22 +1,26 @@
 <div class="container mt-3">
   <div class="calendar-head">
-    <h1>Mon agenda  <div class="fa-regular fa-calendar"></div></h1>
-
-    <h3>Rentre vite tes prochaines dispo</h3>
+    <h2>Mes disponibilités</h2>
   </div>
 
   <div data-controller="submit-hours">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="today-tab" data-bs-toggle="tab" data-bs-target="#today" type="button" role="tab" aria-controls="today" aria-selected="true" style="color: #FF9B05;"><%= Date.today.strftime('%d/%m/%Y') %></button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tomorrow-tab" data-bs-toggle="tab" data-bs-target="#tomorrow" type="button" role="tab" aria-controls="tomorrow" aria-selected="false" style="color: #FF9B05;"><%= (Date.today+1.day).strftime('%d/%m/%Y') %></button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="day-three-tab" data-bs-toggle="tab" data-bs-target="#day-three" type="button" role="tab" aria-controls="day-three" aria-selected="false" style="color: #FF9B05;"><%= (Date.today+2.day).strftime('%d/%m/%Y') %></button>
-      </li>
-    </ul>
+    <div class="next-three-days nav">
+      <div class="the-day active" id="today-tab" data-bs-toggle="tab" data-bs-target="#today" type="button" role="tab" aria-controls="today" aria-selected="true">
+        <p class="word"><%= Date.today.strftime('%a')%></p>
+        <p class="number"><%= Date.today.strftime('%d')%></p>
+        <p class="word"><%= Date.today.strftime('%b')%></p>
+      </div>
+      <div class="the-day" id="tomorrow-tab" data-bs-toggle="tab" data-bs-target="#tomorrow" type="button" role="tab" aria-controls="tomorrow" aria-selected="false">
+        <p class="word"><%= (Date.today+1).strftime('%a')%></p>
+        <p class="number"><%= (Date.today+1).strftime('%d')%></p>
+        <p class="word"><%= (Date.today+1).strftime('%b')%></p>
+      </div>
+      <div class="the-day" id="day-three-tab" data-bs-toggle="tab" data-bs-target="#day-three" type="button" role="tab" aria-controls="day-three" aria-selected="false">
+        <p class="word"><%= (Date.today+2).strftime('%a')%></p>
+        <p class="number"><%= (Date.today+2).strftime('%d')%></p>
+        <p class="word"><%= (Date.today+2).strftime('%b')%></p>
+      </div>
+    </div>
 
     <div class="tab-content" id="myTabContent">
 

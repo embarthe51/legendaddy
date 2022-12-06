@@ -12,7 +12,6 @@
   <%= simple_form_for [@convo, @message],
   html: { data: { action: "turbo:submit-end->convo-subscription#resetForm" } } do |form| %>
     <%= form.input :content %>
-    <%= form.submit %>
+    <%= form.submit 'Send' %>
   <% end %>
-
 </div>
