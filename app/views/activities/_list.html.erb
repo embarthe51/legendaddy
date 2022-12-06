@@ -7,7 +7,7 @@
       <%= image_tag 'papa.jpeg', width: 350, height: 300 %>
       <% end %>
       <div class="card-product-infos">
-        <h4 class="activity_title"><%= activity.title %></h4>
+        <h4 class="activity_title"><%= activity.title.truncate(25) %></h4>
         <%= render 'reviews', activity: activity %>
       </div>
     </div>
