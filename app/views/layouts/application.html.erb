@@ -23,6 +23,6 @@
       <%= yield %>
     </main>
 
-    <%= render "shared/navbar" if params[:action] != "home" %>
+    <%= render "shared/navbar" if action_name != "home" &&  !(controller_name == "activities" && action_name == "show") %>
   </body>
 </html>

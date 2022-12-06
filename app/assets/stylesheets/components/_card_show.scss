@@ -42,7 +42,7 @@
     background: #ffffff;
     border: none;
     box-shadow: 1px 1px 1px 1px rgba(82, 82, 84, 0.2);
-    margin: 25px auto;
+    margin: 0px auto;
     width: 300px;
     position: relative;
     i {
@@ -65,6 +65,11 @@
       left: 80%;
     }
   }
+
+  .space-bottom{
+    padding-bottom: 20px;
+  }
+
   .custom-modal {
     position: fixed;
     overflow: scroll;
