@@ -57,15 +57,12 @@ Kid.create!(
 
 puts "Creating activities..."
 
-# Ouvrir mon fichier pour transfo en JSON
-# Creer activities.record.first
-
-url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=&rows=100&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants"
+url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=&rows=40&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants"
 activities_serialized = URI.open(url).read
 activities = JSON.parse(activities_serialized)
 
 activities["records"].each do |activity|
-  next if activity["fields"]["address_street"].nil?
+  next if activity["fields"]["lat_lon"].nil?
   next if activity["fields"]["description"].nil?
   next if activity["fields"]["date_start"].nil?
   next if activity["fields"]["date_end"].nil?
@@ -74,7 +71,7 @@ activities["records"].each do |activity|
     title: activity["fields"]["title"],
     description: activity["fields"]["description"],
     url: activity["fields"]["url"],
-    price_cents: activity["fields"]["price_detail"],
+    price_cents: Geocoder.search(activity["fields"]["lat_lon"]).first.address,
     address: activity["fields"]["address_street"],
     open_days: [0, 1, 2, 3, 4, 5, 6],
     open_hour: DateTime.parse(activity["fields"]["date_start"]),
