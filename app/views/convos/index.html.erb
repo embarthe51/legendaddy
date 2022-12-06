@@ -1,6 +1,16 @@
-<h1>Convos#index</h1>
-<% @convos.each do |item| %>
-  <%= link_to convo_messages_path(item) do %>
-    <p>Between: <%= item.receiver.email.truncate(12) %> and <%= item.sender.email.truncate(12) %></p>
-  <% end %>
-<% end %>
+<section class="convo-index-section">
+  <h2>Mes convos</h2>
+  <div>
+    <% if @convos.empty? %>
+      <article>&#x1F40C; &#x1F41E; &#x1F423; <h2>vous n'avez pas de convos</h2> &#x1F427; &#x1F42D; &#x1F41D;</article>
+    <% end %>
+    <% @convos.each do |item| %>
+      <%= link_to convo_messages_path(item) do %>
+        <p><strong>avec:</strong>  <%= item.receiver == current_user ? item.sender.email.truncate(12) : item.receiver.email.truncate(12) %></p>
+        <p><strong>dernier message:</strong> <%= item.messages.last.content.truncate(10) %></p>
+
+
+      <% end %>
+    <% end %>
+  </div>
+</section>

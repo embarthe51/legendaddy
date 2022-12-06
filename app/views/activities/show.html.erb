@@ -20,8 +20,8 @@
       <i class="fa-solid fa-link"></i> <%= link_to 'Site web', @activity.url %>
       <br>
       <br>
-      <% if @activity.price_cents %>
-        <p><i class="fa-solid fa-money-check"></i> <%= @activity.price_cents.to_i %>€</p>
+      <% if @activity.price %>
+        <p><i class="fa-solid fa-money-check"></i> <%= @activity.price %></p>
       <% end %>
 
           <p><%= @activity.description.html_safe %></p>

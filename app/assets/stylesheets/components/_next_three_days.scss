@@ -1,0 +1,30 @@
+.next-three-days {
+  background: white;
+  border-radius: 2em;
+  padding: 6px 6px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.the-day {
+  padding: 1em;
+  text-align: center;
+  &.active {
+    background: $orange;
+    color: white;
+    border-radius: 2em;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .word {
+    text-transform: uppercase;
+    font-size: smaller;
+  }
+  .number {
+    font-weight: bold;
+    font-size: larger;
+  }
+}

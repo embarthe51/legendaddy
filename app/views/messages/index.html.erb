@@ -1,4 +1,4 @@
-<div data-controller="convo-subscription" data-convo-subscription-convo-id-value="<%= @convo.id %>">
+<div class="convo-with-section" data-controller="convo-subscription" data-convo-subscription-convo-id-value="<%= @convo.id %>">
   <h2>Convo entre: </h2>
   <h2><%= @convo.sender.email %> </h2>
   <h2>et</h2>
@@ -12,7 +12,6 @@
   <%= simple_form_for [@convo, @message],
   html: { data: { action: "turbo:submit-end->convo-subscription#resetForm" } } do |form| %>
     <%= form.input :content %>
-    <%= form.submit %>
+    <%= form.submit 'Send' %>
   <% end %>
-
 </div>

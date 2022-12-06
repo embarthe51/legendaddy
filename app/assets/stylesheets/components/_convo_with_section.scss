@@ -1,0 +1,55 @@
+.convo-with-section {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  margin: 1rem;
+  border: 2px solid white;
+  border-radius: 1rem;
+  color: white;
+  label {
+    display: none;
+  }
+  .my-msg {
+    // background: #007e82;
+    color: black;
+    background: linear-gradient(34deg, white, white 90%,#9a8fc7 90%, #9a8fc7 100%);
+    margin-left: 4rem;
+    border-radius: 1rem 1rem 0rem 1rem;
+  }
+
+  input[type="text"] {
+    border-radius: 1rem;
+    background-color: rgb(202, 202, 202);
+    transition: all ease-in-out 0.3s;
+    &:focus {
+      background-color: white;
+      border-radius: 0.3rem;
+      box-shadow: none;
+    }
+  }
+
+  input[type="submit"] {
+    @include legend-btn-transparent();
+    background-color: #F3A634;
+    height: 3rem;
+    width: 7rem;
+    padding: 0;
+    margin-left: 14.5rem;
+  }
+
+  section > div {
+    border: 3px solid white;
+    border-radius: 1rem 1rem 1rem 0rem;
+    padding: 1rem;
+    min-height: fit-content;
+    // background: #001d85;
+    color: black;
+    background: linear-gradient(-34deg, white, white 90%,#F3A634 90%, #F3A634 100%);
+    line-height: 1.3rem;
+    font-size: 1.3rem;
+    margin: 1rem;
+    overflow-wrap: break-word;
+    small {
+      font-size: 0.6rem;
+    }
+  }
+}
