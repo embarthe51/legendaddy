@@ -126,7 +126,7 @@ activity = Activity.new(
   end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("Maison de famille")
+activity.tag_list.add("Atelier")
 file = URI.open("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFieSUyMGJvc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_painting.png", content_type: "image/png")
 activity.save!
@@ -142,7 +142,7 @@ activity = Activity.new(
   end_at: DateTime.new(2022, 12, 9, 13, 0, 0),
   user: User.where(email: "cooldad@gmail.com").first
 )
-activity.tag_list.add("Maison de famille", "Yoga")
+activity.tag_list.add("Atelier", "Yoga")
 file = URI.open("https://images.unsplash.com/photo-1617268604962-a2878c372cc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGJhYnklMjB5b2dhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_yoga.png", content_type: "image/png")
 activity.save!
@@ -159,7 +159,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 12, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("Cinékid")
+activity.tag_list.add("Cinéma")
 file = URI.open("https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80")
 activity.photos.attach(io: file, filename: "baby_cinema.png", content_type: "image/png")
 activity.save!
@@ -176,7 +176,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("Cité des sciences")
+activity.tag_list.add("Sciences")
 file = URI.open("https://images.unsplash.com/photo-1575364289437-fb1479d52732?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGxheXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_playing.png", content_type: "image/png")
 activity.save!
@@ -230,23 +230,6 @@ activity = Activity.new(
 activity.tag_list.add("Jeux")
 file = URI.open("https://cdn.paris.fr/qfapv4/2021/12/01/huge-e0c0dc7170a6f85ddebd45987b37292c.jpg")
 activity.photos.attach(io: file, filename: "bibliothèque.png", content_type: "image/png")
-activity.save!
-
-activity = Activity.new(
-  title: "Cours de pédagogie Montessori avec Julien",
-  description: "Si votre enfant à du mal à écouter les règles, Julien lui enseignera avec bienveillance",
-  url: "https://github.com/Naruki95",
-  price_cents: 0,
-  address: "Gennevilliers 92230",
-  workshop: false,
-  open_days: [1, 2, 3, 4, 5, 6, 0],
-  open_hour: DateTime.new(2022, 12, 4, 9, 0, 0),
-  closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
-  user: User.where(email: "cooldude@gmail.com").first
-)
-activity.tag_list.add("Pédagogie Montessori")
-file = URI.open("https://avatars.githubusercontent.com/u/104355406?v=4")
-activity.photos.attach(io: file, filename: "Julien.png", content_type: "image/png")
 activity.save!
 
 puts "creating availabilities.........................................................................."

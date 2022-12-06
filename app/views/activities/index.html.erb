@@ -11,6 +11,8 @@
                     } do |f| %>
   <%= f.input :tag_list,
               as: :check_boxes,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'category-wrapper',
               collection: ActsAsTaggableOn::Tag.all,
               value_method: :name,
               checked: params.dig(:query, :tag_list),
