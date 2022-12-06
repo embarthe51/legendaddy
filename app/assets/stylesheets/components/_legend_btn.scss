@@ -1,10 +1,7 @@
 @mixin legend-btn {
   text-decoration: none;
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #ff9b05;
-  transition: 0.3s ease;
+  color: #6759D4;
+  font-weight: bold;
 }
 
 @mixin legend-btn-transparent {

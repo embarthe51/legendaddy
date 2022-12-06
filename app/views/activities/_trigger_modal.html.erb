@@ -1,9 +1,8 @@
-  <div data-controller="togglemodal" class="space-bottom">
+  <div class="home_btn">
     <div class="d-flex blue-button align-items-center">
       <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
-      <%= link_to "Renseigne tes dispos !", availabilities_path, class: '' %>
-
-      <%# <button type="button" class="" data-action="click->togglemodal#slideopen">
-        Renseigne tes dispos !
-      </button> %>
+      <button type="button" class="" data-action="click->togglemodal#slideopen">
+       <%= link_to "Renseigne tes dispos !", availabilities_path %>
+      </button>
     </div>
+  </div>
