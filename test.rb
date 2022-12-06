@@ -4,7 +4,7 @@ require "json"
 url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants"
 activities_serialized = URI.open(url).read
 activities = JSON.parse(activities_serialized)
-puts DateTime.parse(activities["records"].first["fields"]["date_start"])
+# puts DateTime.parse(activities["records"].first["fields"]["date_start"])
 
 
 # activities["records"].each do |activity|
@@ -25,3 +25,12 @@ puts DateTime.parse(activities["records"].first["fields"]["date_start"])
 #   current_activity.save!
 
 # end
+
+Activity.all.each do |item|
+  Review.create!(
+    content: "Incroyable",
+    rating: 5,
+    user: User.where(email: "cooldude@gmail.com").first,
+    activity: Activity.where(id: item.id)
+  )
+end

@@ -258,6 +258,15 @@ Availability.create!(
 )
 
 puts "creating some reviews.........................................................................."
+Activity.all.each do |item|
+  Review.create!(
+    content: "Incroyable",
+    rating: 5,
+    user: User.where(email: "cooldude@gmail.com").first,
+    activity: Activity.where(id: item.id)
+  )
+end
+
 Review.create!(
   content: "Incroyable",
   rating: 4,
