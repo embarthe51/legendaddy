@@ -49,22 +49,12 @@
               <h5 class="modal-title" id="exampleModalLabel">Réservation</h5>
               <button type="button" class="btn-close"  data-action="click->togglemodal#slideopen" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-            <p>Confirmez votre activité: </p>
+            <%# <div class="modal-body">
+            <p>Confirmer votre activité: </p>
               <section class="legend-form-container">
-                <p><%= sanitize @activity.formated_open_times %></p>
-              </section>
-
-              <section class="legend-form-container">
-                <%= simple_form_for [@activity, @booking] do |form| %>
-                  <p>Choisissez un de vos créneaux sauvegardés</p>
-                  <%= form.input :start_at, collection: @user_availabilities %>
-                  <p>Pour qui ?</p>
-                  <%= form.input :kid, collection: @kids_and_ids %>
-                  <%= form.submit %>
-                <% end %>
-            </section>
-            </div>
+                <p><%= sanitize @activity.formated_open_times %>
+              <%# </section>
+            </div> %>
             <div class="modal-footer">
               <%# <button type="button" data-action="click->togglemodal#slideopen" class="btn btn-secondary rounded" data-bs-dismiss="modal">Fermer</button> %>
             </div>
@@ -74,7 +64,7 @@
                 <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
 
                 <%= simple_form_for [@user_availability, @activity, @booking] do |form| %>
-                  <p>Pour qui ?</p>
+                  <p>Avec :</p>
                   <%= form.input :kid, collection: @kids_and_ids %>
                   <%= form.submit value: "Je réserve" %>
                 <% end %>
