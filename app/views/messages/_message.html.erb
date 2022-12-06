@@ -1,4 +1,4 @@
-<div id="message-<%= message.id%>" class="<%="my-msg" if message.user == current_user %>" data-convo-subscription-target="msg">
+<div id="message-<%= message.id%>" class="<%="my-msg" if message.user == current_user %>">
   <small>
     <p>message de:<%= message.user.email %></p>
     <p>à <%= message.created_at.strftime('%H h %M, le %d /%m /%Y') %> </p>

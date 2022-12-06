@@ -7,7 +7,7 @@ export default class extends Controller {
     convoId: Number,
     userEmail: String,
   }
-  static targets = ["messages", "msg"]
+  static targets = ["messages"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -17,10 +17,9 @@ export default class extends Controller {
   }
   #insertAndScroll(data) {
     const isMyMsg = data.match(this.userEmailValue) !== null
-    console.log(isMyMsg);
     if(!isMyMsg) {
       this.messagesTarget.insertAdjacentHTML('beforeend', data.replace('my-msg', ''))
-    }else {
+    } else {
       this.messagesTarget.insertAdjacentHTML('beforeend', data)
     }
     window.scrollTo(0, this.messagesTarget.scrollHeight)
