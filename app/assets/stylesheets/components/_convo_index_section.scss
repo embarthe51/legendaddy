@@ -1,0 +1,27 @@
+.convo-index-section {
+  color: white;
+  div {
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 3rem;
+    text-align: center;
+
+    a {
+      padding: 1rem;
+      padding-top: 1.7rem;
+      border-radius: 0.7rem;
+      border: 2px solid black;
+      width: 85%;
+      min-height: 4rem;
+      display: block;
+      margin: 1rem auto;
+      color: black;
+      background-color: white;
+      text-decoration: none;
+      line-height: 0.5rem;
+    }
+  }
+}
