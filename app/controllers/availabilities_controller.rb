@@ -31,6 +31,12 @@ class AvailabilitiesController < ApplicationController
     end
   end
 
+  def destroy
+    @availability = Availability.find(params[:id])
+    @availability.destroy
+    redirect_to availabilities_path
+  end
+
   private
 
   def availability_params
