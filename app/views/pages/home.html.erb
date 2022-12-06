@@ -10,11 +10,13 @@
     <% unless user_signed_in? %>
       <h1>L'application des jeunes papas</h1>
       <p>Trouve une activité sur les 3 prochains jours et planifie une expérience légendaire avec ton enfant !</p>
-      <%= link_to "Renseigne ta dispo", user_session_path, class: 'legend-btn' %>
+      <%= render 'activities/trigger_modal' %>
     <% else %>
       <h1>L'application des jeunes papas</h1>
       <p>Trouve une activité sur les 3 prochains jours et planifie une expérience légendaire avec ton enfant !</p>
-      <%= link_to "Renseigne ta dispo", availabilities_path, class: 'legend-btn' %>
+
+      <%= render 'activities/trigger_modal' %>
+
     <% end %>
   </div>
 </section>
