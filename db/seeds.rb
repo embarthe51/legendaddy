@@ -73,12 +73,27 @@ activities["records"].each do |activity|
     url: activity["fields"]["url"],
     price_cents: Geocoder.search(activity["fields"]["lat_lon"]).first.address,
     address: activity["fields"]["address_street"],
-    open_days: [0, 1, 2, 3, 4, 5, 6],
-    open_hour: DateTime.parse(activity["fields"]["date_start"]),
-    closing_hour: DateTime.parse(activity["fields"]["date_end"]),
+
     user: User.where(email: "cooldude@gmail.com").first
   )
-  current_activity.tag_list.add(activity["fields"]["tags"])
+
+  if (activity["fields"]["tags"].split(";").any? {
+    |tag| /atelier/.match?(tag.downcase)
+  })
+    current_activity.workshop = true
+    current_activity.start_at = DateTime.parse(activity["fields"]["date_start"])
+    current_activity.end_at = DateTime.parse(activity["fields"]["date_end"])
+  else
+    current_activity.open_days = [0, 1, 2, 3, 4, 5, 6]
+    current_activity.open_hour = DateTime.parse(activity["fields"]["date_start"])
+    current_activity.closing_hour = DateTime.parse(activity["fields"]["date_end"])
+  end
+
+  activity["fields"]["tags"].split(";").each do |tag|
+    current_activity.tag_list.add(tag) unless /Enfants/.match?(tag)
+  end
+
+  # current_activity.tag_list.add(activity["fields"]["tags"])
   file = URI.open(activity["fields"]["cover_url"].nil? ? "https://images.unsplash.com/photo-1491013516836-7db643ee125a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" : activity["fields"]["cover_url"])
   current_activity.photos.attach(io: file, filename: activity["fields"]["image_couverture"].nil? ? "filename" : activity["fields"]["image_couverture"]["filename"], content_type: activity["fields"]["image_couverture"].nil? ?  "image/jpeg" : activity["fields"]["image_couverture"]["mimetype"])
   current_activity.save!
