@@ -63,6 +63,8 @@ activities = JSON.parse(activities_serialized)
 
 activities["records"].each do |activity|
   next if activity["fields"]["lat_lon"].nil?
+  next if activity["fields"]["title"] == "CinéKids - décembre 2022"
+  next if activity["fields"]["title"] == "Atelier d'éveil musical 'Les tambours du monde'"
   next if activity["fields"]["description"].nil?
   next if activity["fields"]["date_start"].nil?
   next if activity["fields"]["date_end"].nil?
@@ -71,9 +73,8 @@ activities["records"].each do |activity|
     title: activity["fields"]["title"],
     description: activity["fields"]["description"],
     url: activity["fields"]["url"],
-    price_cents: Geocoder.search(activity["fields"]["lat_lon"]).first.address,
-    address: activity["fields"]["address_street"],
-
+    price: activity["fields"]["price_type"],
+    address: Geocoder.search(activity["fields"]["lat_lon"]).first.address,
     user: User.where(email: "cooldude@gmail.com").first
   )
 
@@ -119,7 +120,7 @@ activity = Activity.new(
   title: "Palomano",
   description: "Palomano, la ville où les enfants font leurs lois !",
   url: "https://palomano.com/",
-  price_cents: 13,
+  price: "13€",
   address: "125 boulevard Jean Jaurès, 92110 Clichy",
   workshop: true,
   start_at: DateTime.new(2022, 12, 5, 12, 0, 0),
@@ -135,7 +136,7 @@ activity = Activity.new(
   title: "Pomme",
   description: "Lieu de vie & studio Yoga+Pilates Adulte, famille, enfant & bébé Ensemble ou pas !",
   url: "https://www.pomme-maisondefamille.com/",
-  price_cents: 20,
+  price: "20€",
   address: "4 rue Euryale Dehaynin 75019 Paris",
   workshop: true,
   start_at: DateTime.new(2022, 12, 9, 12, 0, 0),
@@ -151,7 +152,7 @@ activity = Activity.new(
   title: "Le Studio des Ursulines",
   description: "un programme destiné aux enfants et diffuse le meilleur des films d'animation, dont le culte Mon voisin Totoro de Hayao Miyazaki, tous les dimanches matins",
   url: "www.studiodesursulines.com",
-  price_cents: 9,
+  price: "9€",
   address: "10, rue des Ursulines, 75005 Paris",
   workshop: false,
   open_days: [0],
@@ -168,7 +169,7 @@ activity = Activity.new(
   title: "CITÉ DES ENFANTS 2-7 ANS",
   description: "La Cité des enfants 2-7 ans est ouverte à la petite enfance dès 2 ans, et s'organise sur 1700 m² découpés en cinq espaces thématiques : Je me découvre, Je sais faire, Je me repère, J'expérimente, Tous ensemble",
   url: "https://www.cite-sciences.fr/fr/au-programme/expos-permanentes/la-cite-des-enfants/cite-des-enfants-2-7-ans",
-  price_cents: 12,
+  price: "12€",
   address: "30 Avenue Corentin Cariou 75019 Paris France",
   workshop: false,
   open_days: [0,2, 3, 4, 5, 6],
@@ -185,7 +186,7 @@ activity = Activity.new(
   title: "Piscine Municipale de Pontoise",
   description: "Piscine où vous pourrez pratiquer le bébé nageur avec votre petit(e). Attention, téléphonez pour vous assurer des disponibilités et qu'il ne faut pas réserver!",
   url: "https://www.paris.fr/lieux/piscine-pontoise-2918",
-  price_cents: 5,
+  price: "5€",
   address: " Rue de Pontoise, 75005 Paris",
   workshop: false,
   open_days: [1, 2, 3, 4, 5, 6, 0],
@@ -193,7 +194,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 17, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("Bébé nageur")
+activity.tag_list.add("Piscine")
 file = URI.open("https://plus.unsplash.com/premium_photo-1661290345523-feb44424e6a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFieSUyMHN3aW1taW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
 activity.photos.attach(io: file, filename: "baby_swiming.png", content_type: "image/png")
 activity.save!
@@ -202,7 +203,7 @@ activity = Activity.new(
   title: "Sensations fortes au parc de Belleville",
   description: "À l'abordage ! Direction le parc de Belleville dans le 20e arrondissement pour partir à la découverte de la nouvelle aire de jeux inaugurée en novembre 2019. ",
   url: "https://www.paris.fr/pages/top-des-aires-de-jeux-les-plus-ludiques-de-la-capitale-18795",
-  price_cents: 0,
+  price: "gratuit",
   address: "47 rue des Couronnes 75020 PARIS",
   workshop: false,
   open_days: [1, 2, 3, 4, 5, 6, 0],
@@ -210,7 +211,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("Parc")
+activity.tag_list.add("Balade")
 file = URI.open("https://cdn.paris.fr/paris/2021/10/04/original-0964ef6c14fc01d0f61e884d85b9769f.jpg")
 activity.photos.attach(io: file, filename: "baby_parc.png", content_type: "image/png")
 activity.save!
@@ -219,7 +220,7 @@ activity = Activity.new(
   title: "SOIRÉE JEUX DE SOCIÉTÉ AVEC MAMYGEEK",
   description: "Jeux de société pour tou.te.s, seul.e, en famille ou entre amis ! Jeux de rapidité, jeux d'ambiance, jeux de stratégie…",
   url: "https://www.paris.fr/equipements/bibliotheque-sorbier-1753",
-  price_cents: 0,
+  price: "gratuit",
   address: "17 rue Sorbier 75020 Paris",
   workshop: false,
   open_days: [1, 2, 3, 4, 5, 6, 0],
@@ -227,7 +228,7 @@ activity = Activity.new(
   closing_hour: DateTime.new(2022, 12, 4, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
-activity.tag_list.add("Jeux")
+activity.tag_list.add("Loisirs")
 file = URI.open("https://cdn.paris.fr/qfapv4/2021/12/01/huge-e0c0dc7170a6f85ddebd45987b37292c.jpg")
 activity.photos.attach(io: file, filename: "bibliothèque.png", content_type: "image/png")
 activity.save!
