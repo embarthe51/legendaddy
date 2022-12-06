@@ -1,10 +1,18 @@
-<%= simple_form_for Availability.new do |f| %>
-  <%= f.input :start_at, as: :string, default: target_day, input_html: { data: { submit_hours_target: "input"} }%>
-  <%= f.input :end_at, as: :string, default: target_day, input_html: { data: { submit_hours_target: "input" } } %>
-  <%= f.hidden_field :date, value: day %>
-  <%= f.hidden_field :tab_id, value: tab_day %>
-  <%= f.submit value: "Ajouter ma dispo", class:"yellow-button"%>
-<% end %>
+<!-- The Modal -->
+<div class="form-modal d-none" data-submit-hours-target="form">
+<!-- Modal content -->
+  <div class="form-overlay" data-action="click->submit-hours#removeForm">
+  </div>
+  <div class="form-modal-content">
+    <%= simple_form_for Availability.new do |f| %>
+      <%= f.input :start_at, as: :string, default: target_day, input_html: { data: { submit_hours_target: "input"} }%>
+      <%= f.input :end_at, as: :string, default: target_day, input_html: { data: { submit_hours_target: "input" } } %>
+      <%= f.hidden_field :date, value: day %>
+      <%= f.hidden_field :tab_id, value: tab_day %>
+      <%= f.submit value: "Ajouter ma dispo", class:"yellow-button"%>
+    <% end %>
+  </div>
+</div>
 
 <div class="container">
   <div class="calendar mt-3">
@@ -15,7 +23,8 @@
         <% i += 1 %>
       <% end %>
     </div>
-    <div class="days">
+    <!-- Trigger/Open The Modal -->
+    <div class="days" data-action="click->submit-hours#displayForm">
       <% if bookings.exists? %>
         <% bookings.each do |booking|  %>
           <% if booking.start_at.strftime('%a %d %b %Y') == day.strftime('%a %d %b %Y') %>
@@ -24,7 +33,7 @@
             <div class="booking start-at-<%=beg%> duration-<%=duration%> text-center d-flex flex-column justify-content-center" >
               <p class="title"><%=booking.activity.title%></p>
               <p class="schedule">de <%=booking.start_at.hour%>h à <%=booking.end_at.hour%>h</p>
-              <p class="activity-result"> <%= link_to "Voir les détails", booking_path(booking), class:"yellow-button-a" %></p>
+              <p class="activity-result"> <%= link_to "Voir les détails", booking_path(booking), class:"activities-button" %></p>
             </div>
           <% end %>
         <% end %>
@@ -38,9 +47,9 @@
             <p class="schedule">de <%=availability.start_at.hour%>h à <%=availability.end_at.hour%>h</p>
             <p class="activity-result">
             <% if Activity.on_availability(availability).count == 1 %>
-                <%= link_to "#{Activity.on_availability(availability).count} activité dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                <%= link_to "#{Activity.on_availability(availability).count} activité dispo", availability_activities_path(availability), class:"activities-button" %>
               <% elsif Activity.on_availability(availability).count > 1  %>
-                <%= link_to "#{Activity.on_availability(availability).count} activités dispo", availability_activities_path(availability), class:"yellow-button-a" %>
+                <%= link_to "#{Activity.on_availability(availability).count} activités dispo", availability_activities_path(availability), class:"activities-button" %>
               <% elsif Activity.on_availability(availability).count == 0  %>
                 <%= "Pas d'activité dispo sur ce creneau" %>
             <% end %>
