@@ -34,8 +34,18 @@ export default class extends Controller {
     // sur chaque input j instancie un flatpickr
   }
 
-  displayForm() {
-    console.log(this.formTargets);
-    this.formTargets.classList.toggle("d-none");
+  displayForm(event) {
+    console.log(event.target);
+    if (event.target.nodeName === 'DIV') {
+      this.formTargets.forEach ((form)=> {
+        form.classList.remove("d-none");
+      })
+    }
+  }
+
+  removeForm() {
+    this.formTargets.forEach ((form)=> {
+      form.classList.add("d-none");
+    })
   }
 }
