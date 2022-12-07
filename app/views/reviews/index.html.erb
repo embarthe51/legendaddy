@@ -4,7 +4,7 @@
   <br>
   <br>
   <% @reviews.each do |item| %>
-    <h3><%= "#{item.user.email} à écrit: " %></h3>
+    <h3><%= "#{item.user.pseudo} à écrit: " %></h3>
     <h4><%= item.content %></h4>
     <p><%= sanitize Review.avg_rating(item.rating) %></p>
     <br>
