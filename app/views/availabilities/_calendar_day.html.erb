@@ -48,25 +48,25 @@
             <p class="activity-result mt-3">
             <% if Activity.on_availability(availability).count == 1 %>
                 <%= link_to "#{Activity.on_availability(availability).count} activité", availability_activities_path(availability), class:"activities-button" %>
-                <%= link_to "X",
-                  availability_activities_path(availability),
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-                  class:"delete-availabilty-button"
-                %>
+                <%= link_to availability_path(availability),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                class: 'delete-availabilty_button' do %>
+                  <i class="fa-solid fa-square-xmark"></i>
+                <% end %>
               <% elsif Activity.on_availability(availability).count > 1  %>
                 <%= link_to "#{Activity.on_availability(availability).count} activités", availability_activities_path(availability), class:"activities-button"%>
-                <%= link_to "X",
-                  availability_path(availability),
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-                  class:"delete-availabilty-button"
-                %>
+                <%= link_to availability_path(availability),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                class: 'delete-availabilty_button' do %>
+                  <i class="fa-solid fa-square-xmark"></i>
+                <% end %>
               <% elsif Activity.on_availability(availability).count == 0  %>
                 <%= "Pas d'activité dispo sur ce creneau" %>
-                <%= link_to "X",
-                  availability_path(availability),
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-                  class:"delete-availabilty-button"
-                %>
+                <%= link_to availability_path(availability),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                class: 'delete-availabilty_button' do %>
+                  <i class="fa-solid fa-square-xmark"></i>
+                <% end %>
             <% end %>
             </p>
           </div>
