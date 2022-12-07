@@ -6,7 +6,7 @@
       <% else %>
         <%= image_tag 'papa.jpeg', width: 350, height: 300 %>
       <% end %>
-      <%= link_to activities_path, class: 'return_button' do %>
+      <%= link_to availability_activities_path(@user_availability), class: 'return_button' do %>
         <i class="fa-solid fa-arrow-left"></i>
       <% end %>
     </div>
