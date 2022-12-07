@@ -1,8 +1,10 @@
-<div class="modification-content">
-  <h2>Salut <%= current_user.email %></h2>
-  <h2>Modifier adresse mail et m.d.p</h2>
-</div>
+
+
 <section class="legend-form-container">
+  <div class="modification-content">
+    <h2>Salut <%= current_user.email %></h2>
+    <h2>Modifier adresse mail et mot de passe</h2>
+  </div>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
@@ -14,14 +16,14 @@
       <% end %>
 
       <%= f.input :password,
-                  hint: "modifiez votre m.d.p ou ne renseignez pas cette case si vous souhaitez garder le même",
+                  hint: "Modifiez votre mot de passe ou ne renseignez pas cette case si vous souhaitez garder le même",
                   required: false,
                   input_html: { autocomplete: "new-password" }, placeholder: "********" %>
       <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" }, placeholder: "********" %>
       <%= f.input :current_password,
-                  hint: "pour modifier les nouveaulles infos, nous avons besoin de votre m.d.p",
+                  hint: "Pour modifier les nouveaulles infos, nous avons besoin de votre mot de passe",
                   required: true,
                   input_html: { autocomplete: "current-password" }, placeholder: "********" %>
     </div>
@@ -30,17 +32,15 @@
       <%= f.button :submit, "Update" %>
     </div>
   <% end %>
+    <%= link_to "Me déconnecter", destroy_user_session_path, class: "delete-button", data: { turbo_confirm: "Etes-vous sûr ?", turbo_method: :delete } %>
+
+   <div class="d-flex align-items-center unhappy-div">
+      <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "For real??" }, method: :delete, class: "btn btn-link rounded" %>
+    </div>
 </section>
 
-  <div class="delete-button">
-    <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_confirm: "Etes-vous sûr ?", turbo_method: :delete }%>
-  </div>
 
-  <div class="delete-account">
+
+  <%# <div class="delete-account">
     <h3>Supprimer mon compte</h3>
-  </div>
-
-  <div class="d-flex align-items-center unhappy-div">
-    <div><p>Insatisfait?</p></div>
-    <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "For real??" }, method: :delete, class: "btn btn-link rounded" %>
-  </div>
+  </div> %>
