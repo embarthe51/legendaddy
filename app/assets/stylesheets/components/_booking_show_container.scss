@@ -15,17 +15,25 @@
     }
   }
   .delete-btn {
-    align-items: flex-end;
-    i {
-      color: $blue
-    }
+   display: block;
+   width: fit-content;
+    margin-top: 2em;
+    color: white;
+    background-color: white;
+    border-radius: 0rem 0rem 0rem 0.4rem;
+    text-decoration: none;
+    padding: 6px 12px;
+    margin-left: 11px;
+    font-size: 14px;
+    border: 2px solid red;
+    color: red;
   }
+}
 
   .blue-button {
     margin-top: 2em;
     width: 100%;
   }
-}
 
 .review-star {
   color: $yellow;
