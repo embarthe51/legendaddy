@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Dancing+Script:wght@400;700&family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,600&family=Oswald:wght@300;400;500;600;700&family=Righteous&display=swap');
+
 .booking-show-container {
   color: white;
   .img-div-banner {
@@ -23,17 +25,18 @@
     border-radius: 0rem 0rem 0rem 0.4rem;
     text-decoration: none;
     padding: 6px 12px;
-    margin-left: 11px;
-    font-size: 14px;
+    font-size: 20px;
     border: 2px solid red;
+    border-radius: 5px;
     color: red;
+    position: absolute;
+    right: 10px;
+    i {
+      color: red;
+      font-size: 40px;
+    }
   }
 }
-
-  .blue-button {
-    margin-top: 2em;
-    width: 100%;
-  }
 
 .review-star {
   color: $yellow;
@@ -46,4 +49,5 @@
     margin: 0 auto;
     text-align: center;
   }
+  width: 100%;
 }
