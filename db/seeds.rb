@@ -69,7 +69,7 @@ Kid.create!(
 )
 puts "Creating activities..."
 
-url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=&rows=40&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants"
+url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=date_start%3A%5B2022-12-08T23%3A00%3A00Z+TO+2022-12-11T22%3A59%3A59Z%5D&rows=40&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants&exclude.tags=Innovation&exclude.tags=Art+contemporain&exclude.tags=Spectacle+musical&exclude.tags=BD&exclude.tags=Concert&exclude.tags=Musique&exclude.tags=Sport&exclude.tags=Histoire&exclude.tags=Th%C3%A9%C3%A2tre"
 activities_serialized = URI.open(url).read
 activities = JSON.parse(activities_serialized)
 
@@ -106,7 +106,6 @@ activities["records"].each do |activity|
     current_activity.tag_list.add(tag) unless /Enfants/.match?(tag)
   end
 
-  # current_activity.tag_list.add(activity["fields"]["tags"])
   file = URI.open(activity["fields"]["cover_url"].nil? ? "https://images.unsplash.com/photo-1491013516836-7db643ee125a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" : activity["fields"]["cover_url"])
   current_activity.photos.attach(io: file, filename: activity["fields"]["image_couverture"].nil? ? "filename" : activity["fields"]["image_couverture"]["filename"], content_type: activity["fields"]["image_couverture"].nil? ?  "image/jpeg" : activity["fields"]["image_couverture"]["mimetype"])
   current_activity.save!
