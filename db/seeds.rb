@@ -60,12 +60,12 @@ Kid.create!(
 
 Kid.create!(
   first_name: 'Francesca',
-  user: User.where(email: "cooldad@gmail.com")
+  user: User.where(email: "cooldad@gmail.com").first
 )
 
 Kid.create!(
   first_name: 'Alicianna',
-  user: User.where(email: "cooldad@gmail.com")
+  user: User.where(email: "cooldad@gmail.com").first
 )
 puts "Creating activities..."
 
