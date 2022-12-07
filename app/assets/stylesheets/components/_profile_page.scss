@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Dancing+Script:wght@400;700&family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,600&family=Oswald:wght@300;400;500;600;700&family=Righteous&display=swap');
 
+.legend-form-container {
+  height: 700px;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  flex-direction: column;
+  align-items: flex-end;
+  form { width: unset; }
+  .form-actions {
+    text-align: right;
+    padding: 0 20px;
+  }
+}
 .modification-content{
-  margin: 20px 20px 10px 20px;
-  color: rgb(255, 255, 255);
+  margin: 5px 10px 20px 10px;
+  color: #6658D3;
 }
 
 .modification-content h2{
@@ -12,7 +25,7 @@
 
 .delete-account{
   margin: 20px 20px 10px 20px;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 
@@ -27,22 +40,24 @@
 
 .rounded{
   border-radius: 5px !important;
+  margin-left: 4rem;
 }
 
 .delete-button{
   margin: 20px;
-  padding: 10px;
+  padding: 8px 10px;
   border: none;
   text-decoration: none;
-  text-align: center;
+  display: flex;
+  align-items: center;
   border-radius: 5px;
-  background-color: #ffffff;
-  width: 150px;
+  background-color: white;
+  border: 2px solid #6658D3;
   height: 40px;
 }
 
-.delete-button a{
-  color: #6658D3;
-
+a.delete-button{
+  color:#6658D3;
   text-decoration: none;
+  text-align: center;
 }
