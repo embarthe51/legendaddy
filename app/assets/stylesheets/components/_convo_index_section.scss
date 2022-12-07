@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Dancing+Script:wght@400;700&family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,600&family=Oswald:wght@300;400;500;600;700&family=Righteous&display=swap');
+
+
 .convo-index-section {
   color: white;
+  padding-top: 20px;
+  h2 {font-family: 'DM Sans', sans-serif;}
   div {
     margin-top: 3rem;
     padding: 1rem;
@@ -8,8 +13,8 @@
     background-color: rgba(255, 255, 255, 0.1);
     margin-top: 3rem;
     text-align: center;
-
     a {
+      position: relative;
       padding: 1rem;
       padding-top: 1.7rem;
       border-radius: 0.7rem;
@@ -22,6 +27,47 @@
       background-color: white;
       text-decoration: none;
       line-height: 0.5rem;
+      i {
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+        color: #6759D4;
+        animation: 1s ease-in-out slide-spin;
+      }
     }
   }
+
+  @keyframes slide-spin {
+    0% {
+      transform: translate(-10rem);
+    }
+    65% {
+      transform: translate(1em) rotate(10deg);
+    }
+    75% {
+      transform: translate(-0.5rem) rotate(-5deg);
+    }
+    85% {
+      transform: translate(0.3rem) rotate(2deg);
+    }
+    100% {
+      transform: translate(0rem);
+    }
+  }
+}
+
+.return_button{
+  padding: 8px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #ffffff52;
+  transition: all 250ms ease;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
 }

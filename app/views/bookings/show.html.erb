@@ -6,6 +6,7 @@
           cl_image_path(@booking.activity.photos.first.key) :
           image_url('https://cdn.pixabay.com/photo/2016/09/08/22/43/books-1655783_1280.jpg') %>)">
 
+
     <h2><%= @booking.activity.title %></h2>
 
   </div>
@@ -21,9 +22,10 @@
       <%= render 'activities/trigger_modal', dad: dad %>
     <% end %>
 
+      <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
+        <i class="fa-solid fa-square-xmark"></i>
+        Supprimer ma réservation
+      <% end %>
 
-    <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
-      <i class="fa-solid fa-trash"></i>
-    <% end %>
   </div>
 </article>
