@@ -22,13 +22,13 @@ puts "creating users..."
 User.create!(
   email: "cooldude@gmail.com",
   password: "123456789",
-  pseudo: "Franck_du_93"
+  pseudo: "Legendaddy_du_93"
 )
 
 User.create!(
   email: "cooldad@gmail.com",
   password: "123456789",
-  pseudo: "Daddy_Niko"
+  pseudo: "FrontEnd_dad"
 )
 
 User.create!(
@@ -39,17 +39,17 @@ User.create!(
 
 puts "creating kids........."
 Kid.create!(
-  first_name: "Etta",
+  first_name: "Anna",
   user: User.where(email: "cooldude@gmail.com").first
 )
 
 Kid.create!(
-  first_name: "Greta",
+  first_name: "Lisa",
   user: User.where(email: "cooldude@gmail.com").first
 )
 
 Kid.create!(
-  first_name: "Thunberg",
+  first_name: "Laura",
   user: User.where(email: "cooldude@gmail.com").first
 )
 
@@ -114,7 +114,7 @@ end
 
 activity = Activity.new(
   title: "Social bar",
-  description: "bois une bière avec ton enfant!",
+  description: "bois une bière avec ton enfant! Un programme évènementiel de folie ( karaoke, blindtests, concerts, improvisation, stand-up), un espace pour fêter vos anniversaires, pots de départs, ou tout simplement vous retrouver entre collègues et ami.e.s. Nous proposons une carte très diversifiée ( bières, cocktails, tapas) et vous pouvez venir bruncher chaque samedi à partir de 12H00",
   url: "https://www.social-bar.org/paris/",
   address: "25, rue Villiot, 75012 Paris",
   workshop: false,
@@ -248,14 +248,14 @@ activity.save!
 puts "creating availabilities.........................................................................."
 
 Availability.create!(
-  start_at: DateTime.new(2022, 12, 2, 9, 0, 0),
-  end_at: DateTime.new(2022, 12, 2, 18, 0, 0),
+  start_at: DateTime.new(2022, 12, 9, 9, 0, 0),
+  end_at: DateTime.new(2022, 12, 9, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
 
 Availability.create!(
-  start_at: DateTime.new(2022, 12, 5, 12, 0, 0),
-  end_at: DateTime.new(2022, 12, 5, 13, 0, 0),
+  start_at: DateTime.new(2022, 12, 10, 14, 0, 0),
+  end_at: DateTime.new(2022, 12, 10, 18, 0, 0),
   user: User.where(email: "cooldude@gmail.com").first
 )
 
