@@ -1,3 +1,6 @@
+<%= link_to activities_path, class: 'return_button' do %>
+  <i class="fa-solid fa-arrow-left"></i>
+<% end %>
 <section class="convo-index-section">
   <h2>Mes convos</h2>
   <div>
@@ -8,8 +11,6 @@
       <%= link_to convo_messages_path(item) do %>
         <p><strong>avec:</strong>  <%= item.receiver == current_user ? item.sender.email.truncate(12) : item.receiver.email.truncate(12) %></p>
         <p><strong>dernier message:</strong> <%= item.messages.last.content.truncate(10) %></p>
-
-
       <% end %>
     <% end %>
   </div>
