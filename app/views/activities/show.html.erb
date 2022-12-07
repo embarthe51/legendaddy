@@ -60,7 +60,7 @@
                 <%= simple_form_for [@user_availability, @activity, @booking] do |form| %>
                   <p>Avec :</p>
                   <%= form.input :kid, collection: @kids_and_ids %>
-                  <%= form.submit value: "Je réserve" %>
+                  <%= form.submit value: "Je réserve", class:"yellow-button mt-3"%>
                 <% end %>
               </div>
             </section>
