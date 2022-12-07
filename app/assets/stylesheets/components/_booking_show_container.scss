@@ -17,30 +17,36 @@
     }
   }
   .delete-btn {
-   display: block;
-   width: fit-content;
-    margin-top: 2em;
-    color: white;
-    background-color: white;
-    border-radius: 0rem 0rem 0rem 0.4rem;
-    text-decoration: none;
-    padding: 6px 12px;
-    font-size: 20px;
-    border: 2px solid red;
-    border-radius: 5px;
-    color: red;
+  //  display: block;
+  //  width: fit-content;
+  //   margin-top: 2em;
+  //   color: white;
+  //   background-color: white;
+  //   border-radius: 0rem 0rem 0rem 0.4rem;
+  //   text-decoration: none;
+  //   padding: 6px 12px;
+  //   font-size: 20px;
+  //   border: 2px solid red;
+  //   border-radius: 5px;
+  //   color: red;
     position: absolute;
     right: 10px;
-    i {
-      color: red;
-      font-size: 40px;
-    }
+    font-size: 14px;
+    margin-top: 20px;
+    // i {
+    //   color: red;
+    //   font-size: 40px;
+    // }
   }
 }
 
 .review-star {
   color: $yellow;
+}
 
+.reviews-booking {
+  text-align: right;
+  font-size: 17px;
 }
 
 #booking-show{

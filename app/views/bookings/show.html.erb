@@ -12,20 +12,17 @@
   </div>
 
   <div class="info-card">
+    <div class="reviews-booking">
+      <%= render 'activities/reviews', activity: @booking.activity %>
+    </div>
     <br>
-    <%= render 'activities/reviews', activity: @booking.activity %>
-    <br>
-    <%# <p><%= @booking.formated_booking_start %>
-    <p>Retrouvez les papas qui ont aussi réservé cette activité :</p>
+    <p class="font-style mt-2"><i class="fa-solid fa-location-dot"></i>  <%= @booking.activity.address %></p>
+    <p class="mt-2">Retrouvez les papas qui ont aussi réservé cette activité :</p>
     <% @other_legendads_attending.each do |dad| %>
       <p><%= dad.pseudo %></p>
       <%= render 'activities/trigger_modal', dad: dad %>
     <% end %>
 
-      <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
-        <i class="fa-solid fa-square-xmark"></i>
-        Annuler mon activité
-      <% end %>
-
+    <%= link_to "Annuler mon activité", booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" %>
   </div>
 </article>
