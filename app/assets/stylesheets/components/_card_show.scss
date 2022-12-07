@@ -93,6 +93,7 @@
   .return_button{
     padding: 8px;
     border: none;
+    text-align: center;
     text-decoration: none;
     border-radius: 5px;
     background-color: #ffffff52;
@@ -100,7 +101,7 @@
     position: absolute;
     z-index: 1;
     top: 20px;
-    left: 20px;
+    right: 20px;
     width: 40px;
     height: 40px;
   }

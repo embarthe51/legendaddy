@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,500;1,700&family=Dancing+Script:wght@400;700&family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,600&family=Oswald:wght@300;400;500;600;700&family=Righteous&display=swap');
+
+
 .convo-index-section {
   color: white;
+  padding-top: 20px;
+  h2 {font-family: 'DM Sans', sans-serif;}
   div {
     margin-top: 3rem;
     padding: 1rem;
@@ -24,4 +29,20 @@
       line-height: 0.5rem;
     }
   }
+}
+
+.return_button{
+  padding: 8px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #ffffff52;
+  transition: all 250ms ease;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
 }
