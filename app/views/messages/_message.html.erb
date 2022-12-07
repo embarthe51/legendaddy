@@ -1,7 +1,4 @@
-<div id="message-<%= message.id%>" class="<%="my-msg" if message.user == current_user %>">
-  <small>
-    <p>message de:<%= message.user.pseudo %></p>
-    <p>à <%= message.created_at.strftime('%H h %M, le %d /%m /%Y') %> </p>
-  </small>
-  <p><%= message.content %></p>
+<div id="message-<%= message.id%>-<%= message.user.pseudo%>" class="<%="my-msg" if message.user == current_user %>">
+    <p><small><strong> à <%= message.created_at.strftime('%H h %M, le %d /%m /%Y') %> </strong></small></p>
+    <p><%= message.content %></p>
 </div>

@@ -1,8 +1,10 @@
-<div class="convo-with-section" data-controller="convo-subscription" data-convo-subscription-convo-id-value="<%= @convo.id %>" data-convo-subscription-user-email-value="<%= current_user.pseudo%>">
-  <h2>Convo entre: </h2>
-  <h2><%= @convo.sender.pseudo %> </h2>
-  <h2>et</h2>
-  <h2><%= @convo.receiver.pseudo %></h2>
+<div class="convo-with-section"
+      data-controller="convo-subscription"
+      data-convo-subscription-convo-id-value="<%= @convo.id %>"
+      data-convo-subscription-user-email-value="<%= current_user.pseudo%>"
+      style="background: url('https://cdn.pixabay.com/photo/2016/12/30/19/33/children-1941336_1280.png'), linear-gradient(#0000005c, #0000005c)">
+  <h2>discussion avec: <%= current_user == @convo.sender ? @convo.receiver.pseudo : @convo.sender.pseudo %></h2>
+
   <section data-convo-subscription-target="messages">
     <% @messages.each do |message| %>
       <%= render message %>
