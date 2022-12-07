@@ -1,6 +1,6 @@
 <div id="message-<%= message.id%>" class="<%="my-msg" if message.user == current_user %>">
   <small>
-    <p>message de:<%= message.user.email %></p>
+    <p>message de:<%= message.user.pseudo %></p>
     <p>à <%= message.created_at.strftime('%H h %M, le %d /%m /%Y') %> </p>
   </small>
   <p><%= message.content %></p>

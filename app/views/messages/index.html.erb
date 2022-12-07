@@ -1,8 +1,8 @@
 <div class="convo-with-section" data-controller="convo-subscription" data-convo-subscription-convo-id-value="<%= @convo.id %>" data-convo-subscription-user-email-value="<%= current_user.email%>">
   <h2>Convo entre: </h2>
-  <h2><%= @convo.sender.email %> </h2>
+  <h2><%= @convo.sender.pseudo %> </h2>
   <h2>et</h2>
-  <h2><%= @convo.receiver.email %></h2>
+  <h2><%= @convo.receiver.pseudo %></h2>
   <section data-convo-subscription-target="messages">
     <% @messages.each do |message| %>
       <%= render message %>

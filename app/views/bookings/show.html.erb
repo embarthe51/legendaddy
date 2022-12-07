@@ -17,7 +17,7 @@
     <p><%= @booking.formated_booking_start %></p>
     <h2>Retrouvez les papas qui ont aussi réservé cette activité :</h2>
     <% @other_legendads_attending.each do |dad| %>
-      <p><%= dad.email %></p>
+      <p><%= dad.pseudo %></p>
       <%= render 'activities/trigger_modal', dad: dad %>
     <% end %>
 
