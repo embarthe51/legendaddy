@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@activity.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @activity.description %>
+<% content_for :meta_image, cl_image_path(@activity.photo.path) if @activity.photo.present? %>
+
 <div class="activity-content">
   <div class="box-description">
     <div class="activity-image">
