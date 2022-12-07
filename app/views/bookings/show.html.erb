@@ -9,20 +9,21 @@
     <h2><%= @booking.activity.title %></h2>
 
   </div>
-  <h5><strong>Activité pour </strong> <%= @booking.kid.first_name.capitalize %></h5>
-  <p><%= @booking.formated_booking_start %></p>
-  <h5><strong>Horraire d'ouverture:</strong></h5>
-  <%= sanitize @booking.activity.formated_open_times %>
-  <br>
-  <%= render 'activities/reviews', activity: @booking.activity %>
-  <br>
-  <h5>Les papas qui ont booké cet activité </h5>
-  <% @other_legendads_attending.each do |dad| %>
-    <p><%= dad.email %></p>
-    <%= button_to 'envoyer un message', convos_path, params: { receiver: dad } %>
-  <% end %>
+  <div class="info-card">
+    <h2><strong>Activité pour </strong> <%= @booking.kid.first_name.capitalize %></h2>
+    <br>
+    <%= render 'activities/reviews', activity: @booking.activity %>
+    <br>
+    <p><%= @booking.formated_booking_start %></p>
+    <h2>Retrouvez les papas qui ont aussi réservé cette activité :</h2>
+    <% @other_legendads_attending.each do |dad| %>
+      <p><%= dad.email %></p>
+      <%= render 'activities/trigger_modal', dad: dad %>
+    <% end %>
 
-  <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
-    <i class="fa-solid fa-trash"></i>
-  <% end %>
+
+    <%= link_to booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </div>
 </article>
