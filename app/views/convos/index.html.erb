@@ -7,6 +7,7 @@
     <% if @convos.empty? %>
       <article>&#x1F40C; &#x1F41E; &#x1F423; <h2>vous n'avez pas de discussions ouvertes</h2> &#x1F427; &#x1F42D; &#x1F41D;</article>
     <% else %>
+
     <h4>vous avez <%= @convos.length %> discussion(s)</h4>
       <% @convos.each do |item| %>
         <%= link_to convo_messages_path(item) do %>
@@ -17,6 +18,7 @@
           <% else %>
             <p><strong>dernier message:</strong> <%= item.messages.last.content.truncate(10) %></p>
           <% end %>
+
         <% end %>
       <% end %>
     <% end %>

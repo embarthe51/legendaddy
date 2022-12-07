@@ -21,17 +21,20 @@ User.destroy_all
 puts "creating users..."
 User.create!(
   email: "cooldude@gmail.com",
-  password: "123456789"
+  password: "123456789",
+  pseudo: "Franck_du_93"
 )
 
 User.create!(
   email: "cooldad@gmail.com",
-  password: "123456789"
+  password: "123456789",
+  pseudo: "Daddy_Niko"
 )
 
 User.create!(
   email: "daddycool@gmail.com",
-  password: "123456789"
+  password: "123456789",
+  pseudo: "Best_dad"
 )
 
 puts "creating kids........."
