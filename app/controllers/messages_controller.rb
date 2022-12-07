@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   def index
     unless @convo.sender == current_user || @convo.receiver == current_user
-      redirect_to convos_path, notice: "Vous n'avez pas authorisation"
+      redirect_to convos_path, notice: "Vous n'avez pas d'authorisation"
     end
     @messages = @convo.messages
     @message = Message.new
