@@ -52,8 +52,16 @@ class Activity < ApplicationRecord
     end
   end
 
+  def format_days_french
+    days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
+    open_days.map { |i| days[i] }.join(', ')
+  end
+
   def format_open_days
-    open_days.map { |item| Date::DAYNAMES[item.to_i] }.join(', ')
+    # Décommenter pout avoir les jours en Anglais.
+    # open_days.map { |item| Date::DAYNAMES[item.to_i] }.join(', ')
+    # Commenter pour enlever les jours en Français
+    format_days_french
   end
 
   def self.filtered_activities(user)
