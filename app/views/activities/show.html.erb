@@ -38,12 +38,8 @@
 <!-- Button trigger modal -->
 
   <div data-controller="togglemodal" class="space-bottom">
-    <div class="d-flex blue-button align-items-center">
-      <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
-      <button type="button" class="" data-action="click->togglemodal#slideopen">
-        M'inscrire
-      </button>
-    </div>
+    <%= render 'trigger_modal' %>
+
       <!-- Modal -->
       <div class="custom-modal" data-togglemodal-target="modal">
         <div class="modal-dialog modal-dialog-centered">

@@ -1,11 +1,5 @@
 .booking-show-container {
-  background-color: white;
-  margin: 1rem;
-  border-radius: 1rem;
-  padding: 1rem;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  color: black;
+  color: white;
   .img-div-banner {
     min-height: 15rem;
     min-width: 10rem;
@@ -21,15 +15,27 @@
     }
   }
   .delete-btn {
-    margin: 47%;
-  }
-  i {
-    color: $blue
+    align-items: flex-end;
+    i {
+      color: $blue
+    }
   }
 
+  .blue-button {
+    margin-top: 2em;
+    width: 100%;
+  }
 }
 
 .review-star {
   color: $yellow;
 
+}
+
+#booking-show{
+  p {
+    color: #6658D3;
+    margin: 0 auto;
+    text-align: center;
+  }
 }

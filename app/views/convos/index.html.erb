@@ -5,13 +5,17 @@
   <h2>Mes convos</h2>
   <div>
     <% if @convos.empty? %>
-      <article>&#x1F40C; &#x1F41E; &#x1F423; <h2>vous n'avez pas de convos</h2> &#x1F427; &#x1F42D; &#x1F41D;</article>
-    <% end %>
+      <article>&#x1F40C; &#x1F41E; &#x1F423; <h2>vous n'avez pas de messages</h2> &#x1F427; &#x1F42D; &#x1F41D;</article>
+    <% else %>
     <% @convos.each do |item| %>
       <%= link_to convo_messages_path(item) do %>
-        <p><strong>avec:</strong>  <%= item.receiver == current_user ? item.sender.email.truncate(12) : item.receiver.email.truncate(12) %></p>
-        <p><strong>dernier message:</strong> <%= item.messages.last.content.truncate(10) %></p>
+        <% if item.messages.empty? %>
+          <article>&#x1F40C; &#x1F41E; &#x1F423; <h2>vous n'avez pas de messages</h2> &#x1F427; &#x1F42D; &#x1F41D;</article>        <% else %>
+          <p><strong>avec:</strong>  <%= item.receiver == current_user ? item.sender.email.truncate(12) : item.receiver.email.truncate(12) %></p>
+          <p><strong>dernier message:</strong> <%= item.messages.last.content.truncate(10) %></p>
+        <% end %>
       <% end %>
+    <% end %>
     <% end %>
   </div>
 </section>

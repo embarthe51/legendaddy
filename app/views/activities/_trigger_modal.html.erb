@@ -1,8 +1,30 @@
-  <div class="home_btn">
-    <div class="d-flex blue-button align-items-center">
+<% if current_page?(controller: "pages", action: "home") %>
+  <%= link_to availabilities_path do %>
+    <div class="home_btn">
+      <div class="d-flex blue-button align-items-center" id="home">
+        <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
+        <p>Renseigne tes dispos </p>
+        <%# <button type="button" class="" data-action="click->togglemodal#slideopen"> %>
+        <%# </button> %>
+      </div>
+    </div>
+  <% end %>
+<% elsif current_page?(controller: "bookings", action: "show") %>
+  <%= link_to convos_path, params: { receiver: dad } do%>
+  <div class="home_btn" >
+    <div class="d-flex blue-button align-items-center" id="booking-show">
       <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
-      <button type="button" class="" data-action="click->togglemodal#slideopen">
-       <%= link_to "Renseigne tes dispos !", availabilities_path %>
-      </button>
+      <p>Envoyer un message</p>
+      <%# <button type="button" class="" data-action="click->togglemodal#slideopen"> %>
+      <%# </button> %>
     </div>
   </div>
+  <% end %>
+<% elsif current_page?(controller: "activities", action: "show") %>
+  <div class="d-flex blue-button align-items-center">
+      <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
+      <button type="button" class="" data-action="click->togglemodal#slideopen">
+        M'inscrire
+      </button>
+  </div>
+<% end %>
