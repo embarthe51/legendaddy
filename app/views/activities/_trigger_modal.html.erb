@@ -1,7 +1,7 @@
 <% if current_page?(controller: "pages", action: "home") %>
   <%= link_to availabilities_path do %>
     <div class="home_btn">
-      <div class="d-flex blue-button align-items-center">
+      <div class="d-flex blue-button align-items-center" id="home">
         <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
         <p>Renseigne tes dispos </p>
         <%# <button type="button" class="" data-action="click->togglemodal#slideopen"> %>
@@ -11,8 +11,8 @@
   <% end %>
 <% elsif current_page?(controller: "bookings", action: "show") %>
   <%= link_to convos_path, params: { receiver: dad } do%>
-  <div class="home_btn">
-    <div class="d-flex blue-button align-items-center">
+  <div class="home_btn" >
+    <div class="d-flex blue-button align-items-center" id="booking-show">
       <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
       <p>Envoyer un message</p>
       <%# <button type="button" class="" data-action="click->togglemodal#slideopen"> %>
@@ -26,5 +26,5 @@
       <button type="button" class="" data-action="click->togglemodal#slideopen">
         M'inscrire
       </button>
-    </div>
+  </div>
 <% end %>
