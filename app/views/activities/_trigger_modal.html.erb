@@ -10,15 +10,15 @@
     </div>
   <% end %>
 <% elsif current_page?(controller: "bookings", action: "show") %>
-  <%= link_to convos_path, params: { receiver: dad } do%>
-  <div class="home_btn" >
-    <div class="d-flex blue-button align-items-center" id="booking-show">
-      <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
-      <p>Envoyer un message</p>
-      <%# <button type="button" class="" data-action="click->togglemodal#slideopen"> %>
-      <%# </button> %>
+  <%= button_to convos_path, params: { receiver: dad } do %>
+    <div class="home_btn" >
+      <div class="d-flex blue-button align-items-center" id="booking-show">
+        <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
+        <p>Envoyer un message</p>
+        <%# <button type="button" class="" data-action="click->togglemodal#slideopen"> %>
+        <%# </button> %>
+      </div>
     </div>
-  </div>
   <% end %>
 <% elsif current_page?(controller: "activities", action: "show") %>
   <div class="d-flex blue-button align-items-center">
