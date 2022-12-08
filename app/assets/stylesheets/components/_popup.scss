@@ -1,0 +1,36 @@
+.popup {
+  background: white;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  height: 60vh;
+  overflow-y: auto;
+  border-top-left-radius: 3em;
+  border-top-right-radius: 3em;
+  transform: translateY(100%);
+  transition: transform 300ms ease-in-out;
+  width: 100%;
+  border-top: solid 4px white;
+
+  &.active {
+    transform: translateY(0%);
+  }
+
+  .activity-review {
+    color: black;
+
+    .title {
+      margin-left: 18px;
+      margin-right: 18px;
+    }
+
+    .the-review {
+      background: $navy;
+      margin-bottom: 1em;
+      color: white;
+      border-radius: 20px;
+      padding-left: 20px;
+      padding-top: 15px;
+    }
+  }
+}

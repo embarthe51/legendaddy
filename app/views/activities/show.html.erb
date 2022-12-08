@@ -2,7 +2,7 @@
 <% content_for :meta_description, @activity.description %>
 <% content_for :meta_image, cl_image_path(@activity.photos.first.key) if @activity.photos.present? %>
 
-<div class="activity-content">
+<div class="activity-content" data-controller="popup" data-action="click->popup#close touch->popup#close">
   <div class="box-description">
     <div class="activity-image">
       <% if @activity.photos.any? %>
@@ -12,65 +12,65 @@
       <% end %>
       <%= render 'back_arrow' %>
     </div>
-      <h2 class="secondary_title"><%= @activity.title %></h2>
-        <div class="info-card">
-          <%= render 'reviews', activity: @activity %>
-          <br>
-          <br>
-          <h6 class="font-style"><i class="fa-solid fa-location-dot"></i>  <%= @activity.address%></h6>
-          <br>
-          <i class="fa-solid fa-link"></i> <%= link_to 'Site web', @activity.url %>
-          <br>
-          <br>
-          <% if @activity.price %>
-            <p><i class="fa-solid fa-money-check"></i> <%= @activity.price %></p>
-          <% end %>
-            <div class="description-card">
-              <p><%= @activity.description.html_safe %></p>
-            </div>
-        <div>
-          <p><%= sanitize @activity.formated_open_times %></p>
+    <h2 class="secondary_title"><%= @activity.title %></h2>
+    <div class="info-card">
+      <%= render 'reviews', activity: @activity %>
+      <br>
+      <br>
+      <h6 class="font-style"><i class="fa-solid fa-location-dot"></i>  <%= @activity.address%></h6>
+      <br>
+      <p><i class="fa-solid fa-link"></i> <%= link_to 'Site web', @activity.url %></p>
+      <br>
+      <br>
+      <% if @activity.price %>
+        <p><i class="fa-solid fa-money-check"></i> <%= @activity.price %></p>
+      <% end %>
+      <div class="description-card">
+        <p><%= @activity.description.html_safe %></p>
+      </div>
+      <p><%= sanitize @activity.formated_open_times %></p>
     </div>
+
+  </div>
+  <div id="popup" class="popup" data-popup-target="container">
+    <%= render "reviews/reviews", activity: @activity, reviews: @activity.reviews %>
+  </div>
 </div>
 
 <!-- Button trigger modal -->
 
-  <div data-controller="togglemodal" class="space-bottom">
-    <%= render 'trigger_modal' %>
-
-      <!-- Modal -->
-      <div class="custom-modal" data-togglemodal-target="modal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header legend-form-container">
-              <h5 class="modal-title" id="exampleModalLabel">Réservation</h5>
-              <button type="button" class="btn-close"  data-action="click->togglemodal#slideopen" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-footer">
-              <%# <button type="button" data-action="click->togglemodal#slideopen" class="btn btn-secondary rounded" data-bs-dismiss="modal">Fermer</button> %>
-            </div>
-            <section class="legend-form-container">
-              <div class="d-flex flex-column justify-content-center">
-                <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
-                <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
-
-                <%= simple_form_for [@user_availability, @activity, @booking] do |form| %>
-                  <p>Avec :</p>
-                  <%= form.input :kid, collection: @kids_and_ids %>
-                  <%= form.submit value: "Je réserve", class:"yellow-button mt-3"%>
-                <% end %>
-              </div>
-            </section>
-          </div>
+<div data-controller="togglemodal" class="space-bottom">
+  <%= render 'trigger_modal' %>
+  <!-- Modal -->
+  <div class="custom-modal" data-togglemodal-target="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header legend-form-container">
+          <h5 class="modal-title" id="exampleModalLabel">Réservation</h5>
+          <button type="button" class="btn-close"  data-action="click->togglemodal#slideopen" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
+        <div class="modal-footer">
+          <%# <button type="button" data-action="click->togglemodal#slideopen" class="btn btn-secondary rounded" data-bs-dismiss="modal">Fermer</button> %>
+        </div>
+        <section class="legend-form-container">
+          <div class="d-flex flex-column justify-content-center">
+            <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
+            <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
+
+            <%= simple_form_for [@user_availability, @activity, @booking] do |form| %>
+              <p>Avec :</p>
+              <%= form.input :kid, collection: @kids_and_ids %>
+              <%= form.submit value: "Je réserve", class:"yellow-button mt-3"%>
+            <% end %>
+          </div>
+        </section>
       </div>
     </div>
   </div>
-    <div class="map" style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
+</div>
+<div class="map" style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
