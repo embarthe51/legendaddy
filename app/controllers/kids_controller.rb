@@ -9,6 +9,13 @@ class KidsController < ApplicationController
     redirect_to edit_user_registration_path if @kid.save
   end
 
+  def destroy
+    @kid = Kid.find(params[:id])
+    Booking.where(kid: @kid).destroy_all
+    @kid.destroy
+    redirect_to edit_user_registration_path
+  end
+
   private
 
   def kid_params
