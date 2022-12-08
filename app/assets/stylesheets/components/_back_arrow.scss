@@ -1,0 +1,24 @@
+.return_button{
+  padding: 8px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #ffffff2c;
+  transition: all 250ms ease;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+}
+
+.return_button:hover{
+  background: #ffffff89;
+  color: #ffffff;
+}
+
+.return_button a:hover{
+  color: #6658D3;
+}
