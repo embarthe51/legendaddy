@@ -1,8 +1,5 @@
-
 <article class="booking-show-container">
-  <%= link_to :back, class: 'return_button' do %>
-    <i class="fa-solid fa-arrow-left"></i>
-  <% end %>
+  <%= render 'shared/back_arrow' %>
   <div class="img-div-banner"
         style="background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),
         url(<%= @booking.activity.photos.any? ?
@@ -16,7 +13,7 @@
       </div>
       <div class="kid-name"><%=@booking.kid.first_name.capitalize %></div>
     </h2>
-    <h3>le <%= @booking.start_at.strftime("%d %b %y")%>, de <%= @booking.start_at.strftime("%H:%M")%> a <%= @booking.end_at.strftime("%H:%M")%></h3>
+    <h3>le <%= @booking.start_at.strftime("%d %b %y")%>, de <%= @booking.start_at.strftime("%H:%M")%> à <%= @booking.end_at.strftime("%H:%M")%></h3>
   </div>
 
   <div class="info-card">
@@ -29,9 +26,24 @@
     <p class="mt-2">Chat avec les autres papas qui ont aussi réservé cette activité :</p>
 
     <%= "vous etes le seul legendaddy inscrit" if @other_legendads_attending.count == 1 && @other_legendads_attending.first == current_user %>
-    <% @other_legendads_attending.each do |dad| %>
-      <%= render 'activities/trigger_modal', dad: dad if dad != current_user %>
-    <% end %>
+    <div class="legendads_avatar">
+      <% @other_legendads_attending.each do |dad| %>
+        <% if dad != current_user  %>
+          <% if (Convo.where(sender_id: current_user, receiver_id: dad).or(Convo.where(receiver_id: current_user, sender_id: dad))).empty? %>
+          <%# Si on a pas de convos avec ce dad on affiche ce bouton ! %>
+            <%= link_to convos_path(receiver: dad), data: { turbo_method: :post }, class:"" do %>
+              <%= cl_image_tag dad.photo.key, class:"avatar-large dad" %>
+            <% end %>
+          <% else %>
+            <%# Sinon affiche ce bouton qui mène vers l'index %>
+            <%= link_to convos_path(receiver: dad), class:"" do %>
+              <%= cl_image_tag dad.photo.key, class:"avatar-large dad" %>
+            <% end %>
+          <% end %>
+
+        <% end %>
+      <% end %>
+    </div>
     <br>
     <%= link_to "Annuler mon activité", booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" %>
   </div>

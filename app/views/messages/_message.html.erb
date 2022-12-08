@@ -1,5 +1,4 @@
-<%= render 'activities/back_arrow' %>
-<div id="message-<%= message.id%>-<%= message.user.pseudo%>" class="<%="my-msg" if message.user == current_user %>">
+<div id="message-<%= message.id %>-<%= message.user.pseudo%>" class="<%="my-msg" if message.user == current_user %>">
     <p><small><strong> à <%= message.created_at.strftime('%H h %M, le %d /%m /%Y') %> </strong></small></p>
     <p><%= message.content %></p>
 </div>

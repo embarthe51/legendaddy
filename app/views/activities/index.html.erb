@@ -1,5 +1,5 @@
+<%= render 'shared/back_arrow', opacity: 0.3 %>
 <div class="" data-controller="activity-search">
-  <%= render 'back_arrow' %>
   <div class="tags">
     <%= simple_form_for :query,
                       url: params[:availability_id].present? ? search_availability_activities_path(params[:availability_id]) : search_activities_path,
@@ -24,6 +24,7 @@
                 },
                 item_wrapper_class: 'tag-item'%>
     <% end %>
+
   </div>
 
   <div class="activities_content">

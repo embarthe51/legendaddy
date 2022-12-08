@@ -40,6 +40,17 @@
   }
 }
 
+.legendads_avatar{
+  display: flex;
+  margin-left: 15px;
+  justify-content: center;
+  .dad {
+    position: relative;
+    margin-left: -15px;
+    border: 2px solid $navy;
+  }
+}
+
 .review-star {
   color: $yellow;
 }

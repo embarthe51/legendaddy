@@ -1,6 +1,4 @@
-<%= link_to :back, class: 'return_button' do %>
-  <i class="fa-solid fa-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_arrow' %>
 <section class="convo-index-section">
   <div>
     <% if @convos.empty? %>

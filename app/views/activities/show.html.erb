@@ -2,6 +2,8 @@
 <% content_for :meta_description, @activity.description %>
 <% content_for :meta_image, cl_image_path(@activity.photos.first.key) if @activity.photos.present? %>
 
+<%= render 'shared/back_arrow', opacity: 0.3 %>
+
 <div class="activity-content" data-controller="popup" data-action="click->popup#close touch->popup#close">
   <div class="box-description">
     <div class="activity-image">
@@ -10,7 +12,6 @@
       <% else %>
         <%= image_tag 'papa.jpeg', width: 350, height: 300 %>
       <% end %>
-      <%= render 'back_arrow' %>
     </div>
     <h2 class="secondary_title"><%= @activity.title %></h2>
     <div class="info-card">
