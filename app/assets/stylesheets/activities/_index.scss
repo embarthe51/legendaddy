@@ -1,0 +1,32 @@
+.activity-top-search {
+  display: flex;
+  align-items: center;
+  padding-left: 0.7em;
+  margin: 0 0 1em;
+  overflow: hidden;
+
+  .return_button {
+    position: relative;
+    top: 0;
+    left: 0;
+    flex-shrink: 0;
+  }
+  .tags fieldset {
+    margin-bottom: 0 !important;
+  }
+  .category-wrapper {
+    margin-left: 0;
+    grid-auto-columns: max-content;
+  }
+
+  .tags {
+    overflow-x: auto;
+  }
+
+  .collection_check_boxes {
+    display: inline-flex;
+    align-items: center;
+    span { padding-left: .4em;}
+    img{ width: 20px;}
+  }
+}
