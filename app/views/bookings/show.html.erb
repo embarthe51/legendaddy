@@ -1,5 +1,5 @@
-<article class="booking-show-container">
-  <%= render 'shared/back_arrow' %>
+<%= render 'shared/back_arrow' %>
+<article class="booking-show-container" data-controller="popup" data-action="click->popup#close touch->popup#close">
   <div class="img-div-banner"
         style="background-image: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),
         url(<%= @booking.activity.photos.any? ?
@@ -46,5 +46,9 @@
     </div>
     <br>
     <%= link_to "Annuler mon activité", booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" %>
+  </div>
+
+  <div id="popup" class="popup" data-popup-target="container">
+    <%= render "reviews/reviews", activity: @booking.activity, reviews: @booking.activity.reviews %>
   </div>
 </article>
