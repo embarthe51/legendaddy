@@ -59,6 +59,10 @@ class ActivitiesController < ApplicationController
       @filtered_activities << Activity.on_availability(a)
     end
     @filtered_activities = @filtered_activities.flatten.uniq && @activities
+    tag_arr = @filtered_activities.map{ |activity| activity.tags }.flatten.pluck(:name).uniq
+    @filtered_tags  = ActsAsTaggableOn::Tag.all.select do |tag|
+      tag_arr.include?(tag.name)
+    end
     @markers = @filtered_activities.map do |a|
       {
         lat: a.latitude,
