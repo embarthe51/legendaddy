@@ -1,4 +1,5 @@
 <nav data-controller="navbar" class="legend-navbar" >
+
   <%= link_to edit_user_registration_path do %>
     <i class="fa-regular fa-user <%= "active" if current_page?(edit_user_registration_path) %>"></i>
   <% end %>
@@ -14,5 +15,5 @@
   <%= link_to convos_path do %>
     <i class="fa-regular fa-message <%= "active" if current_page?(convos_path) %>"></i>
   <% end %>
-  
+
 </nav>

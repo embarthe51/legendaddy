@@ -32,6 +32,7 @@
             <% duration = ((booking.end_at.hour - 9) - (booking.start_at.hour - 9)) * 60 %>
             <div class="booking start-at-<%=beg%> duration-<%=duration%> d-flex flex-column justify-content-center" >
               <p class="title"><strong><%=booking.activity.title%></strong></p>
+              <p class="kid-name">avec <strong><%=booking.kid.first_name.capitalize %></strong></p>
               <p class="schedule">de <%=booking.start_at.hour%>h à <%=booking.end_at.hour%>h</p>
               <p class="activity-result mt-3"> <%= link_to "Voir les détails", booking_path(booking), class:"activities-button mt-3" %></p>
             </div>
