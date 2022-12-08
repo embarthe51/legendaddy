@@ -6,6 +6,7 @@
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
+  flex-direction: column;
   color: black;
   justify-content: center;
   form {
@@ -14,7 +15,7 @@
   label {
     display: none;
   }
-  input[type="email"], input[type="password"] {
+  input[type="email"], input[type="password"], input[type="text"] {
     border-radius: 0.3rem;
     background-color: rgb(197, 197, 197);
     width: 90%;
