@@ -48,6 +48,8 @@
     <%  current_user.kids.each do |kid| %>
       <p><%= kid.first_name %></p>
     <% end %>
+  <% else %>
+      <p>Vous n'avez pas enregistré d'enfant</p>
   <% end %>
 </div>
 
