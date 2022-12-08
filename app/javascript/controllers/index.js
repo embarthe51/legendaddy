@@ -22,6 +22,9 @@ application.register("map", MapController)
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 
+import PopupController from "./popup_controller"
+application.register("popup", PopupController)
+
 import SubmitHoursController from "./submit_hours_controller"
 application.register("submit-hours", SubmitHoursController)
 

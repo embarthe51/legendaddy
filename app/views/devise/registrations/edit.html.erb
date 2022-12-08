@@ -1,7 +1,7 @@
 
 <section class="profile-form-content">
   <div class="modification-content">
-    <h2>Salut <%= current_user.email %></h2>
+    <h2>Salut <%= current_user.pseudo %></h2>
     <h2>Modifier adresse mail et mot de passe</h2>
   </div>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -38,7 +38,20 @@
     </div>
 </section>
 
+<div class="legend-form-container">
+  <%= render 'shared/add_kid' %>
+</div>
 
+<div class="legend-form-container">
+  <h2>mes enfants enregistrés</h2>
+  <% if current_user.kids.any? %>
+    <%  current_user.kids.each do |kid| %>
+      <p><%= kid.first_name %></p>
+    <% end %>
+  <% else %>
+      <p>Vous n'avez pas enregistré d'enfant</p>
+  <% end %>
+</div>
 
   <%# <div class="delete-account">
     <h3>Supprimer mon compte</h3>
