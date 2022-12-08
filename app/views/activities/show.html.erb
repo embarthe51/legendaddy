@@ -10,9 +10,7 @@
       <% else %>
         <%= image_tag 'papa.jpeg', width: 350, height: 300 %>
       <% end %>
-      <%= link_to :back, class: 'return_button' do %>
-        <i class="fa-solid fa-arrow-left"></i>
-      <% end %>
+      <%= render 'back_arrow' %>
     </div>
       <h2 class="secondary_title"><%= @activity.title %></h2>
         <div class="info-card">

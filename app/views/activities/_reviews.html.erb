@@ -1,4 +1,4 @@
-
+<%= render 'activities/back_arrow' %>
 <%= sanitize activity.format_reviews %>
 <% if action_name == "show" %>
 <%= link_to "#{activity.reviews.count} avis", activity_reviews_path(activity) if activity.reviews.any? %>

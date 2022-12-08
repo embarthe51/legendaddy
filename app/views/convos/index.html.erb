@@ -4,18 +4,18 @@
 <section class="convo-index-section">
   <div>
     <% if @convos.empty? %>
-      <article>&#x1F40C; &#x1F41E; &#x1F423; <h2>vous n'avez pas de discussions ouvertes</h2> &#x1F427; &#x1F42D; &#x1F41D;</article>
+      <article>&#x1F40C; &#x1F41E; &#x1F423; <h2>Vous n'avez pas de discussions ouvertes</h2> &#x1F427; &#x1F42D; &#x1F41D;</article>
     <% else %>
 
-    <h4>vous avez <%= @convos.length %> discussion(s)</h4>
+    <h4>Vous avez <%= @convos.length %> discussion(s)</h4>
       <% @convos.each do |item| %>
         <%= link_to convo_messages_path(item) do %>
           <i class="fa-regular fa-envelope"></i>
           <p><strong>avec:</strong>  <%= item.receiver == current_user ? item.sender.email.truncate(12) : item.receiver.email.truncate(12) %></p>
           <% if item.messages.empty? %>
-            <p>envoyez un premier message</p>
+            <p>Envoyez un premier message</p>
           <% else %>
-            <p><strong>dernier message:</strong> <%= item.messages.last.content.truncate(10) %></p>
+            <p><strong>Dernier message:</strong> <%= item.messages.last.content.truncate(10) %></p>
           <% end %>
 
         <% end %>

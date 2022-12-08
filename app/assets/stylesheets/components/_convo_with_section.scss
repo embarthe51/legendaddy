@@ -5,6 +5,14 @@
   border: 2px solid white;
   border-radius: 1rem;
   color: white;
+  height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  > section {
+    flex-grow: 1;
+    /* max-height: calc(100% - 140px); */
+    overflow-y: auto;
+  }
   h2 {
     text-shadow: 2px 15px 96px black;
   }
@@ -33,6 +41,7 @@
   }
   form {
     position: relative;
+    > div.mb-3 { margin-bottom: 0 !important;}
   }
   button[type="submit"] {
     @include legend-btn-transparent();
@@ -59,7 +68,7 @@
     margin: 1rem;
     overflow-wrap: break-word;
     small {
-      font-size: 0.6rem;
+      font-size: 0.9rem;
     }
   }
 }

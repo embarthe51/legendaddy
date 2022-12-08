@@ -1,7 +1,5 @@
 <div class="" data-controller="activity-search">
-  <%= link_to :back, class: 'return_button activity-arrow-link-btn' do %>
-    <i class="fa-solid fa-arrow-left"></i>
-  <% end %>
+  <%= render 'back_arrow' %>
   <div class="tags">
     <%= simple_form_for :query,
                       url: params[:availability_id].present? ? search_availability_activities_path(params[:availability_id]) : search_activities_path,
