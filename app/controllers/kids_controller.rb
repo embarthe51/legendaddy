@@ -6,10 +6,7 @@ class KidsController < ApplicationController
   def create
     @kid = Kid.new(kid_params)
     @kid.user = current_user
-    if @kid.save
-      raise
-      redirect_to edit_user_registration_path
-    end
+    redirect_to edit_user_registration_path if @kid.save
   end
 
   private
