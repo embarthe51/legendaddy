@@ -32,7 +32,7 @@
     <div class="legendads_avatar">
       <% @other_legendads_attending.each do |dad| %>
         <% if dad != current_user  %>
-          <% if (Convo.where(sender_id: current_user).or(Convo.where(receiver_id: current_user))).empty? %>
+          <% if (Convo.where(sender_id: current_user, receiver_id: dad).or(Convo.where(receiver_id: current_user, sender_id: dad))).empty? %>
           <%# Si on a pas de convos avec ce dad on affiche ce bouton ! %>
             <%= link_to convos_path(receiver: dad), data: { turbo_method: :post }, class:"" do %>
               <%= cl_image_tag dad.photo.key, class:"avatar-large dad" %>

@@ -46,6 +46,15 @@ file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_2
 user.photo.attach(io: file, filename: "alban.jpg", content_type: "image/jpg")
 user.save!
 
+user = User.new(
+  email: "juju@gmail.com",
+  password: "123456789",
+  pseudo: "legendad_2_b"
+)
+file = URI.open("https://avatars.githubusercontent.com/u/104355406?v=4")
+user.photo.attach(io: file, filename: "julien.jpg", content_type: "image/jpg")
+user.save!
+
 puts "creating kids........."
 Kid.create!(
   first_name: "Anna",
