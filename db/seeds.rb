@@ -19,23 +19,41 @@ Kid.destroy_all
 User.destroy_all
 
 puts "creating users..."
-User.create!(
+user = User.new(
   email: "cooldude@gmail.com",
   password: "123456789",
   pseudo: "Legendaddy_du_93"
 )
+file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1670235617/tddm97ebcaysis1s2m5s.jpg")
+user.photo.attach(io: file, filename: "franck.jpg", content_type: "image/jpg")
+user.save!
 
-User.create!(
+user = User.new(
   email: "cooldad@gmail.com",
   password: "123456789",
   pseudo: "FrontEnd_dad"
 )
+file = URI.open("https://avatars.githubusercontent.com/u/74938003?v=4")
+user.photo.attach(io: file, filename: "nico.jpg", content_type: "image/jpg")
+user.save!
 
-User.create!(
+user = User.new(
   email: "daddycool@gmail.com",
   password: "123456789",
   pseudo: "Best_dad"
 )
+file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1665117611/xlgahjdus4ba2ulnokkx.jpg")
+user.photo.attach(io: file, filename: "alban.jpg", content_type: "image/jpg")
+user.save!
+
+user = User.new(
+  email: "juju@gmail.com",
+  password: "123456789",
+  pseudo: "legendad_2_b"
+)
+file = URI.open("https://avatars.githubusercontent.com/u/104355406?v=4")
+user.photo.attach(io: file, filename: "julien.jpg", content_type: "image/jpg")
+user.save!
 
 puts "creating kids........."
 Kid.create!(
