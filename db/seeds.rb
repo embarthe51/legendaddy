@@ -75,8 +75,6 @@ activities = JSON.parse(activities_serialized)
 
 activities["records"].each do |activity|
   next if activity["fields"]["lat_lon"].nil?
-  next if activity["fields"]["title"] == "CinéKids - décembre 2022"
-  next if activity["fields"]["title"] == "Atelier d'éveil musical 'Les tambours du monde'"
   next if activity["fields"]["description"].nil?
   next if activity["fields"]["date_start"].nil?
   next if activity["fields"]["date_end"].nil?
@@ -271,6 +269,24 @@ Activity.all.each do |item|
     content: "Incroyable",
     rating: 5,
     user: User.where(email: "cooldude@gmail.com").first,
+    activity: Activity.find(item.id)
+  )
+end
+
+Activity.all.each do |item|
+  Review.create!(
+    content: "Nice!",
+    rating: 4,
+    user: User.where(email: "daddycool@gmail.com").first,
+    activity: Activity.find(item.id)
+  )
+end
+
+Activity.all.each do |item|
+  Review.create!(
+    content: "Bof",
+    rating: 3,
+    user: User.where(email: "cooldad@gmail.com").first,
     activity: Activity.find(item.id)
   )
 end
