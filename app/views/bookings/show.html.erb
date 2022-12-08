@@ -25,14 +25,18 @@
     </div>
     <br>
     <p class="font-style mt-2"><i class="fa-solid fa-location-dot"></i>  <%= @booking.activity.address %></p>
-    <p class="mt-2">Chat avec les autres papas qui ont aussi réservé cette activité :</p>
-    <% @other_legendads_attending.each do |dad| %>
-      <%= dad.pseudo %>
-      <%= link_to convo_messages_path(dad) do %>
-          <i class="fa-regular fa-message"></i>
-      <% end %>
-    <% end %>
 
+    <p class="mt-2">Chat avec les autres papas qui ont aussi réservé cette activité :</p>
+   
+    <%= "vous etes le seul legendaddy inscrit" if @other_legendads_attending.count == 1 && @other_legendads_attending.first == current_user %>
+    <% @other_legendads_attending.each do |dad| %>
+      <% if dad != current_user %>
+       <%= dad.pseudo %>
+       <%= link_to convo_messages_path(dad) do %>
+            <i class="fa-regular fa-message"></i>
+        <% end %>
+    <% end %>
+    <br>
     <%= link_to "Annuler mon activité", booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" %>
   </div>
 </article>
