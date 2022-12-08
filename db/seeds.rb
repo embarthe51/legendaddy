@@ -85,6 +85,12 @@ Kid.create!(
   first_name: 'Alicianna',
   user: User.where(email: "cooldad@gmail.com").first
 )
+
+Kid.create!(
+  first_name: 'Pas_encore_né',
+  user: User.where(email: "juju@gmail.com").first
+)
+
 puts "Creating activities..."
 
 url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=date_start%3A%5B2022-12-08T23%3A00%3A00Z+TO+2022-12-11T22%3A59%3A59Z%5D&rows=40&facet=date_start&facet=date_end&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=transport&facet=price_type&facet=access_type&facet=updated_at&facet=programs&refine.tags=Enfants&exclude.tags=Innovation&exclude.tags=Art+contemporain&exclude.tags=Spectacle+musical&exclude.tags=BD&exclude.tags=Concert&exclude.tags=Musique&exclude.tags=Sport&exclude.tags=Histoire&exclude.tags=Th%C3%A9%C3%A2tre"

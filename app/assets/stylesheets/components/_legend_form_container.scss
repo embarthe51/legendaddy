@@ -43,6 +43,18 @@
     display: flex;
 
   }
+  p {
+    position: relative;
+    a {
+    text-decoration: none;
+    i {
+      color: black;
+      position: absolute;
+      right: 0rem;
+    }
+  }
+  }
+
 }
 
 .form-btn {

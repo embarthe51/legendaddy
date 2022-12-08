@@ -46,7 +46,12 @@
   <h2>mes enfants enregistrés</h2>
   <% if current_user.kids.any? %>
     <%  current_user.kids.each do |kid| %>
-      <p><%= kid.first_name %></p>
+      <p>
+        <%= kid.first_name %>
+        <%= link_to kid_path(kid), data: { turbo_confirm: "Etes-vous sûr ?", turbo_method: :delete } do %>
+          <i class="fa-solid fa-user-minus"></i>
+        <% end %>
+      </p>
     <% end %>
   <% else %>
       <p>Vous n'avez pas enregistré d'enfant</p>
