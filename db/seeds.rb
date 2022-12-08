@@ -242,6 +242,8 @@ file = URI.open("https://cdn.paris.fr/qfapv4/2021/12/01/huge-e0c0dc7170a6f85ddeb
 activity.photos.attach(io: file, filename: "bibliothèque.png", content_type: "image/png")
 activity.save!
 
+Activity.where(latitude: nil).destroy_all
+
 puts "creating availabilities.........................................................................."
 
 Availability.create!(
