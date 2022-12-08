@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
 
   def show
     # @other_legendads_attending = User.includes(:bookings).where(activity: activity)
-    @other_legendads_attending = User.all.select { |item| item.bookings.include?(@booking) }
+    # @other_legendads_attending = User.all.select { |item| item.bookings.include?(@booking) }
+    @other_legendads_attending = Booking.where(activity: @booking.activity).map { |item| item.user }
   end
 
   def new
