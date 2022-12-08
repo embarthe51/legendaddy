@@ -3,32 +3,36 @@
 .booking-show-container {
   color: white;
   .img-div-banner {
-    min-height: 20rem;
+    min-height: 27rem;
     min-width: 10rem;
-    max-height: 25rem;
+    max-height: 30rem;
     background-position: center;
     background-size: cover;
     text-align: center;
     padding-top: 6rem;
     border-radius: 0.5rem 0.5rem 0rem 0rem;
     margin-bottom: 1rem;
+    h1{
+      margin-top: 38px;
+    }
     h2 {
       color: white;
+      margin-top: 30px;
     }
-  }
+
   .delete-btn {
-  //  display: block;
-  //  width: fit-content;
-  //   margin-top: 2em;
-  //   color: white;
-  //   background-color: white;
-  //   border-radius: 0rem 0rem 0rem 0.4rem;
-  //   text-decoration: none;
-  //   padding: 6px 12px;
-  //   font-size: 20px;
-  //   border: 2px solid red;
-  //   border-radius: 5px;
-  //   color: red;
+    //  display: block;
+    //  width: fit-content;
+    //   margin-top: 2em;
+    //   color: white;
+    //   background-color: white;
+    //   border-radius: 0rem 0rem 0rem 0.4rem;
+    //   text-decoration: none;
+    //   padding: 6px 12px;
+    //   font-size: 20px;
+    //   border: 2px solid red;
+    //   border-radius: 5px;
+    //   color: red;
     position: absolute;
     right: 10px;
     font-size: 14px;
@@ -37,8 +41,8 @@
     //   color: red;
     //   font-size: 40px;
     // }
+    }
   }
-}
 
 .legendads_avatar{
   display: flex;
@@ -48,33 +52,39 @@
     position: relative;
     margin-left: -15px;
     border: 2px solid $navy;
+    }
   }
-}
 
 .review-star {
   color: $yellow;
-}
+  }
 
 .reviews-booking {
   text-align: right;
   font-size: 17px;
-}
+  }
 
 #booking-show{
   p {
     color: #6658D3;
     margin: 0 auto;
     text-align: center;
-  }
+    }
   width: 100%;
-}
+  }
 
 .infos-kid {
   // display:grid;
   // grid-template-columns: repeat(2,1fr);
-
   .kid-name {
     font-weight: bold;
     background: $orange;
+    margin-left: 145px;
+    margin-right: 145px;
+    border-radius: 5px;
+    padding-top: 4px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    }
   }
 }
