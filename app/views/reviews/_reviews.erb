@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="activity-review">
+    <h2 class="title mb-4">Avis pour <strong><%=@activity.title%></strong> (<%= @reviews.count %>) <%= sanitize @activity.format_reviews %></h2>
+    <br>
+      <% @reviews.each do |item| %>
+        <div class="the-review">
+            <p class="pseudo"><%= item.user.pseudo %>:</p>
+            <p><%= sanitize Review.avg_rating(item.rating) %></p>
+            <p class="item"><%= item.content %></p>
+            <br>
+        </div>
+      <% end %>
+  </div>
+</div>

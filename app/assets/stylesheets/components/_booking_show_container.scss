@@ -57,3 +57,13 @@
   }
   width: 100%;
 }
+
+.infos-kid {
+  // display:grid;
+  // grid-template-columns: repeat(2,1fr);
+
+  .kid-name {
+    font-weight: bold;
+    background: $orange;
+  }
+}

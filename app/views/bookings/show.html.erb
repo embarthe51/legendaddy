@@ -9,8 +9,13 @@
           cl_image_path(@booking.activity.photos.first.key) :
           image_url('https://cdn.pixabay.com/photo/2016/09/08/22/43/books-1655783_1280.jpg') %>)">
 
-    <h1><%= @booking.activity.title %></h2>
-    <h2>Activité avec <strong><%=@booking.kid.first_name.capitalize %></strong> </h2>
+    <h1 class="mb-3"><%= @booking.activity.title %></h1>
+    <h2 class="infos-kid">
+      <div class="activity-with">
+        Activité avec
+      </div>
+      <div class="kid-name"><%=@booking.kid.first_name.capitalize %></div>
+    </h2>
     <h3>le <%= @booking.start_at.strftime("%d %b %y")%>, de <%= @booking.start_at.strftime("%H:%M")%> a <%= @booking.end_at.strftime("%H:%M")%></h3>
   </div>
 
@@ -20,10 +25,16 @@
     </div>
     <br>
     <p class="font-style mt-2"><i class="fa-solid fa-location-dot"></i>  <%= @booking.activity.address %></p>
-    <p class="mt-2">Contactez les autres papas qui ont aussi réservé cette activité :</p>
+
+    <p class="mt-2">Chat avec les autres papas qui ont aussi réservé cette activité :</p>
+   
     <%= "vous etes le seul legendaddy inscrit" if @other_legendads_attending.count == 1 && @other_legendads_attending.first == current_user %>
     <% @other_legendads_attending.each do |dad| %>
-      <%= render 'activities/trigger_modal', dad: dad if dad != current_user %>
+      <% if dad != current_user %>
+       <%= dad.pseudo %>
+       <%= link_to convo_messages_path(dad) do %>
+            <i class="fa-regular fa-message"></i>
+        <% end %>
     <% end %>
     <br>
     <%= link_to "Annuler mon activité", booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" %>
