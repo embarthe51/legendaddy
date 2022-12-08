@@ -16,7 +16,7 @@
       </div>
       <div class="kid-name"><%=@booking.kid.first_name.capitalize %></div>
     </h2>
-    <h3>le <%= @booking.start_at.strftime("%d %b %y")%>, de <%= @booking.start_at.strftime("%H:%M")%> a <%= @booking.end_at.strftime("%H:%M")%></h3>
+    <h3>le <%= @booking.start_at.strftime("%d %b %y")%>, de <%= @booking.start_at.strftime("%H:%M")%> à <%= @booking.end_at.strftime("%H:%M")%></h3>
   </div>
 
   <div class="info-card">
@@ -32,9 +32,18 @@
     <div class="legendads_avatar">
       <% @other_legendads_attending.each do |dad| %>
         <% if dad != current_user  %>
-          <%= link_to convos_path(receiver: dad), class:"" do %>
-            <%= image_tag "franck.jpg", class: "avatar-large dad", alt: "avatar-large" %>
+          <% if (Convo.where(sender_id: current_user).or(Convo.where(receiver_id: current_user))).empty? %>
+          <%# Si on a pas de convos avec ce dad on affiche ce bouton ! %>
+            <%= link_to convos_path(receiver: dad), data: { turbo_method: :post }, class:"" do %>
+              <%= cl_image_tag dad.photo.key, class:"avatar-large dad" %>
+            <% end %>
+          <% else %>
+            <%# Sinon affiche ce bouton qui mène vers l'index %>
+            <%= link_to convos_path(receiver: dad), class:"" do %>
+              <%= cl_image_tag dad.photo.key, class:"avatar-large dad" %>
+            <% end %>
           <% end %>
+
         <% end %>
       <% end %>
     </div>
