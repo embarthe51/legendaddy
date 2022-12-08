@@ -2,10 +2,12 @@ class AvailabilitiesController < ApplicationController
 
   def index
     @tomorrow = Date.tomorrow
-    @bookings = Booking.all
-    @availabilities = Availability.select do |availability|
+    @bookings = current_user.bookings
+    @availabilities = current_user.availabilities.select do |availability|
+      # availability.user = current_user
       matching_bookings = @bookings.map do |booking|
         booking if booking.start_at == availability.start_at
+        # booking.user = current_user
       end.compact
       matching_bookings.empty?
     end
