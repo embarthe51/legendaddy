@@ -1,0 +1,4 @@
+<% opacity = 0.5 if local_assigns[:opacity].nil? %>
+<%= link_to :back, class: 'return_button activity-arrow-link-btn', style: "background-color: rgba(255, 255, 255, #{opacity});" do %>
+  <i class="fa-solid fa-arrow-left"></i>
+<% end %>
