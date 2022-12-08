@@ -13,10 +13,8 @@
   <%= button_to convos_path, params: { receiver: dad }, class:"convo-btn-create" do %>
     <div class="d-flex blue-button align-items-center" id="home">
       <i class="fa-solid fa-arrow-right" data-togglemodal-target="arrow"></i>
-      <p>Envoyer un message</p>
+      <p><%= dad.pseudo %></p>
     </div>
-
-
   <% end %>
 <% elsif current_page?(controller: "activities", action: "show") %>
   <div class="d-flex blue-button align-items-center">
