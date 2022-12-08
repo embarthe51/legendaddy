@@ -21,10 +21,11 @@
     <br>
     <p class="font-style mt-2"><i class="fa-solid fa-location-dot"></i>  <%= @booking.activity.address %></p>
     <p class="mt-2">Contactez les autres papas qui ont aussi réservé cette activité :</p>
+    <%= "vous etes le seul legendaddy inscrit" if @other_legendads_attending.count == 1 && @other_legendads_attending.first == current_user %>
     <% @other_legendads_attending.each do |dad| %>
-      <%= render 'activities/trigger_modal', dad: dad %>
+      <%= render 'activities/trigger_modal', dad: dad if dad != current_user %>
     <% end %>
-
+    <br>
     <%= link_to "Annuler mon activité", booking_path(@booking) , data: { "turbo-method": :delete }, class: "delete-btn" %>
   </div>
 </article>

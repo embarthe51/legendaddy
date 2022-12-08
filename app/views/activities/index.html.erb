@@ -15,7 +15,7 @@
                 as: :check_boxes,
                 collection_wrapper_tag: 'div',
                 collection_wrapper_class: 'category-wrapper',
-                collection: ActsAsTaggableOn::Tag.all,
+                collection: @filtered_tags,
                 value_method: :name,
                 checked: params.dig(:query, :tag_list),
                 input_html: {
