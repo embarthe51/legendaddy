@@ -1,0 +1,7 @@
+
+<%= simple_form_for :kid, url: kids_path do |form| %>
+  <h2>ajouter un enfant à mon profil</h2>
+  <p>prénom de l'enfant</p>
+  <%= form.input :first_name %>
+  <%= form.submit "ajouter" %>
+<% end %>
