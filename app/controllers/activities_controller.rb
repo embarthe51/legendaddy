@@ -42,13 +42,13 @@ class ActivitiesController < ApplicationController
     if params[:availability_id].present?
       @availability = Availability.find(params[:availability_id])
       if params.dig(:query, :tag_list)&.any? { |string| !string.empty? }
-        @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true).on_availability(@availability).first(5)
+        @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true).on_availability(@availability).first(10)
       else
         @activities = Activity.on_availability(@availability)
       end
     else
       if params.dig(:query, :tag_list)&.any? { |string| !string.empty? }
-        @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true).first(5)
+        @activities = Activity.tagged_with(params.dig(:query, :tag_list), any: true).first(10)
       else
         @activities = Activity.all
       end
