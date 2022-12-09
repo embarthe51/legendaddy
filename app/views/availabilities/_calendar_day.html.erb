@@ -50,21 +50,21 @@
             <% if Activity.on_availability(availability).count == 1 %>
                 <%= link_to "#{Activity.on_availability(availability).count} activité", availability_activities_path(availability), class:"activities-button" %>
                 <%= link_to availability_path(availability),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                data: {turbo_method: :delete, turbo_confirm: "Etes-vous sûr ?"},
                 class: 'delete-availabilty_button' do %>
                   <i class="fa-solid fa-square-xmark"></i>
                 <% end %>
               <% elsif Activity.on_availability(availability).count > 1  %>
                 <%= link_to "#{Activity.on_availability(availability).count} activités", availability_activities_path(availability), class:"activities-button"%>
                 <%= link_to availability_path(availability),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                data: {turbo_method: :delete, turbo_confirm: "Etes-vous sûr ?"},
                 class: 'delete-availabilty_button' do %>
                   <i class="fa-solid fa-square-xmark"></i>
                 <% end %>
               <% elsif Activity.on_availability(availability).count == 0  %>
                 <%= "Pas d'activité dispo sur ce creneau" %>
                 <%= link_to availability_path(availability),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                data: {turbo_method: :delete, turbo_confirm: "Etes-vous sûr ?"},
                 class: 'delete-availabilty_button' do %>
                   <i class="fa-solid fa-square-xmark"></i>
                 <% end %>

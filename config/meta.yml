@@ -1,5 +1,5 @@
 meta_product_name: "Legendaddy"
 meta_title: "Legendaddy - L'app des papas cools"
 meta_description: "Trouve une activité sur les 3 prochains jours et planifie une expérience légendaire avec ton enfant!"
-meta_image: "meta-icon.svg" # should exist in `app/assets/images/`
+meta_image: "Legendaddy_og.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards

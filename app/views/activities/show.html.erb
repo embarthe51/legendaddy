@@ -18,10 +18,9 @@
       <%= render 'reviews', activity: @activity %>
       <br>
       <br>
-      <h6 class="font-style"><i class="fa-solid fa-location-dot"></i>  <%= @activity.address%></h6>
+      <h6 class="font-style"><i class="fa-solid fa-location-dot"></i>  <%= @activity.address %></h6>
       <br>
       <p><i class="fa-solid fa-link"></i> <%= link_to 'Site web', @activity.url %></p>
-      <br>
       <br>
       <% if @activity.price %>
         <p><i class="fa-solid fa-money-check"></i> <%= @activity.price %></p>
@@ -57,7 +56,7 @@
         <section class="legend-form-container">
           <div class="d-flex flex-column justify-content-center">
             <p>Votre reservation pour le <strong><%=@user_availability.start_at.strftime('%d/%m/%Y')%></strong></p>
-            <p>de <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
+            <p>De <strong><%=@user_availability.start_at.strftime('%H h %M')%></strong> a <strong><%=@user_availability.end_at.strftime('%H h %M')%></strong></p>
 
             <%= simple_form_for [@user_availability, @activity, @booking] do |form| %>
               <p>Avec :</p>

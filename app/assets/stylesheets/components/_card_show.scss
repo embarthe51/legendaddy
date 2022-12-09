@@ -6,9 +6,9 @@
 
 .box-description{
   position: center;
-  background-color: #6658D3;
+  background-color: #6658d300;
   border-radius: 10px;
-  box-shadow: 3px 3px 3px 3px #040c3929;
+  // box-shadow: 3px 3px 3px #6658D3;
   text-align: center;
   color: #f2f2f7;
 }
@@ -108,6 +108,7 @@
     text-align: left;
     font-size: 20px;
     margin-left: 8px;
+    margin-bottom: 0;
   }
 
   .info-card a{

@@ -25,7 +25,7 @@
 
     <p class="mt-2">Chat avec les autres papas qui ont aussi réservé cette activité :</p>
 
-    <%= "vous etes le seul Legendaddy inscrit" if @other_legendads_attending.count == 1 && @other_legendads_attending.first == current_user %>
+    <%= "Vous etes le seul Legendaddy inscrit" if @other_legendads_attending.count == 1 && @other_legendads_attending.first == current_user %>
     <div class="legendads_avatar">
       <% @other_legendads_attending.each do |dad| %>
         <% if dad != current_user  %>
