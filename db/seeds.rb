@@ -55,6 +55,15 @@ file = URI.open("https://avatars.githubusercontent.com/u/104355406?v=4")
 user.photo.attach(io: file, filename: "julien.jpg", content_type: "image/jpg")
 user.save!
 
+user = User.new(
+  email: "p_to_the_y@gmail.com",
+  password: "123456789",
+  pseudo: "la_legende_py"
+)
+file = URI.open("https://avatars.githubusercontent.com/u/8135012?v=4")
+user.photo.attach(io: file, filename: "p_y.jpg", content_type: "image/jpg")
+user.save!
+
 puts "creating kids........."
 Kid.create!(
   first_name: "Anna",
@@ -343,6 +352,34 @@ Review.create!(
   rating: 2,
   user: User.where(email: "cooldude@gmail.com").first,
   activity: Activity.where(title: "Social bar").first
+)
+
+Review.create!(
+  content: "Une piscine irreprochable. RAS",
+  rating: 5,
+  user: User.where(email: "p_to_the_y@gmail.com").first,
+  activity: Activity.where(title: "Piscine Municipale de Pontoise").first
+)
+
+Review.create!(
+  content: "TOP",
+  rating: 5,
+  user: User.where(email: "cooldad@gmail.com").first,
+  activity: Activity.where(title: "Piscine Municipale de Pontoise").first
+)
+
+Review.create!(
+  content: "Des cheveaux partout mais le staff nikel",
+  rating: 3,
+  user: User.where(email: "cooldad@gmail.com").first,
+  activity: Activity.where(title: "Piscine Municipale de Pontoise").first
+)
+
+Review.create!(
+  content: "Il ya du monde parfois.",
+  rating: 5,
+  user: User.where(email: "juju@gmail.com").first,
+  activity: Activity.where(title: "Piscine Municipale de Pontoise").first
 )
 
 puts "Finished!"
