@@ -5,8 +5,8 @@
   </div>
   <div class="form-modal-content">
     <%= simple_form_for Availability.new do |f| %>
-      <%= f.input :start_at, as: :string, default: target_day, input_html: { data: { submit_hours_target: "input"} }%>
-      <%= f.input :end_at, as: :string, default: target_day, input_html: { data: { submit_hours_target: "input" } } %>
+      <%= f.input :start_at, as: :string, default: target_day, label: "De", input_html: { data: { submit_hours_target: "input"} }%>
+      <%= f.input :end_at, as: :string, default: target_day, label: "à", input_html: { data: { submit_hours_target: "input" } } %>
       <%= f.hidden_field :date, value: day %>
       <%= f.hidden_field :tab_id, value: tab_day %>
       <%= f.submit value: "Ajouter ma dispo", class:"yellow-button mt-3"%>
