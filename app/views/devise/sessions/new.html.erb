@@ -2,11 +2,11 @@
 <section class="legend-form-container">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
     <div class="form-inputs">
-      <%= f.input :pseudo, required: true %>
+      <%= f.input :pseudo, required: true, placeholder: "Bob_du_51" %>
       <%= f.input :email,
                   required: false,
                   autofocus: true,
-                  input_html: { autocomplete: "email" }, placeholder: "john_le@liverpool.com" %>
+                  input_html: { autocomplete: "email" }, placeholder: "bob@liverpool.com" %>
       <%= f.input :password,
                   required: false,
                   input_html: { autocomplete: "current-password" }, placeholder: "*********" %>
